@@ -8,6 +8,7 @@ package piratesoftheopenseas;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Location;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
+import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 
 /**
  *
@@ -23,6 +24,7 @@ public class PiratesOfTheOpenSeas {
         InventoryItem inventoryOne = new InventoryItem();
         InventoryItem inventoryTwo = new InventoryItem();
         Location locationOne = new Location();
+        Ship shipOne = new Ship();
         
         playerOne.setName("Roland Pecku");
         playerOne.setHighScore(14.00);
@@ -40,6 +42,12 @@ public class PiratesOfTheOpenSeas {
         locationOne.setVisited(2);
         locationOne.setNumberRemaining(3);
         
+        shipOne.setDescription(" BabyJet, small and very fast");
+        shipOne.setCrew(7);
+        shipOne.setCannons(5);
+        shipOne.setSpeed(3.5);
+        shipOne.setMaxCapacity(1000);
+        
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
@@ -51,6 +59,9 @@ public class PiratesOfTheOpenSeas {
         
         String locate = locationOne.toString();
         System.out.println(locate);
+        
+        String shipInfo = shipOne.toString();
+        System.out.println(shipInfo);
     }
     
 }
