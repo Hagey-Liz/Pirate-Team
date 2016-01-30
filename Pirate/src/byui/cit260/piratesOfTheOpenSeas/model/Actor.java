@@ -18,7 +18,7 @@ public class Actor implements Serializable{
     private String name;
     private String description;
     private String type;
-
+   
     public Actor() {
     }
 
