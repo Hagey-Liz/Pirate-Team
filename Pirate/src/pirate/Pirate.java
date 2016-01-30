@@ -6,6 +6,7 @@
 package pirate;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Actor;
+import byui.cit260.piratesOfTheOpenSeas.model.IslandSceneType;
 import byui.cit260.piratesOfTheOpenSeas.model.OpenSeaSceneType;
 import byui.cit260.piratesOfTheOpenSeas.model.SeaPortSceneType;
 
@@ -58,6 +59,16 @@ public class Pirate {
       String seaPortOneInfo = seaPortOne.toString();
       System.out.println(seaPortOneInfo);
     
+      IslandSceneType islandOne = new IslandSceneType();
+      
+      islandOne.setDescription("Unfriendly Natives, good supplies.");
+      islandOne.setTravelTime("Two days");
+      islandOne.setBlocked("Not blocked");
+      
+      String islandOneInfo = islandOne.toString();
+      System.out.println(islandOneInfo);
+      
+      
     }
     
         
