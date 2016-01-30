@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 /**
  *
- * @author RJ
+ * @author RJ Phelps
  */
 public class Map implements Serializable{
     
