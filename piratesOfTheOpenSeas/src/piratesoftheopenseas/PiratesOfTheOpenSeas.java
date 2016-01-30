@@ -5,6 +5,7 @@
  */
 package piratesoftheopenseas;
 
+import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
 
 /**
@@ -18,12 +19,28 @@ public class PiratesOfTheOpenSeas {
      */
     public static void main(String[] args) {
         Player playerOne = new Player();
+        InventoryItem inventoryOne = new InventoryItem();
+        InventoryItem inventoryTwo = new InventoryItem();
         
         playerOne.setName("Roland Pecku");
         playerOne.setHighScore(14.00);
         
+        inventoryOne.setInventoryType("Cannons");
+        inventoryOne.setQuantityInStock(15);
+        inventoryOne.setRequiredAmount(10);
+        
+        inventoryTwo.setInventoryType("Guns");
+        inventoryTwo.setQuantityInStock(40.0);
+        inventoryTwo.setRequiredAmount(10.0);
+        
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+        
+        String inventoryCannons = inventoryOne.toString();
+        System.out.println(inventoryCannons);
+        
+        String inventoryGuns = inventoryTwo.toString();
+        System.out.println(inventoryGuns);
     }
     
 }
