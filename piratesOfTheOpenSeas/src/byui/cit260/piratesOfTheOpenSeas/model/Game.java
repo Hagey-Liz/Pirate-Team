@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  *
- * @author RJ
+ * @author RJ Phelps
  */
 public class Game implements Serializable{
 
