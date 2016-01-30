@@ -7,6 +7,7 @@ package pirate;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Actor;
 import byui.cit260.piratesOfTheOpenSeas.model.OpenSeaSceneType;
+import byui.cit260.piratesOfTheOpenSeas.model.SeaPortSceneType;
 
 /**
  *
@@ -36,6 +37,28 @@ public class Pirate {
       
       String openSeaInfo = openSea.toString();
       System.out.println(openSeaInfo);
+      
+      OpenSeaSceneType openSeaTwo = new OpenSeaSceneType();
+      
+      openSeaTwo.setDescription("Calm Sea");
+      openSeaTwo.setTravelTime("Fast - 30 knots per hour");
+      openSeaTwo.setWeather("Clear skies");
+      openSeaTwo.setBlocked("Clear to move straight ahead");
+      
+      String openSeaInfoTwo = openSeaTwo.toString();
+      System.out.println(openSeaInfoTwo);
+      
+      SeaPortSceneType seaPortOne = new SeaPortSceneType();
+      
+      seaPortOne.setDescription("Friendly, good supplies");
+      seaPortOne.setTimeLost("One day");
+      seaPortOne.setNoOfItems(10);
+      seaPortOne.setBlocked("This port is not blocked");
+      
+      String seaPortOneInfo = seaPortOne.toString();
+      System.out.println(seaPortOneInfo);
+    
     }
     
+        
 }
