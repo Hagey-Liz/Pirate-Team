@@ -12,7 +12,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 
 /**
  *
- * @author Roderick
+ * @author Roland
  */
 public class PiratesOfTheOpenSeas {
 
