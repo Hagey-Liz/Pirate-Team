@@ -7,6 +7,7 @@
 package piratesoftheopenseas;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Actor;
+import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.IslandSceneType;
 import byui.cit260.piratesOfTheOpenSeas.model.Location;
@@ -26,6 +27,12 @@ public class PiratesOfTheOpenSeas {
         InventoryItem inventoryTwo = new InventoryItem();
         Location locationOne = new Location();
         Ship shipOne = new Ship();
+        Barrel barrelOne = new Barrel();
+        
+        barrelOne.setDiameter(6);
+        barrelOne.setHeight(10);
+        barrelOne.setVolume(30);
+        barrelOne.setMaxWeight(50);
         
         playerOne.setName("Roland Pecku");
         playerOne.setHighScore(14.00);
@@ -63,6 +70,9 @@ public class PiratesOfTheOpenSeas {
         
         String shipInfo = shipOne.toString();
         System.out.println(shipInfo);
+        
+        String barrelInfo = barrelOne.toString();
+      System.out.println(barrelInfo);
 }
     private static void lizTests(){
          Actor actorOne = new Actor();
@@ -112,6 +122,8 @@ public class PiratesOfTheOpenSeas {
       
       String islandOneInfo = islandOne.toString();
       System.out.println(islandOneInfo);
+      
+      
     }
     /**
      * @param args the command line arguments
