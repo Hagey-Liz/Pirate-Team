@@ -17,8 +17,8 @@ public class OpenSeaSceneType implements Serializable{
     //class instance variables
     private String description;
     private String weather;
-    private String blocked;
-    private String travelTime;
+    private boolean blocked;
+    private double travelTime;
 
     public OpenSeaSceneType() {
     }
@@ -39,19 +39,19 @@ public class OpenSeaSceneType implements Serializable{
         this.weather = weather;
     }
 
-    public String getBlocked() {
+    public boolean isBlocked() {
         return blocked;
     }
 
-    public void setBlocked(String blocked) {
+    public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
 
-    public String getTravelTime() {
+    public double getTravelTime() {
         return travelTime;
     }
 
-    public void setTravelTime(String travelTime) {
+    public void setTravelTime(double travelTime) {
         this.travelTime = travelTime;
     }
 
@@ -60,8 +60,8 @@ public class OpenSeaSceneType implements Serializable{
         int hash = 7;
         hash = 17 * hash + Objects.hashCode(this.description);
         hash = 17 * hash + Objects.hashCode(this.weather);
-        hash = 17 * hash + Objects.hashCode(this.blocked);
-        hash = 17 * hash + Objects.hashCode(this.travelTime);
+        hash = 17 * hash + (this.blocked ? 1 : 0);
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.travelTime) ^ (Double.doubleToLongBits(this.travelTime) >>> 32));
         return hash;
     }
 
@@ -83,23 +83,19 @@ public class OpenSeaSceneType implements Serializable{
             return false;
         }
         final OpenSeaSceneType other = (OpenSeaSceneType) obj;
+        if (this.blocked != other.blocked) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.travelTime) != Double.doubleToLongBits(other.travelTime)) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.weather, other.weather)) {
-            return false;
-        }
-        if (!Objects.equals(this.blocked, other.blocked)) {
-            return false;
-        }
-        if (!Objects.equals(this.travelTime, other.travelTime)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.weather, other.weather);
     }
-    
-    
-    
+
+   
     
 }
 

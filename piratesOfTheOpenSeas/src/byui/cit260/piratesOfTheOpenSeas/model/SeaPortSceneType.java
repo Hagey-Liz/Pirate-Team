@@ -17,8 +17,8 @@ public class SeaPortSceneType implements Serializable{
     //class instance variables
     private String description;
     private double noOfItems;
-    private String timeLost;
-    private String blocked;
+    private double timeLost;
+    private boolean blocked;
 
     public SeaPortSceneType() {
     }
@@ -39,29 +39,29 @@ public class SeaPortSceneType implements Serializable{
         this.noOfItems = noOfItems;
     }
 
-    public String getTimeLost() {
+    public double getTimeLost() {
         return timeLost;
     }
 
-    public void setTimeLost(String timeLost) {
+    public void setTimeLost(double timeLost) {
         this.timeLost = timeLost;
     }
 
-    public String getBlocked() {
+    public boolean isBlocked() {
         return blocked;
     }
 
-    public void setBlocked(String blocked) {
+    public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.description);
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.noOfItems) ^ (Double.doubleToLongBits(this.noOfItems) >>> 32));
-        hash = 37 * hash + Objects.hashCode(this.timeLost);
-        hash = 37 * hash + Objects.hashCode(this.blocked);
+        hash = 11 * hash + Objects.hashCode(this.description);
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.noOfItems) ^ (Double.doubleToLongBits(this.noOfItems) >>> 32));
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.timeLost) ^ (Double.doubleToLongBits(this.timeLost) >>> 32));
+        hash = 11 * hash + (this.blocked ? 1 : 0);
         return hash;
     }
 
@@ -69,7 +69,7 @@ public class SeaPortSceneType implements Serializable{
     public String toString() {
         return "SeaPortSceneType{" + "description=" + description + ", noOfItems=" + noOfItems + ", timeLost=" + timeLost + ", blocked=" + blocked + '}';
     }
-
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -85,19 +85,18 @@ public class SeaPortSceneType implements Serializable{
         if (Double.doubleToLongBits(this.noOfItems) != Double.doubleToLongBits(other.noOfItems)) {
             return false;
         }
+        if (Double.doubleToLongBits(this.timeLost) != Double.doubleToLongBits(other.timeLost)) {
+            return false;
+        }
+        if (this.blocked != other.blocked) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.timeLost, other.timeLost)) {
-            return false;
-        }
-        if (!Objects.equals(this.blocked, other.blocked)) {
             return false;
         }
         return true;
     }
-    
-    
-    
+
+ 
     
 }

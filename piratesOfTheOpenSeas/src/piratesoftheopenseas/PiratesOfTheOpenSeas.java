@@ -76,9 +76,9 @@ public class PiratesOfTheOpenSeas {
       OpenSeaSceneType openSea = new OpenSeaSceneType();
       
       openSea.setDescription("Choppy high waves");
-      openSea.setTravelTime("Slow - 1 knot per hour");
+      openSea.setTravelTime(20);
       openSea.setWeather("Hurricane");
-      openSea.setBlocked("You need to go around");
+      openSea.setBlocked(false);
       
       String openSeaInfo = openSea.toString();
       System.out.println(openSeaInfo);
@@ -86,9 +86,9 @@ public class PiratesOfTheOpenSeas {
       OpenSeaSceneType openSeaTwo = new OpenSeaSceneType();
       
       openSeaTwo.setDescription("Calm Sea");
-      openSeaTwo.setTravelTime("Fast - 30 knots per hour");
+      openSeaTwo.setTravelTime(50);
       openSeaTwo.setWeather("Clear skies");
-      openSeaTwo.setBlocked("Clear to move straight ahead");
+      openSeaTwo.setBlocked(true);
       
       String openSeaInfoTwo = openSeaTwo.toString();
       System.out.println(openSeaInfoTwo);
@@ -96,9 +96,9 @@ public class PiratesOfTheOpenSeas {
       SeaPortSceneType seaPortOne = new SeaPortSceneType();
       
       seaPortOne.setDescription("Friendly, good supplies");
-      seaPortOne.setTimeLost("One day");
+      seaPortOne.setTimeLost(5);
       seaPortOne.setNoOfItems(10);
-      seaPortOne.setBlocked("This port is not blocked");
+      seaPortOne.setBlocked(false);
       
       String seaPortOneInfo = seaPortOne.toString();
       System.out.println(seaPortOneInfo);
@@ -106,8 +106,8 @@ public class PiratesOfTheOpenSeas {
       IslandSceneType islandOne = new IslandSceneType();
       
       islandOne.setDescription("Unfriendly Natives, good supplies.");
-      islandOne.setTravelTime("Two days");
-      islandOne.setBlocked("Not blocked");
+      islandOne.setTravelTime(2.0);
+      islandOne.setBlocked(true);
       
       String islandOneInfo = islandOne.toString();
       System.out.println(islandOneInfo);

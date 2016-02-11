@@ -16,13 +16,20 @@ public class IslandSceneType implements Serializable{
  
     //class instance variables
     private String description;
-    private String travelTime;
-    private String blocked;
+    private double travelTime;
+    private boolean blocked;
 
     public IslandSceneType() {
     }
-    
 
+    public double getTravelTime() {
+        return travelTime;
+    }
+
+    public void setTravelTime(double travelTime) {
+        this.travelTime = travelTime;
+    }
+    
     public String getDescription() {
         return description;
     }
@@ -31,28 +38,20 @@ public class IslandSceneType implements Serializable{
         this.description = description;
     }
 
-    public String getTravelTime() {
-        return travelTime;
-    }
-
-    public void setTravelTime(String travelTime) {
-        this.travelTime = travelTime;
-    }
-
-    public String getBlocked() {
+    public boolean isBlocked() {
         return blocked;
     }
 
-    public void setBlocked(String blocked) {
+    public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.travelTime);
-        hash = 97 * hash + Objects.hashCode(this.blocked);
+        hash = 71 * hash + Objects.hashCode(this.description);
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.travelTime) ^ (Double.doubleToLongBits(this.travelTime) >>> 32));
+        hash = 71 * hash + (this.blocked ? 1 : 0);
         return hash;
     }
 
@@ -60,7 +59,6 @@ public class IslandSceneType implements Serializable{
     public String toString() {
         return "IslandSceneType{" + "description=" + description + ", travelTime=" + travelTime + ", blocked=" + blocked + '}';
     }
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -74,19 +72,18 @@ public class IslandSceneType implements Serializable{
             return false;
         }
         final IslandSceneType other = (IslandSceneType) obj;
+        if (Double.doubleToLongBits(this.travelTime) != Double.doubleToLongBits(other.travelTime)) {
+            return false;
+        }
+        if (this.blocked != other.blocked) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.travelTime, other.travelTime)) {
-            return false;
-        }
-        if (!Objects.equals(this.blocked, other.blocked)) {
             return false;
         }
         return true;
     }
-    
-    
-    
+
+ 
 }
 
