@@ -160,5 +160,158 @@ public class InventoryControlTest {
         
         assertEquals(expResult, result, 0.001);
     }
+
+    /**
+     * Test of calcFoodWanted method, of class InventoryControl.
+     */
+    @Test
+    public void testCalcFoodWanted() {
+        
+        /****************
+         * Test case #1
+         ****************/
+        
+        System.out.println("\tTest case #1");
+        
+        //input values to test case 1
+        double noOfPeople = 25.0;
+        double poundsPerDay = 3.0;
+        double noOfDays = 30.0;
+        
+        
+        InventoryControl instance = new InventoryControl();
+        double expResult = 2250.0;//expected output returned value
+        
+        //call function to run test
+        double result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+    
+    
+        /****************
+         * Test case #2
+         ****************/
+        
+        System.out.println("\tTest case #2");
+        
+        //input values to test case 2
+        noOfPeople = 60.0;
+        poundsPerDay = 0.0;
+        noOfDays = 10.0;
+        
+        
+        expResult = -1;//expected output returned value
+        
+        //call function to run test
+        result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        
+        /****************
+         * Test case #3
+         ****************/
+        
+        System.out.println("\tTest case #3");
+        
+        //input values to test case 3
+        noOfPeople = 20.0;
+        poundsPerDay = 11.0;
+        noOfDays = 12.0;
+        
+        
+        expResult = -1;//expected output returned value
+        
+        //call function to run test
+        result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        /****************
+         * Test case #4
+         ****************/
+        
+        System.out.println("\tTest case #4");
+        
+        //input values to test case 4
+        noOfPeople = 5.0;
+        poundsPerDay = 4.0;
+        noOfDays = 0.0;
+        
+        
+        expResult = -1;//expected output returned value
+        
+        //call function to run test
+        result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        
+        /****************
+         * Test case #5
+         ****************/
+        
+        System.out.println("\tTest case #5");
+        
+        //input values to test case 5
+        noOfPeople = 50.0;
+        poundsPerDay = 3.0;
+        noOfDays = 8.0;
+        
+        
+        expResult = 1200;//expected output returned value
+        
+        //call function to run test
+        result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        
+        /****************
+         * Test case #6
+         ****************/
+        
+        System.out.println("\tTest case #6");
+        
+        //input values to test case 6
+        noOfPeople = 12.0;
+        poundsPerDay = 1.0;
+        noOfDays = 21.0;
+        
+        
+        expResult = 252;//expected output returned value
+        
+        //call function to run test
+        result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+        
+        
+        /****************
+         * Test case #7
+         ****************/
+        
+        System.out.println("\tTest case #7");
+        
+        //input values to test case 7
+        noOfPeople = 20.0;
+        poundsPerDay = 3.0;
+        noOfDays = 50.0;
+        
+        
+        expResult = 3000;//expected output returned value
+        
+        //call function to run test
+        result = instance.calcFoodWanted(noOfPeople, poundsPerDay, noOfDays);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0);
+    } 
     
 }

@@ -27,4 +27,24 @@ public class InventoryControl {
         return volume;
     }
     
+    public double calcFoodWanted(double noOfPeople, double poundsPerDay, double noOfDays) {
+        
+        if (noOfPeople < 3 || noOfPeople > 50) { //too many or too few people
+            return -1;
+        }
+            
+        if (poundsPerDay < 1 || poundsPerDay > 10) {
+            return -1;
+        }
+        
+        if (noOfDays <1 || noOfDays >50) {
+            return -1;
+        }
+            
+        double food = noOfPeople * poundsPerDay * noOfDays;
+        
+        return food;
+            
+    }
+    
 }
