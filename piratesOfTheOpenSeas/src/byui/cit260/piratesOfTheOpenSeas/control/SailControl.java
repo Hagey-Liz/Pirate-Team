@@ -14,12 +14,12 @@ public class SailControl {
     public double boardShip(String ship, double numPeople) {
         
         if (ship == "small") {
-          if (numPeople > 9) {  
+          if (numPeople < 2 || numPeople > 9) {  
               return -1;
             }  
         }
         else if (ship == "large") {
-            if (numPeople > 19) {
+            if (numPeople > 19 || numPeople < 8) {
                 return -1;
             }
         }
