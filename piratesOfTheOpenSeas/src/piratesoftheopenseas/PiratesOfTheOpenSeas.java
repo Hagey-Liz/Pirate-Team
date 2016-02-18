@@ -14,6 +14,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.OpenSeaSceneType;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
 import byui.cit260.piratesOfTheOpenSeas.model.SeaPortSceneType;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
+import citbyui.cit260.piratesOfTheOpenSeas.view.StartProgramView;
 
 /**
  *
@@ -119,6 +120,8 @@ public class PiratesOfTheOpenSeas {
     public static void main(String[] args) {
         rolandTests();  
         lizTests();
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
     }
     
 }
