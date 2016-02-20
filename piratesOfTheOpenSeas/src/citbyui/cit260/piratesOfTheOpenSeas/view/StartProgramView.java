@@ -5,6 +5,10 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
+import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
+import byui.cit260.piratesOfTheOpenSeas.model.Player;
+import java.util.Scanner;
+
 /**
  *
  * @author Liz
@@ -43,13 +47,13 @@ public class StartProgramView {
      );
     }
 
+
     public void displayStartProgramView() {
         
-    
-         boolean done = false;//set flag to not done
+        boolean done = false;//set flag to not done
         do{
             //prompt for and get players name
-            String playersName = this.getPlayerName();
+            String playersName = this.getPlayersName();
             if(playersName.toUpperCase().equals("Q"))//user wants to quit
                 return;//exit the game
             
@@ -59,21 +63,75 @@ public class StartProgramView {
     
     }
 
-    private String getPlayerName() {
-       System.out.println("\n*** getPlayersName() called ***");
-       return "Joe";
+    private String getPlayersName() {
+       /*
+        WHILE valid value has not been entered
+            DISPLAY promptMessage
+            GET the value entered from keyboard
+            Trim front and trailing blanks off of the name
+        
+            IF the length of the value is blank THEN
+                DISPLAY "Invalid value: The value can not be blank"
+                CONTINUE
+            ENDIF
+        
+            BREAK
+        ENDWHILE
+        RETURN name
+        */
+       
+       Scanner keyboard = new Scanner(System.in);// get infile for keyboard
+       String value ="";// value to be returned
+       boolean valid = false;//initialize to not valid
+       
+       while(!valid){//loop while an invalid value is entered
+           System.out.println("\n" + this.promptMessage);
+           
+           value = keyboard.nextLine();//get next line typed on keyboard
+           value = value.trim();//trim off leading and trailing blanks
+           
+           if (value.length() < 1){//value is blank
+               System.out.println("\nInvalid value: value can not be blank");
+               continue;
+           }
+           break; //end the loop
+    }
+       return value;//return the value entered
     }
 
     private boolean doAction(String playersName) {
-       System.out.println("\n*** doAction() called ***");
-       return true;
-    }
-    
+       //if the length of the playersName < 2 then
+       //display "Invalid name: The name must be > 1 character"
+       //return false
+       if(playersName.length() < 2){
+          System.out.println("\nInvalid players name:"
+               +"The name must be greater than one character in length");
+         return true; 
+         
+       // create Player with specified name
+       // if unsuccessful then
+       //     display "Invalid name: The name is too short"
+       //     return false
+       
+       //call createPlayer() control function
+       Player player = GameControl.createPlayer(String playersName);
+       
+       if (player == null) {//if unsuccessful
+         System.out.println("\nError creating the player");
+         return false;
+        }
+       }
+            
+        //display customized welcome message
+              
+    this.displayNextView();
+
+    private void displayNextView(Player player) {
+      System.out.println("\n*** displayNextView() called ***");
+   }
+ 
+
         
        
     
-        
-        
     
-    
-}
