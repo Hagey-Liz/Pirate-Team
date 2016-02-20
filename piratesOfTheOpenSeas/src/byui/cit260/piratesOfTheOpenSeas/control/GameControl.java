@@ -5,10 +5,17 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.control;
 
+import byui.cit260.piratesOfTheOpenSeas.model.Player;
+
 /**
  *
  * @author Liz
  */
 public class GameControl {
+
+    public static Player createPlayer(String playersName) {
+        System.out.println("\n***createPlayer() function called***");
+        return new Player();
+    }
     
 }
