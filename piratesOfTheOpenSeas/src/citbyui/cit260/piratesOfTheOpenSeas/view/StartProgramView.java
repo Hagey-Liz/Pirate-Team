@@ -81,7 +81,7 @@ public class StartProgramView {
         */
        
        Scanner keyboard = new Scanner(System.in);// get infile for keyboard
-       String value ="";// value to be returned
+       String value = "";// value to be returned
        boolean valid = false;//initialize to not valid
        
        while(!valid){//loop while an invalid value is entered
@@ -105,33 +105,27 @@ public class StartProgramView {
        //return false
        if(playersName.length() < 2){
           System.out.println("\nInvalid players name:"
-               +"The name must be greater than one character in length");
-         return true; 
-         
+               + "The name must be greater than one character in length");
+         return false; 
+       }
        // create Player with specified name
        // if unsuccessful then
        //     display "Invalid name: The name is too short"
        //     return false
        
        //call createPlayer() control function
-       Player player = GameControl.createPlayer(String playersName);
+       Player player = GameControl.createPlayer(playersName);
        
        if (player == null) {//if unsuccessful
          System.out.println("\nError creating the player");
          return false;
         }
-       }
-            
-        //display customized welcome message
-              
-    this.displayNextView();
-
-    private void displayNextView(Player player) {
-      System.out.println("\n*** displayNextView() called ***");
-   }
- 
-
-        
+       this.displayNextView();
        
+       return true;
+       }
     
-    
+    private void displayNextView() {
+      System.out.println("\n*** displayNextView() called ***");  
+    }
+}              

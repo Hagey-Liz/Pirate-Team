@@ -14,7 +14,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.Player;
 public class GameControl {
 
     public static Player createPlayer(String playersName) {
-        System.out.println("\n***createPlayer() function called***");
+        System.out.println("\n*** createPlayer() function called***");
         return new Player();
     }
     
