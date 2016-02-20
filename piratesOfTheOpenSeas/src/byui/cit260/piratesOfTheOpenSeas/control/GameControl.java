@@ -6,6 +6,7 @@
 package byui.cit260.piratesOfTheOpenSeas.control;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -13,9 +14,20 @@ import byui.cit260.piratesOfTheOpenSeas.model.Player;
  */
 public class GameControl {
 
-    public static Player createPlayer(String playersName) {
-        System.out.println("\n*** createPlayer() function called***");
-        return new Player();
+    public static Player createPlayer(String name) {
+        
+        if (name == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setName(name);
+        
+        PiratesOfTheOpenSeas.setPlayer(player); // save the player.
+        
+        return player;
     }
-    
+        
 }
+    
+
