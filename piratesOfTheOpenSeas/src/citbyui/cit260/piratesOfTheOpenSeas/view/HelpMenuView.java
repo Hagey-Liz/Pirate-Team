@@ -5,35 +5,33 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
-import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
-import byui.cit260.piratesOfTheOpenSeas.model.GameMenuView;
 import java.util.Scanner;
-import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
- * @author Roderick
+ * @author Liz
  */
-public class MainMenuView {
-    
-    private String menu;
+public class HelpMenuView {
+        
+    private String helpMenu;
     private String promptMessage;
 
-    public MainMenuView() {
-        this.menu = "\n"
+    public HelpMenuView() {
+        this.helpMenu = "\n"
                 +"\n--------------------------------------------"
-                +"\n|Main Menu                                 |"
+                +"\n|Help Menu                                 |"
                 +"\n--------------------------------------------"
-                +"\nN - Start new game"
-                +"\nG - Get and start saved game"
-                +"\nH - Get help on how to play the game"
-                +"\nS - Save game"
+                +"\nB - What is the objective of the game?"
+                +"\nN - How to navigate"
+                +"\nC - How to select a crew"
+                +"\nF - How a pirate can attack, negotiate or run from other pirates, navy or merchants"
+                +"\nM - How to use the map"
                 +"\nQ - Quit"
                 +"\n-------------------------------------------";
     }
     
    
-    void displayMainMenuView() {
+    void displayHelpMenuView() {
         boolean done = false; //set flag to not done
         do{
             //prompt for and get players name
@@ -74,17 +72,20 @@ public class MainMenuView {
        choice = choice.toUpperCase(); //convert choice to upper case
 
         switch (choice){
-            case "N": //create and start new game
-                this.startNewGame();
+            case "B": //create and start new game
+                this.displayGameObjective();
                 break;
-            case "G": //get and start an existing game
-                this.startExistingGame();
+            case "N": //get and start an existing game
+                this.howToNavigate();
                 break;
-            case "H": //display the help menu
-                this.displayHelpMenu();
+            case "C": //display the help menu
+                this.selectCrew();
                 break;
-            case "S": //save the current game
-                this.saveGame();
+            case "F": //save the current game
+                this.displayEnemyTactics();
+                break;
+            case "M": //save the current game
+                this.displayMap();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** try again");
@@ -93,25 +94,23 @@ public class MainMenuView {
     
 }
 
-    private void startNewGame() {
-        //create a new game
-        GameControl.createNewGame(PiratesOfTheOpenSeas.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.dislayMenu();
+    private void displayGameObjective() {
+         System.out.println("*** displayGameObjective function called ***");
     }
 
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
-     
-      
+    private void howToNavigate() {
+        System.out.println("*** howToNavigate function called ***");
     }
 
-    private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu function called ***");
+    private void selectCrew() {
+         System.out.println("*** selectCrew function called ***");
     }
 
-    private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+    private void displayEnemyTactics() {
+         System.out.println("*** displayEnemyTactics function called ***");
+    }
+
+    private void displayMap() {
+         System.out.println("*** displayMap function called ***");
     }
 }

@@ -120,7 +120,8 @@ public class StartProgramView {
          System.out.println("\nError creating the player");
          return false;
         }
-       this.displayNextView();
+       
+       this.displayNextView(Player player);
        
        return true;
        }
@@ -136,7 +137,7 @@ public class StartProgramView {
       MainMenuView mainMenuView = new MainMenuView();
               
       // Display the main menu view
-              mainMenuView.displayMainMenuView();
+      mainMenuView.displayMainMenuView();
     }
 
     
