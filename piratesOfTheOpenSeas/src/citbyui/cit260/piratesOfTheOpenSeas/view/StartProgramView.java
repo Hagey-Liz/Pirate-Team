@@ -121,11 +121,11 @@ public class StartProgramView {
          return false;
         }
        
-       this.displayNextView(Player player);
+       this.displayNextView();
        
        return true;
-       }
-    
+    }
+   
     private void displayNextView(Player player) {
       System.out.println("\n================================"
       + "\n Welcome to the game " + player.getName()
