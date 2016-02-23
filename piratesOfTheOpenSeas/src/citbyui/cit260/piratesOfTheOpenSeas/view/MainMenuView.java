@@ -17,7 +17,7 @@ import piratesoftheopenseas.PiratesOfTheOpenSeas;
 public class MainMenuView {
     
     private String menu;
-    private String promptMessage;
+    private String promptMessage="Select an option: ";
 
     public MainMenuView() {
         this.menu = "\n"
@@ -56,7 +56,9 @@ public class MainMenuView {
        boolean valid = false;//initialize to not valid
        
        while(!valid){//loop while an invalid value is entered
+           System.out.println("\n" + this.menu);
            System.out.println("\n" + this.promptMessage);
+           
            
            value = keyboard.nextLine();//get next line typed on keyboard
            value = value.trim();//trim off leading and trailing blanks
@@ -108,7 +110,8 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu function called ***");
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayHelpMenuView();
     }
 
     private void saveGame() {

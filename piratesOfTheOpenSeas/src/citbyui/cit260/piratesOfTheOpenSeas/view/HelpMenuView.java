@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class HelpMenuView {
         
     private String helpMenu;
-    private String promptMessage;
+    private String promptMessage="Select an option: ";
 
     public HelpMenuView() {
         this.helpMenu = "\n"
@@ -54,6 +54,7 @@ public class HelpMenuView {
        boolean valid = false;//initialize to not valid
        
        while(!valid){//loop while an invalid value is entered
+           System.out.println("\n" + this.helpMenu);
            System.out.println("\n" + this.promptMessage);
            
            value = keyboard.nextLine();//get next line typed on keyboard
@@ -95,7 +96,11 @@ public class HelpMenuView {
 }
 
     private void displayGameObjective() {
-         System.out.println("*** displayGameObjective function called ***");
+         System.out.println("*** The objective of the game is to find the hidden"
+                 + "treasure while avoiding capture, or worse, from your enemy. "
+                 + "The journey will be long and dangerous.  You will "
+                 + "have to risk life or death if you want to find the treasure "
+                 + "of all treasures. ***");
     }
 
     private void howToNavigate() {
