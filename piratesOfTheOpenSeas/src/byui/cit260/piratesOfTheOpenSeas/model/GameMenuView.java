@@ -5,6 +5,10 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.model;
 
+import citbyui.cit260.piratesOfTheOpenSeas.view.ShipMenuView;
+
+
+
 /**
  *
  * @author Liz
@@ -12,7 +16,11 @@ package byui.cit260.piratesOfTheOpenSeas.model;
 public class GameMenuView {
 
     public void dislayMenu() {
-        System.out.println("\n*** displayMenu stub function called ***");
+        
+        ShipMenuView shipMenuView = new ShipMenuView();
+        
+        shipMenuView.displayShipMenuView();
+        //System.out.println("\n*** displayMenu stub function called ***");
     }
     
 }

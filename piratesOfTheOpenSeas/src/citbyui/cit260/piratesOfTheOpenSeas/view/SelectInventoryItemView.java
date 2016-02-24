@@ -29,7 +29,7 @@ public class SelectInventoryItemView {
                 +"\n-------------------------------------------";
     }
     
-    void displaySelectInventoryItemView() {
+    public void displaySelectInventoryItemView() {
         boolean done = false; //set flag to not done
         do{
             //prompt for and get players choice
@@ -66,9 +66,9 @@ public class SelectInventoryItemView {
     }
     
   private boolean doAction(String resourceOption) {
-        choice = choice.toUpperCase(); //convert choice to upper case
+        resourceOption = resourceOption.toUpperCase(); //convert choice to upper case
 
-        switch (choice){
+        switch (resourceOption){
             case "D": 
                 this.drinkingWater();
                 break;
