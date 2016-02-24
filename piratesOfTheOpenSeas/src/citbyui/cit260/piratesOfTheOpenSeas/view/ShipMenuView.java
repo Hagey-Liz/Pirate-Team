@@ -81,6 +81,8 @@ public class ShipMenuView {
     private void smallShip() {
         System.out.println("*** You have selected a small ship for your voyage."
         +"\nThe adventure is about to begin ***");
+   SelectInventoryItemView selectInventoryItemView = new SelectInventoryItemView();
+   selectInventoryItemView.displaySelectInventoryItemView();
     }
 
     private void largeShip() {

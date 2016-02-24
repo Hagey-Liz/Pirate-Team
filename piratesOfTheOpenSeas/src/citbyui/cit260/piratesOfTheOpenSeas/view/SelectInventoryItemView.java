@@ -26,6 +26,7 @@ public class SelectInventoryItemView {
                 +"\nO - Oil"
                 +"\nF - Food"
                 +"\nW - Weapons"
+                +"\nE - Exit"
                 +"\n-------------------------------------------";
     }
     
@@ -34,7 +35,7 @@ public class SelectInventoryItemView {
         do{
             //prompt for and get players choice
             String resourceOption = this.getResourceOption();
-            if (resourceOption.toUpperCase().equals("Q"))//user wants to quit
+            if (resourceOption.toUpperCase().equals("E"))//user wants to quit
                 return; //exit the game
             
             //do the requested action and display the next view
