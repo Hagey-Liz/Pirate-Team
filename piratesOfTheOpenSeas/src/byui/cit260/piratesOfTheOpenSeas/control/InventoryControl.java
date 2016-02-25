@@ -32,7 +32,7 @@ public class InventoryControl {
     * author @ Liz
     */
     
-    public double calcFoodWanted(double noOfPeople, double poundsPerDay, double noOfDays) {
+    public static int calcFoodWanted(int noOfPeople, int poundsPerDay, int noOfDays) {
         
         if (noOfPeople < 3 || noOfPeople > 50) { //too many or too few people
             return -1;
@@ -46,10 +46,14 @@ public class InventoryControl {
             return -1;
         }
             
-        double food = noOfPeople * poundsPerDay * noOfDays;
+        int food = noOfPeople * poundsPerDay * noOfDays;
         
         return food;
             
+    }
+
+    public void displayInventoryControl() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

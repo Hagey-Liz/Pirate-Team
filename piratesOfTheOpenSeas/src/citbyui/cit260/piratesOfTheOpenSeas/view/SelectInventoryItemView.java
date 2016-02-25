@@ -109,7 +109,9 @@ public class SelectInventoryItemView {
     }
 
     private void stockFood() {
-        System.out.println("*** stockFood function called ***");
+       StockFoodView stockFood = new StockFoodView();
+       stockFood.getFoodNeeded();
+         
     }
   
 }
