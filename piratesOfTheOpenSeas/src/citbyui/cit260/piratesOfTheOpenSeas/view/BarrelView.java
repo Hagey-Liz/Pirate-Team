@@ -28,7 +28,7 @@ public class BarrelView {
              + " To cancel enter -1";
         
           Scanner keyboard = new Scanner(System.in);// get infile for keyboard
-       double volume = 0;// value to be returned
+       double barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
        
        while(!finished){//loop while an invalid value is entered
@@ -49,17 +49,16 @@ public class BarrelView {
            }
            
                
-           volume = InventoryControl.calcBarrelVolume(height, diameter);
-            if (volume == -1){
+           barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
+            if (barrelVol == -1){
                 System.out.println("Invalid entries, please try again");
             }
             else {
                 finished = true;
-                System.out.println("The volume of the barrel is " + volume);
+                System.out.println("The volume of the barrel is " + barrelVol);
             }
       
         }
-        return volume;//return the value entered
+        return barrelVol;//return the value entered
     }
 }
-    

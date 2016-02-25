@@ -22,7 +22,7 @@ public class InventoryControl {
         }
         
         double radius = diameter / 2;
-        double volume = (Math.PI * Math.pow(radius, 2) * height) / 1728;
+        double volume = (Math.PI * Math.pow(radius, 2) * height);
         
         return volume;
     }
@@ -53,7 +53,7 @@ public class InventoryControl {
     }
 
     public void displayInventoryControl() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     double calcFoodWanted(double noOfPeople, double poundsPerDay, double noOfDays) {
