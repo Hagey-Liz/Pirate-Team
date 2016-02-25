@@ -26,6 +26,7 @@ public class SelectInventoryItemView {
                 +"\nO - Oil"
                 +"\nF - Food"
                 +"\nW - Weapons"
+                +"\nB - Barrel"
                 +"\nE - Exit"
                 +"\n-------------------------------------------";
     }
@@ -85,6 +86,8 @@ public class SelectInventoryItemView {
             case "W": //Get Weapons
                 this.stockWeapons();
                 break;
+            case "B": // Get Barrel
+                this.stockBarrel();
             default:
                 System.out.println("\n*** Invalid selection *** try again");
 }
@@ -112,6 +115,11 @@ public class SelectInventoryItemView {
        StockFoodView stockFood = new StockFoodView();
        stockFood.getFoodNeeded();
          
+    }
+
+    private void stockBarrel() {
+        BarrelView barrelView = new BarrelView();
+        barrelView.getBarrelVolume();
     }
   
 }

@@ -11,7 +11,7 @@ package byui.cit260.piratesOfTheOpenSeas.control;
  */
 public class InventoryControl {
     
-    public double calcBarrelVolume(double height, double diameter) {
+    public static double calcBarrelVolume(double height, double diameter) {
         
         if (height < 12 || height > 48) { // height is out of range?
             return -1;
@@ -55,5 +55,12 @@ public class InventoryControl {
     public void displayInventoryControl() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    double calcFoodWanted(double noOfPeople, double poundsPerDay, double noOfDays) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     
 }
