@@ -56,9 +56,7 @@ public class InventoryControl {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    double calcFoodWanted(double noOfPeople, double poundsPerDay, double noOfDays) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
     
