@@ -72,15 +72,8 @@ public class StockFoodView {
         return value;//return the value entered
     }
 }
-    /**
-     *
-     */
-    //public void StockFoodView() {
-      //  InventoryControl calcFood = new InventoryControl();
-      // calcFood.displayInventoryControl();
-    //}
-       
-   // }
+   
+  
     
     
 
