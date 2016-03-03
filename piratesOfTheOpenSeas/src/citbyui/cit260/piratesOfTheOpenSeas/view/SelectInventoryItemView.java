@@ -11,13 +11,10 @@ import java.util.Scanner;
  *
  * @author Liz
  */
-public class SelectInventoryItemView {
+public class SelectInventoryItemView  extends View {
     
-    private String resource;
-    private String promptMessage="Select a resource for your journey: ";
-
-    public SelectInventoryItemView() {
-        this.resource = "\n"
+  public SelectInventoryItemView() {
+            super("\n"
                 +"\n--------------------------------------------"
                 +"\n|Resources                                 |"
                 +"\n--------------------------------------------"
@@ -28,49 +25,15 @@ public class SelectInventoryItemView {
                 +"\nW - Weapons"
                 +"\nB - Barrel"
                 +"\nE - Exit"
-                +"\n-------------------------------------------";
+                +"\n-------------------------------------------");
     }
     
-    public void displaySelectInventoryItemView() {
-        boolean done = false; //set flag to not done
-        do{
-            //prompt for and get players choice
-            String resourceOption = this.getResourceOption();
-            if (resourceOption.toUpperCase().equals("E"))//user wants to quit
-                return; //exit the game
-            
-            //do the requested action and display the next view
-            done = this.doAction(resourceOption);
-            
-        } while (!done);
-       
-    }
 
-    private String getResourceOption() {
-        Scanner keyboard = new Scanner(System.in);// get infile for keyboard
-       String value = "";// value to be returned
-       boolean valid = false;//initialize to not valid
-       
-       while(!valid){//loop while an invalid value is entered
-           System.out.println("\n" + this.resource);
-           System.out.println("\n" + this.promptMessage);
-           
-           value = keyboard.nextLine();//get next line typed on keyboard
-           value = value.trim();//trim off leading and trailing blanks
-           
-           if (value.length() < 1){//value is blank
-               System.out.println("\nInvalid value: value can not be blank");
-               continue;
-           }
-           break; //end the loop
-    }
-       return value;//return the value entered
-    }
-    
-  private boolean doAction(String resourceOption) {
-        resourceOption = resourceOption.toUpperCase(); //convert choice to upper case
+   @Override 
+  public boolean doAction(String value) {
+        value = value.toUpperCase(); //convert choice to upper case
 
-        switch (resourceOption){
+        switch (value){
             case "D": 
                 this.drinkingWater();
                 break;
