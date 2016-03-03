@@ -88,6 +88,7 @@ public class SelectInventoryItemView {
                 break;
             case "B": // Get Barrel
                 this.stockBarrel();
+                break;
             default:
                 System.out.println("\n*** Invalid selection *** try again");
 }
