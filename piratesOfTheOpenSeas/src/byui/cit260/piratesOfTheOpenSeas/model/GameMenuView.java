@@ -19,7 +19,7 @@ public class GameMenuView {
         
         ShipMenuView shipMenuView = new ShipMenuView();
         
-        shipMenuView.displayShipMenuView();
+        shipMenuView.display();
         //System.out.println("\n*** displayMenu stub function called ***");
     }
     

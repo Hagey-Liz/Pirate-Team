@@ -11,13 +11,10 @@ import java.util.Scanner;
  *
  * @author Liz
  */
-public class HelpMenuView {
+public class HelpMenuView extends View{
         
-    private String helpMenu;
-    private String promptMessage="Select an option: ";
-
-    public HelpMenuView() {
-        this.helpMenu = "\n"
+   public HelpMenuView() {
+            super("\n"
                 +"\n--------------------------------------------"
                 +"\n|Help Menu                                 |"
                 +"\n--------------------------------------------"
@@ -28,51 +25,15 @@ public class HelpMenuView {
                 +"\nF - How a pirate can attack, negotiate or run from other pirates, navy or merchants"
                 +"\nM - How to use the map"
                 +"\nQ - Quit"
-                +"\n-------------------------------------------";
+                +"\n-------------------------------------------");
     }
     
    
-    void displayHelpMenuView() {
-        boolean done = false; //set flag to not done
-        do{
-            //prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))//user wants to quit
-                return; //exit the game
-            
-            //do the requested action and display the next view
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-       
-    }
+ @Override
+    public boolean doAction(String value){
+       value = value.toUpperCase(); //convert choice to upper case
 
-       private String getMenuOption() {
-             
-       Scanner keyboard = new Scanner(System.in);// get infile for keyboard
-       String value = "";// value to be returned
-       boolean valid = false;//initialize to not valid
-       
-       while(!valid){//loop while an invalid value is entered
-           System.out.println("\n" + this.helpMenu);
-           System.out.println("\n" + this.promptMessage);
-           
-           value = keyboard.nextLine();//get next line typed on keyboard
-           value = value.trim();//trim off leading and trailing blanks
-           
-           if (value.length() < 1){//value is blank
-               System.out.println("\nInvalid value: value can not be blank");
-               continue;
-           }
-           break; //end the loop
-    }
-       return value;//return the value entered
-    }
-       
-    public boolean doAction(String choice){
-       choice = choice.toUpperCase(); //convert choice to upper case
-
-        switch (choice){
+        switch (value){
             case "B": //create and start new game
                 this.displayGameObjective();
                 break;
