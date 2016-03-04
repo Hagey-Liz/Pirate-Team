@@ -20,7 +20,7 @@ public class ShipMenuView extends View{
                 +"\n--------------------------------------------"
                 +"\nS - Small ship"
                 +"\nL - Large ship"
-                +"\nE - Exit"
+                +"\nQ - Quit"
                 +"\n-------------------------------------------");
     }
  

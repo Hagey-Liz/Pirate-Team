@@ -24,7 +24,7 @@ public class SelectInventoryItemView  extends View {
                 +"\nF - Food"
                 +"\nW - Weapons"
                 +"\nB - Barrel"
-                +"\nE - Exit"
+                +"\nQ - Quit"
                 +"\n-------------------------------------------");
     }
     
