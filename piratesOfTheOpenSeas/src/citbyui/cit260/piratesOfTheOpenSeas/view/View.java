@@ -13,15 +13,15 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
     
-    protected String promptMessage;
-    protected String menu;
+    protected String displayMessage;
+    
     
     public View(){
     }
     
     public View(String message) {
-        this.promptMessage = message;
-        this.menu = message;
+        this.displayMessage = message;
+       
     }
     
     @Override
@@ -48,8 +48,7 @@ public abstract class View implements ViewInterface {
        boolean valid = false;//initialize to not valid
        
        while(!valid){//loop while an invalid value is entered
-            System.out.println("\n" + this.menu);
-            System.out.println("\n" + this.promptMessage);
+            System.out.println("\n" + this.displayMessage);
            
            
            value = keyboard.nextLine();//get next line typed on keyboard
