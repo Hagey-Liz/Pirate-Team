@@ -63,7 +63,8 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
+        StartExistingGameView startExistingGame = new StartExistingGameView();
+        startExistingGame.display();
      
       
     }

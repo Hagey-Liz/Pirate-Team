@@ -7,17 +7,17 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 /**
  *
- * @author Liz
+ * @author Roland
  */
-public class SaveGameView extends View{
+public class StartExistingGameView extends View{
     
-    public SaveGameView(){
-            super("\n"
+    public StartExistingGameView(){
+        super("\n"
                 +"\n--------------------------------------------"
-                +"\n|Save Menu                                 |"
+                +"\n|Continue Saved Game Menu                                 |"
                 +"\n--------------------------------------------"    
-                +"\nS - Save game"
-                +"\nQ - quit game - returns to main menu"
+                +"\nC - Continue Saved Game"
+                +"\nQ - Quit game - return to Main Menu"
                 +"\n-------------------------------------------");   
     
     }
@@ -28,8 +28,8 @@ public class SaveGameView extends View{
 
         switch (value){
             
-            case "S": //save the current game
-                this.saveGame();
+            case "C": //save the current game
+                this.startExistingGame();
                 break;
         
             default:
@@ -39,9 +39,11 @@ public class SaveGameView extends View{
     
 } 
 
-    private void saveGame() {
-        System.out.println("\nYour game will be saved.");
+    private void startExistingGame() {
+        System.out.println("\nWelcome back.");
     }
 
     
 }
+    
+
