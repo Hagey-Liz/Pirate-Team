@@ -9,9 +9,9 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
  *
  * @author Roland
  */
-public class StartExistingGameView extends View{
+public class StartSavedGameView extends View{
     
-    public StartExistingGameView(){
+    public StartSavedGameView(){
         super("\n"
                 +"\n--------------------------------------------"
                 +"\n|Continue Saved Game Menu                                 |"
