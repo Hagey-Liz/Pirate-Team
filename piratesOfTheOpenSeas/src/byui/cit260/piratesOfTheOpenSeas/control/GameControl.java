@@ -52,46 +52,77 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
         
     }
+    
+    public enum Ships {
+        small,
+        large;
+    }
 
     private static Ship[] createShipList() {
-        System.out.println("***called creatShipList() in GameControl ***");
-        return null;
+       
+        Ship[] ship = new Ship[Constants.NUMBER_OF_SHIPS];
+        
+        Ship small = new Ship();
+        small.setDescription("Small");
+        small.setCrew(0);
+        small.setCannons(0);
+        small.setMaxCapacity(0);
+        small.setSpeed(0);
+        ship[Ships.small.ordinal()] = small;
+        
+        Ship large = new Ship();
+        large.setDescription("Large");
+        large.setCrew(0);
+        large.setCannons(0);
+        large.setMaxCapacity(0);
+        large.setSpeed(0);
+        ship[Ships.small.ordinal()] = small;
+        
+        return ship;
+    }
+    
+    public enum Item {
+        food,
+        water,
+        rum,
+        oil,
+        weapons;
     }
 
     public static InventoryItem[] createInventoryList() {
         
         //create array(list) of inventory items
-        InventoryItem[] inventory = new InventoryItem[5];
+        InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem food = new InventoryItem();
         food.setDescription("food");
         food.setQuantityInStock(0);
         food.setRequiredAmount(0);
-        inventory[0] = food;
+        inventory[Item.food.ordinal()] = food;
         
         InventoryItem water = new InventoryItem();
         water.setDescription("water");
         water.setQuantityInStock(0);
         water.setRequiredAmount(0);
-        inventory[0] = water;
+        inventory[Item.water.ordinal()] = water;
         
         InventoryItem rum = new InventoryItem();
         rum.setDescription("rum");
         rum.setQuantityInStock(0);
         rum.setRequiredAmount(0);
-        inventory[0] = rum;
+        inventory[Item.rum.ordinal()] = rum;
         
         InventoryItem oil = new InventoryItem();
         oil.setDescription("oil");
         oil.setQuantityInStock(0);
         oil.setRequiredAmount(0);
-        inventory[0] = oil;
+        inventory[Item.oil.ordinal()] = oil;
         
         InventoryItem weapons = new InventoryItem();
         weapons.setDescription("weapons");
         weapons.setQuantityInStock(0);
         weapons.setRequiredAmount(0);
-        inventory[0] = weapons;
+        inventory[Item.weapons.ordinal()] = weapons;
         
         return inventory;
     }

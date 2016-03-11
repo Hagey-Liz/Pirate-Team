@@ -11,10 +11,20 @@ public class Map implements Serializable{
     //Class instatnce variable
     private double rowCount;
     private double columnCount;
+    private Location[] [] locations;
 
-public Map(){
+  public Map(){
     
 }
+
+  public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
+
 
 public double getRowCount(){
     return rowCount;

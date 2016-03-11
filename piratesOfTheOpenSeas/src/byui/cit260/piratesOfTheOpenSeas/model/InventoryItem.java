@@ -15,7 +15,7 @@ import java.util.Objects;
 public class InventoryItem implements Serializable{
     
     //class instance variables
-    private String inventoryType;
+    private String description;
     private double quantityInStock;
     private double requiredAmount;
 
@@ -24,12 +24,12 @@ public class InventoryItem implements Serializable{
     
     
 
-    public String getInventoryType() {
-        return inventoryType;
+    public String getDescription() {
+        return description;
     }
 
-    public void setInventoryType(String inventoryType) {
-        this.inventoryType = inventoryType;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getQuantityInStock() {
@@ -51,7 +51,7 @@ public class InventoryItem implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.inventoryType);
+        hash = 23 * hash + Objects.hashCode(this.description);
         hash = 23 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
         hash = 23 * hash + (int) (Double.doubleToLongBits(this.requiredAmount) ^ (Double.doubleToLongBits(this.requiredAmount) >>> 32));
         return hash;
@@ -59,7 +59,7 @@ public class InventoryItem implements Serializable{
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
+        return "description{" + "inventoryType=" + description + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
     }
 
     
@@ -81,11 +81,11 @@ public class InventoryItem implements Serializable{
         if (Double.doubleToLongBits(this.requiredAmount) != Double.doubleToLongBits(other.requiredAmount)) {
             return false;
         }
-        if (!Objects.equals(this.inventoryType, other.inventoryType)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         return true;
     }
-    
-   }
+
+ }
 
