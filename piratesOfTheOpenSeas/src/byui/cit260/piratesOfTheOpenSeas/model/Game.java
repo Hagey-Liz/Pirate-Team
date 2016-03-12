@@ -13,7 +13,7 @@ public class Game implements Serializable{
         //class instance variables
     private double totalTime;
     private double numPeople;
-
+    private Location currentLocation;
     private InventoryItem[] inventory;
     private Ship[] ship;
     private Player player;
@@ -23,6 +23,14 @@ public class Game implements Serializable{
     
 public Game(){
 }    
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+    }
 
 public double getTotalTime(){
     return totalTime;

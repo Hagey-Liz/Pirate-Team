@@ -19,6 +19,7 @@ public class Location implements Serializable{
     private double row;
     private double column;
     private boolean visited;
+    private boolean current;
     private double numberRemaining;
     private Scene scene;
     private ArrayList<Actor> actors;
@@ -26,6 +27,15 @@ public class Location implements Serializable{
     public Location() {
     }
 
+    public boolean isCurrent() {
+        return current;
+    }
+
+    public void setCurrent(boolean current) {
+        this.current = current;
+    }
+
+    
     public Scene getScene() {
         return scene;
     }

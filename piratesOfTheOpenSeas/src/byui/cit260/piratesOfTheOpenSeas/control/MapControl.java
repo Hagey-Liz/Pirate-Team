@@ -6,6 +6,7 @@
 package byui.cit260.piratesOfTheOpenSeas.control;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
+import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 
 /**
  *
@@ -18,16 +19,15 @@ public class MapControl {
         Map map = new Map(20, 20);
         
         //create a list of the different scenes in the game
-        Scene[] scenes = createScenes();
+        Scene[] scenes = GameControl.createScenes();
         
         //assign the different scenes to locations in the map
-        assignScenesToLocations(map, scenes);
+       GameControl.assignScenesToLocations(map, scenes);
         
         return map;
     }
 
     static void moveActorsToStartingLocation(Map map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        System.out.println("** Move actors to starting location ***"); }
     
 }

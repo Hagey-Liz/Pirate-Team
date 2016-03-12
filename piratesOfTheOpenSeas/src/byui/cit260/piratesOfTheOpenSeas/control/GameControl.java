@@ -20,7 +20,10 @@ import piratesoftheopenseas.PiratesOfTheOpenSeas;
  * @author Liz
  */
 public class GameControl {
-
+   
+    private static int NUMBER_OF_SHIPS = 2;
+    private static int NUMBER_OF_INVENTORY_ITEMS = 5;
+    
     public static Player createPlayer(String name) {
         
         if (name == null) {
@@ -78,7 +81,7 @@ public class GameControl {
         finish;
     }
 
-    private static Scene[] createScenes() {
+    public static Scene[] createScenes() {
         
         Game game = PiratesOfTheOpenSeas.getCurrentGame();
         
@@ -145,7 +148,7 @@ public class GameControl {
 
     private static Ship[] createShipList() {
        
-        Ship[] ship = new Ship[Constants.NUMBER_OF_SHIPS];
+        Ship[] ship = new Ship[NUMBER_OF_SHIPS];
         
         Ship small = new Ship();
         small.setDescription("Small");
@@ -161,7 +164,7 @@ public class GameControl {
         large.setCannons(0);
         large.setMaxCapacity(0);
         large.setSpeed(0);
-        ship[Ships.small.ordinal()] = small;
+        ship[Ships.large.ordinal()] = large;
         
         return ship;
     }
@@ -177,7 +180,7 @@ public class GameControl {
     public static InventoryItem[] createInventoryList() {
         
         //create array(list) of inventory items
-        InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
+        InventoryItem[] inventory = new InventoryItem[NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem food = new InventoryItem();
         food.setDescription("food");
@@ -220,7 +223,7 @@ public class GameControl {
         Scene[] scenes = createScenes();
         
         //assign scenes to locations
-        GameControl.assignScenesToLocations(map, scenes);
+        assignScenesToLocations(map, scenes);
         
         return map;
     }

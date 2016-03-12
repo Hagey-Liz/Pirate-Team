@@ -6,10 +6,12 @@
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
+import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Location;
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import citbyui.cit260.piratesOfTheOpenSeas.view.ShipMenuView;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 
 
@@ -45,7 +47,8 @@ public class GameMenuView extends View{
 
         switch (value){
             case "V": 
-                this.displayMap();
+                Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
+                this.displayMap(currentGame.getMap());
                 break;
             case "I": //display Inventory
                 this.displayInventory();
@@ -119,10 +122,11 @@ public class GameMenuView extends View{
        for (Location location : map.getLocations()[row]) {
             System.out.println("|*@@@*|");
         } 
+      Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
        System.out.println("");
             for (Location location : map.getLocations()[row]) {
                 
-                if(location == this.mapControl.getGameControl().getGameModel().getCurrentLocationModel()) {
+                if(location == currentGame.getCurrentLocation()) {
                     System.out.print("|*@@@*|");
                 } else if (location.isVisited() == true) {
                     System.out.print("|*###*|");
@@ -131,6 +135,7 @@ public class GameMenuView extends View{
                 }
                 
             }
+    }
     }
 
     private void displayInventory() {
