@@ -6,7 +6,6 @@
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
-import byui.cit260.piratesOfTheOpenSeas.model.GameMenuView;
 import java.util.Scanner;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 

@@ -12,14 +12,18 @@ import java.util.Objects;
  *
  * @author Liz
  */
-public class IslandSceneType implements Serializable{
+public class Scene implements Serializable{
+
+    public static Scene[] createScenes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
     //class instance variables
     private String description;
     private double travelTime;
     private boolean blocked;
 
-    public IslandSceneType() {
+    public Scene() {
     }
 
     public double getTravelTime() {
@@ -71,7 +75,7 @@ public class IslandSceneType implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final IslandSceneType other = (IslandSceneType) obj;
+        final Scene other = (Scene) obj;
         if (Double.doubleToLongBits(this.travelTime) != Double.doubleToLongBits(other.travelTime)) {
             return false;
         }
@@ -82,6 +86,10 @@ public class IslandSceneType implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public void setMapSymbol(String st) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
  

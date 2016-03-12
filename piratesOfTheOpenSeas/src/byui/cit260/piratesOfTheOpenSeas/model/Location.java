@@ -6,6 +6,8 @@
 package byui.cit260.piratesOfTheOpenSeas.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -16,14 +18,30 @@ public class Location implements Serializable{
     //class instance variables
     private double row;
     private double column;
-    private double visited;
+    private boolean visited;
     private double numberRemaining;
+    private Scene scene;
+    private ArrayList<Actor> actors;
 
     public Location() {
     }
-    
-    
 
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+    
     public double getRow() {
         return row;
     }
@@ -40,11 +58,11 @@ public class Location implements Serializable{
         this.column = column;
     }
 
-    public double getVisited() {
+    public boolean isVisited() {
         return visited;
     }
 
-    public void setVisited(double visited) {
+    public void setVisited(boolean visited) {
         this.visited = visited;
     }
 
@@ -61,7 +79,7 @@ public class Location implements Serializable{
         int hash = 7;
         hash = 53 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
         hash = 53 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.visited) ^ (Double.doubleToLongBits(this.visited) >>> 32));
+ 
         hash = 53 * hash + (int) (Double.doubleToLongBits(this.numberRemaining) ^ (Double.doubleToLongBits(this.numberRemaining) >>> 32));
         return hash;
     }
@@ -90,9 +108,7 @@ public class Location implements Serializable{
         if (Double.doubleToLongBits(this.column) != Double.doubleToLongBits(other.column)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.visited) != Double.doubleToLongBits(other.visited)) {
-            return false;
-        }
+     
         if (Double.doubleToLongBits(this.numberRemaining) != Double.doubleToLongBits(other.numberRemaining)) {
             return false;
         }

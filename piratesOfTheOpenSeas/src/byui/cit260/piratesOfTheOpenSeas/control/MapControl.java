@@ -13,7 +13,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.Map;
  */
 public class MapControl {
 
-    static Map createMap() {
+    public static Map createMap() {
         //create the map
         Map map = new Map(20, 20);
         

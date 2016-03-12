@@ -7,10 +7,13 @@ package byui.cit260.piratesOfTheOpenSeas.control;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
+import byui.cit260.piratesOfTheOpenSeas.model.Location;
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
+import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
+
 
 /**
  *
@@ -48,9 +51,91 @@ public class GameControl {
         Map map = MapControl.createMap();//create and initialize new map
         game.setMap(map);//save map in game
         
+        
         //move actors to starting position in the map
         MapControl.moveActorsToStartingLocation(map);
         
+    }
+
+    public static InventoryItem[] getSortedInventoryList() {
+    System.out.println("*** get sorted inventory list ***");
+    return null;
+    }
+    
+    public enum SceneType {
+        start,
+        tavern,
+        supplyStation,
+        friendlyPort,
+        enemyPort,
+        openSea,
+        treasure,
+        seaStorm,
+        friendlyIsland,
+        desertedIsland,
+        beach,
+        fight,
+        finish;
+    }
+
+    private static Scene[] createScenes() {
+        
+        Game game = PiratesOfTheOpenSeas.getCurrentGame();
+        
+        Scene[] scenes = new Scene[SceneType.values().length];
+        
+        Scene startingScene = new Scene();
+        startingScene.setDescription(
+                "\nYou are relaxing in your local tavern when you overhear "
+                +"someone talking about a lost treasure You quietly listen "
+                +"and secretly plan to go find the treasure");
+        startingScene.setMapSymbol("ST");
+        startingScene.setBlocked(false);
+        startingScene.setTravelTime(240);
+        scenes[SceneType.start.ordinal()] = startingScene;
+        
+        Scene finishScene = new Scene();
+        finishScene.setDescription(
+                "\nCongratulations! You found the treasure!");
+        finishScene.setMapSymbol("FN");
+        finishScene.setBlocked(false);
+        finishScene.setTravelTime(Double.POSITIVE_INFINITY);
+        scenes[SceneType.finish.ordinal()] = finishScene;
+        
+        return scenes;
+    }
+
+    public static void assignScenesToLocations(Map map, Scene[] scenes) {
+       Location[] [] locations = map.getLocations();
+       
+       //start point
+       locations[0][0].setScene(scenes[SceneType.start.ordinal()]);
+       locations[0][0].setVisited(false);
+       locations[0][1].setScene(scenes[SceneType.tavern.ordinal()]);
+       locations[0][2].setScene(scenes[SceneType.friendlyPort.ordinal()]);
+       locations[0][3].setScene(scenes[SceneType.friendlyPort.ordinal()]);
+       locations[0][4].setScene(scenes[SceneType.friendlyPort.ordinal()]);
+       locations[1][0].setScene(scenes[SceneType.openSea.ordinal()]);
+       locations[1][1].setScene(scenes[SceneType.openSea.ordinal()]);
+       locations[1][2].setScene(scenes[SceneType.seaStorm.ordinal()]);
+       locations[1][3].setScene(scenes[SceneType.seaStorm.ordinal()]);
+       locations[1][4].setScene(scenes[SceneType.seaStorm.ordinal()]);
+       locations[2][0].setScene(scenes[SceneType.beach.ordinal()]);
+       locations[2][1].setScene(scenes[SceneType.supplyStation.ordinal()]);
+       locations[2][2].setScene(scenes[SceneType.fight.ordinal()]);
+       locations[2][3].setScene(scenes[SceneType.openSea.ordinal()]);
+       locations[2][4].setScene(scenes[SceneType.fight.ordinal()]);
+       locations[3][0].setScene(scenes[SceneType.supplyStation.ordinal()]);
+       locations[3][1].setScene(scenes[SceneType.beach.ordinal()]);
+       locations[3][2].setScene(scenes[SceneType.friendlyIsland.ordinal()]);
+       locations[3][3].setScene(scenes[SceneType.treasure.ordinal()]);
+       locations[3][4].setScene(scenes[SceneType.finish.ordinal()]);
+       locations[4][0].setScene(scenes[SceneType.supplyStation.ordinal()]);
+       locations[4][1].setScene(scenes[SceneType.fight.ordinal()]);
+       locations[4][2].setScene(scenes[SceneType.desertedIsland.ordinal()]);
+       locations[4][3].setScene(scenes[SceneType.openSea.ordinal()]);
+       locations[4][4].setScene(scenes[SceneType.enemyPort.ordinal()]);
+       
     }
     
     public enum Ships {
@@ -125,6 +210,19 @@ public class GameControl {
         inventory[Item.weapons.ordinal()] = weapons;
         
         return inventory;
+    }
+    
+    private static Map createMap() {
+        //create the map
+        Map map = new Map(5, 5);
+        
+        //create the scenes for the game
+        Scene[] scenes = createScenes();
+        
+        //assign scenes to locations
+        GameControl.assignScenesToLocations(map, scenes);
+        
+        return map;
     }
         
 }
