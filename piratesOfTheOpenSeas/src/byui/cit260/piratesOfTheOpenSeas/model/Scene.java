@@ -89,8 +89,7 @@ public class Scene implements Serializable{
     }
 
     public void setMapSymbol(String st) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        System.out.println("Set Map symbol");}
 
  
 }
