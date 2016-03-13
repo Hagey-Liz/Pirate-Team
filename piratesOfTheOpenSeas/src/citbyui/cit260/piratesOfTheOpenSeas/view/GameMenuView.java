@@ -31,7 +31,7 @@ public class GameMenuView extends View{
                 +"\nA - View list of actors"
                 +"\nL - View contents of locaton"
                 +"\nM - Move to new locaton"
-                +"\nE - Estimate resources needed"
+                +"\nS - Select resources needed"
                 +"\nB - Decide size of Barrel"
                 +"\nF - Fight"
                 +"\nP - Pack ship"
@@ -62,8 +62,8 @@ public class GameMenuView extends View{
             case "M": //travel to new locaton
                 this.moveLocation();
                 break;
-            case "E": 
-                this.estimateResources();
+            case "S": 
+                this.selectResources();
                 break;
             case "B": 
                 this.barrelSize();
@@ -90,6 +90,7 @@ public class GameMenuView extends View{
         ShipMenuView shipMenuView = new ShipMenuView();
         
         shipMenuView.display();
+        super.display();
         //System.out.println("\n*** displayMenu stub function called ***");
     }
 
@@ -101,29 +102,29 @@ public class GameMenuView extends View{
     private void displayMap(Map map) {
         
         String menu = ""
-                +"\n*****************************************************"
-                +"\n*****  View Map *****"
-                +"\n*****************************************************";
+                +"\n********************************************"
+                +"\nCurrent Location = |*@@@*|   Visit = |*###*|"
+                +"\n********************************************";
                 
                 System.out.println(menu);
                 
         for(int row = 0; row < map.getLocations().length; row++) {
             
             for (Location location : map.getLocations()[row]) {
-            System.out.println("|*****|");
+            System.out.print("|*****|");
         }
         System.out.println("");// go to next line of row
         
         for(int column = 0; column< map.getLocations()[row].length; column++){
-            System.out.println("|" + row + "," + column +"|");
+            System.out.print("|" + row + " , " + column +"|");
         }
         System.out.println("");// go to next line of row
         
-       for (Location location : map.getLocations()[row]) {
-            System.out.println("|*@@@*|");
-        } 
+       //for (Location location : map.getLocations()[row]) {
+           //System.out.print("\t|");
+        //} 
       Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
-       System.out.println("");
+       //System.out.println("");
             for (Location location : map.getLocations()[row]) {
                 
                 if(location == currentGame.getCurrentLocation()) {
@@ -131,16 +132,17 @@ public class GameMenuView extends View{
                 } else if (location.isVisited() == true) {
                     System.out.print("|*###*|");
                 } else {
-                    System.out.print("|*!!!*|");
+                    System.out.print("|*****|");
                 }
                 
             }
+            System.out.println("");
     }
     }
 
     private void displayInventory() {
-     InventoryItem[] inventory = GameControl.getSortedInventoryList();
-     
+     //InventoryItem[] inventory = GameControl.getSortedInventoryList();
+     InventoryItem[] inventory = PiratesOfTheOpenSeas.getCurrentGame().getInventory();
      System.out.println("\nList of Inventory Items");
      System.out.println("Description" + "\t" + "Required" + "\t" + "In Stock");
      
@@ -164,8 +166,10 @@ public class GameMenuView extends View{
      System.out.println("*** Move Location ***");    
     }
 
-    private void estimateResources() {
-     System.out.println("*** Estimate Resources ***");    
+    private void selectResources() {
+        SelectInventoryItemView selectInventoryItemView = new SelectInventoryItemView();
+        selectInventoryItemView.display();
+     //System.out.println("*** Estimate Resources ***");    
     }
 
     private void barrelSize() {

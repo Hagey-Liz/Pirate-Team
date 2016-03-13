@@ -31,10 +31,12 @@ public class ShipMenuView extends View{
         switch (value){
             case "S": // Get Small Ship
                 this.smallShip();
-                break;
+                return true;
+                
             case "L": //Get Large Ship
                 this.largeShip();
-                break;
+                return true;
+              
             default:
                 System.out.println("\n*** Invalid selection *** try again");
 }
@@ -44,15 +46,13 @@ public class ShipMenuView extends View{
     private void smallShip() {
         System.out.println("*** You have selected a Small ship for your voyage."
         +"\nThe adventure is about to begin ***");
-   SelectInventoryItemView selectInventoryItemView = new SelectInventoryItemView();
-   selectInventoryItemView.display();
+   
     }
 
     private void largeShip() {
         System.out.println("*** You have selected a Large ship for your voyage."
         +"\nThe adventure is about to begin ***");
- SelectInventoryItemView selectInventoryItemView = new SelectInventoryItemView();
-   selectInventoryItemView.display();
+
     }
 
     

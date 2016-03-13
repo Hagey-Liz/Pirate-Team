@@ -207,32 +207,37 @@ public class GameControl {
         InventoryItem[] inventory = new InventoryItem[NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem food = new InventoryItem();
-        food.setDescription("food");
+        food.setDescription("food\t");
         food.setQuantityInStock(0);
+        System.out.print("\t");
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
         InventoryItem water = new InventoryItem();
-        water.setDescription("water");
+        water.setDescription("water\t");
         water.setQuantityInStock(0);
+        System.out.print("\t");
         water.setRequiredAmount(0);
         inventory[Item.water.ordinal()] = water;
         
         InventoryItem rum = new InventoryItem();
-        rum.setDescription("rum");
+        rum.setDescription("rum\t");
         rum.setQuantityInStock(0);
+        System.out.print("\t");
         rum.setRequiredAmount(0);
         inventory[Item.rum.ordinal()] = rum;
         
         InventoryItem oil = new InventoryItem();
-        oil.setDescription("oil");
+        oil.setDescription("oil\t");
         oil.setQuantityInStock(0);
+        System.out.print("\t");
         oil.setRequiredAmount(0);
         inventory[Item.oil.ordinal()] = oil;
         
         InventoryItem weapons = new InventoryItem();
-        weapons.setDescription("weapons");
+        weapons.setDescription("weapons\t");
         weapons.setQuantityInStock(0);
+        System.out.print("\t");
         weapons.setRequiredAmount(0);
         inventory[Item.weapons.ordinal()] = weapons;
         
