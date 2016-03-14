@@ -69,9 +69,9 @@ public class InventoryControl {
         
         return weight;
     }
-
-    public void displayInventoryControl() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+      public void displayInventoryControl() {
+        System.out.println("** Display Inventory Control **");
     }
 
     

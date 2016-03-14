@@ -15,7 +15,8 @@ import java.util.Objects;
 public class Scene implements Serializable{
 
     public static Scene[] createScenes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Create Scenes");
+        return null;
     }
  
     //class instance variables

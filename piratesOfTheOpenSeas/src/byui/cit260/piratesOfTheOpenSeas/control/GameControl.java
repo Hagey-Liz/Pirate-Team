@@ -23,6 +23,7 @@ public class GameControl {
    
     private static int NUMBER_OF_SHIPS = 2;
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
+    private static int NUMBER_OF_WEAPONS = 3;
     
     public static Player createPlayer(String name) {
         
@@ -176,16 +177,16 @@ public class GameControl {
         
         Ship small = new Ship();
         small.setDescription("Small");
-        small.setCrew(0);
-        small.setCannons(0);
+        small.setCrew(9);
+        small.setCannons(10);
         small.setMaxCapacity(0);
         small.setSpeed(0);
         ship[Ships.small.ordinal()] = small;
         
         Ship large = new Ship();
         large.setDescription("Large");
-        large.setCrew(0);
-        large.setCannons(0);
+        large.setCrew(19);
+        large.setCannons(20);
         large.setMaxCapacity(0);
         large.setSpeed(0);
         ship[Ships.large.ordinal()] = large;
@@ -243,6 +244,7 @@ public class GameControl {
         
         return inventory;
     }
+    
     
     private static Map createMap() {
         //create the map

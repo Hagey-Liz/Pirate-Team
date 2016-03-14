@@ -36,13 +36,5 @@ public enum Actor implements Serializable{
         return type;
     }
     
-    enum Enemy {
-        SeamanOne("good fighter"),
-        SeamanTwo("lots of weapons");
-        
-       Enemy(String description){
-       
-           
-       } 
-    }
+
  }
