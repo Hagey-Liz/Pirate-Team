@@ -24,9 +24,11 @@ public class BarrelWeightView {
     
     public double getBarrelWeight(){
         
-        this.promptMessageHeight="Enter the height of the barrel you want. "
+        this.promptMessageHeight="Enter the height of the barrel you want. It"
+                + "should be at least 12 inches tall but not taller than 48 inches. "
             + " To cancel enter -1";
-        this.promptMessageDiameter="Enter the diameter of the barrel you want. "
+        this.promptMessageDiameter="Enter the diameter of the barrel you want. The"
+                + "smallest it can be is 12 inches and the largest it can be is 36 inches. "
              + " To cancel enter -1";
         
           Scanner keyboard = new Scanner(System.in);// get infile for keyboard
@@ -66,7 +68,7 @@ public class BarrelWeightView {
               }  
               else {
                   finished = true;
-                  System.out.println("The weight of the barrel is " + barrelWeight);
+                  System.out.println("The weight of the barrel is " + barrelWeight + " pounds.");
               }
       
         }

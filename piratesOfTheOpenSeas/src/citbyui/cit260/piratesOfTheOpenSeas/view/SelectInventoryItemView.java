@@ -59,15 +59,18 @@ public class SelectInventoryItemView  extends View {
     }
 
     private void drinkingWater() {
-        System.out.println("*** drinkingWater function called ***");
+        BarrelWeightView barrelWeight = new BarrelWeightView();
+        barrelWeight.getBarrelWeight();
     }
 
     private void stockRum() {
-        System.out.println("*** stockRum function called ***");
+        BarrelWeightView barrelWeight = new BarrelWeightView();
+        barrelWeight.getBarrelWeight();
     }
 
     private void stockOil() {
-        System.out.println("*** stockOil function called ***");
+        BarrelWeightView barrelWeight = new BarrelWeightView();
+        barrelWeight.getBarrelWeight();
     }
 
   

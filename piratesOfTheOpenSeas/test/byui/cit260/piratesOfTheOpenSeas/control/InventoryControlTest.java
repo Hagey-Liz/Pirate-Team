@@ -314,4 +314,139 @@ public class InventoryControlTest {
         assertEquals(expResult, result, 0);
     } 
     
+    //Test of weight of barrel
+    
+     @Test
+    public void testCalcBarrelWeight() {
+        
+        System.out.println("calcBarrelWeight");
+        
+        /************************
+         *  Test case 1
+         ***********************/
+        System.out.println("tTest case #1");
+        
+        // input values for test case 1
+        double height = 47.0;
+        double diameter = 12.0;
+        
+        InventoryControl instance = new InventoryControl();
+        
+        double expResult = 191.36; // expected value 
+        double DENSITY = .036;
+        
+        // create instance of InvrntoryControl class
+        double result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+        
+        /************************
+         *  Test case 2
+         ***********************/
+        System.out.println("tTest case #2");
+        
+        // input values for test case 2
+        height = 60.0;
+        diameter = 20.0;
+        
+        
+        expResult = -1; // expected value 
+               
+        
+        // create instance of InvrntoryControl class
+        result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+           
+        /************************
+         *  Test case 3
+         ***********************/
+        System.out.println("tTest case #3");
+        
+        // input values for test case 2
+        height = 30.0;
+        diameter = -6.0;
+        
+        
+        expResult = -1; // expected value 
+        
+        // create instance of InvrntoryControl class
+        result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+        /************************
+         *  Test case 4
+         ***********************/
+        System.out.println("tTest case #4");
+        
+        // input values for test case 4
+        height = 10.0;
+        diameter = 40.0;
+        
+        
+        expResult = -1; // expected value 
+        
+        // create instance of InvrntoryControl class
+        result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+        
+        /************************
+         *  Test case 5
+         ***********************/
+        System.out.println("tTest case #5");
+        
+        // input values for test case 5
+        height = 16.0;
+        diameter = 12.0;
+        
+        
+        expResult = 65.14; // expected value 
+        
+        // create instance of InvrntoryControl class
+        result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+        
+        /************************
+         *  Test case 6
+         ***********************/
+        System.out.println("tTest case #6");
+        
+        // input values for test case 6
+        height = 48.0;
+        diameter = 12.0;
+        
+        
+        expResult = 195.43; // expected value 
+        
+        // create instance of InvrntoryControl class
+        result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+        
+        /************************
+         *  Test case 7
+         ***********************/
+        System.out.println("tTest case #7");
+        
+        // input values for test case 7
+        height = 20.0;
+        diameter = 36.0;
+        
+        
+        expResult = 732.87; // expected value 
+        
+        // create instance of InvrntoryControl class
+        result = instance.calcBarrelWeight(height, diameter, DENSITY);
+        
+        assertEquals(expResult, result, 0.01);
+        
+    } 
 }
