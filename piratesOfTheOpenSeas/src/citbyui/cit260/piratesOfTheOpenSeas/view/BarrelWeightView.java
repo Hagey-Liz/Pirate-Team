@@ -85,7 +85,7 @@ public class BarrelWeightView {
                       if (game.getShip().addBarrel(barrel))
                           System.out.println("You successfully added the barrel to your ship");
                       else
-                          System.out.println("Could no add it because it is too heavy for this ship");
+                          System.out.println("Could not add the barrel because it is too heavy for this ship");
                       }
                   
               }
