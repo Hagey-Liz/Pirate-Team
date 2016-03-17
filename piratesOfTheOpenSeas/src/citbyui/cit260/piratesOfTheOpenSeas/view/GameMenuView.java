@@ -108,25 +108,25 @@ public class GameMenuView extends View{
          Location[][] locations = map.getLocations(); // retreive the locations from map
          
          System.out.print("   |");
-         for( int col = 0; col < locations[0].length; col++){
-             System.out.print("  " + col + " |"); // print col numbers to side of map
+         for( int column = 0; column < locations[0].length; column++){
+             System.out.print("  " + column + " |"); // print col numbers to side of map
          }
          System.out.println();
          for( int row = 0; row < locations.length; row++){
              System.out.print(row + "  "); // print row numbers to side of map
-             for( int col = 0; col < locations[row].length; col++){
+             for( int column = 0; column < locations[row].length; column++){
                  leftIndicator = " ";
                  rightIndicator = " ";
-                 if(locations[row][col].isVisited()){
+                 if(locations[row][column].isVisited()){
                      leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
                      rightIndicator = "<"; // same as above
                  }
                  // TODO : use if else ladder to check to see if this location is current location and set proper indicators
                  System.out.print("|"); // start map with a |
-                 if(locations[row][col].getScene() == null)
+                 if(locations[row][column].getScene() == null)
                      System.out.print(leftIndicator + "??" + rightIndicator);
                  else
-                     System.out.print(leftIndicator + locations[row][col].getScene().getMapSymbol() + rightIndicator);
+                     System.out.print(leftIndicator + locations[row][column].getScene().getMapSymbol() + rightIndicator);
              }
              System.out.println("|");
          }

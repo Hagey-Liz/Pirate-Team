@@ -6,7 +6,10 @@
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
+import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,14 +52,18 @@ public class BarrelView {
            }
            
                
-           barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
-            if (barrelVol == -1){
+           try {
+                barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
+            } catch (InventoryControlException me) {
+                System.out.println(me.getMessage());
+            }
+            /*if (barrelVol == -1){
                 System.out.println("Invalid entries, please try again");
             }
             else {
                 finished = true;
                 System.out.println("The volume of the barrel is " + barrelVol);
-            }
+            }*/
       
         }
         return barrelVol;//return the value entered

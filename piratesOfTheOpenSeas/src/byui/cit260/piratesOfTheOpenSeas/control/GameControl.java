@@ -57,7 +57,7 @@ public class GameControl {
         
         
         //move actors to starting position in the map
-        MapControl.moveActorsToStartingLocation(map);
+        MapControl.moveActorsToLocation(map);
         
     }
 
@@ -106,6 +106,13 @@ public class GameControl {
         scene.setTravelTime(240);
         scenes[SceneType.beach.ordinal()] = scene;
         
+        scene.setDescription(
+                "\nEnemy Port");
+        scene.setMapSymbol("EP");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.enemyPort.ordinal()] = scene;
+        
         scene = new Scene();
         scene.setDescription(
                 "\nDeserted Island scene");
@@ -113,6 +120,62 @@ public class GameControl {
         scene.setBlocked(false);
         scene.setTravelTime(240);
         scenes[SceneType.desertedIsland.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nYou found a local tavern where your crew can relax and rest");
+        scene.setMapSymbol("TV");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.tavern.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nFight Scene");
+        scene.setMapSymbol("FT");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.fight.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nFriendly Island");
+        scene.setMapSymbol("FI");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.friendlyIsland.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nFriendly Port");
+        scene.setMapSymbol("FP");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.friendlyPort.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nOpen Sea");
+        scene.setMapSymbol("OS");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.openSea.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nTerrible storm");
+        scene.setMapSymbol("SM");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.seaStorm.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nSupply Station");
+        scene.setMapSymbol("SS");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.supplyStation.ordinal()] = scene;
+        
+        scene.setDescription(
+                "\nYou found the Treasure");
+        scene.setMapSymbol("TR");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.treasure.ordinal()] = scene;
         
         Scene finishScene = new Scene();
         finishScene.setDescription(

@@ -9,7 +9,10 @@ import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import static byui.cit260.piratesOfTheOpenSeas.control.InventoryControl.DENSITY;
 import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
+import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
@@ -56,17 +59,25 @@ public class BarrelWeightView {
            }
            
                
-           barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
-            if (barrelVol == -1){
+            try {
+                barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
+            } catch (InventoryControlException me) {
+                System.out.println(me.getMessage());
+            }
+            /*if (barrelVol == -1){
                 System.out.println("Invalid entries, please try again");
             }
             else {
                 finished = true;
                 System.out.println("The volume of the barrel is " + barrelVol);
-            }
+            }*/
            
-            barrelWeight = InventoryControl.calcBarrelWeight(height, diameter, DENSITY);
-              if (barrelWeight == -1){
+            try {
+                barrelWeight = InventoryControl.calcBarrelWeight(height, diameter, DENSITY);
+            } catch (InventoryControlException me) {
+                System.out.println(me.getMessage());
+            }
+              /*if (barrelWeight == -1){
                   System.out.println("Ivalid entries, please try again");
               }  
               else {
@@ -85,10 +96,10 @@ public class BarrelWeightView {
                       if (game.getShip().addBarrel(barrel))
                           System.out.println("You successfully added the barrel to your ship");
                       else
-                          System.out.println("Could no add it because it is too heavy for this ship");
-                      }
+                          System.out.println("Could not add the barrel because it is too heavy for this ship");
+                      }*/
                   
-              }
+             // }
       
         }
         return barrelVol;//return the value entered
