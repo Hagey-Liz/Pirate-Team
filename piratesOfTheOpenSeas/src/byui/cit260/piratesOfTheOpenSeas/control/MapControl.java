@@ -7,6 +7,7 @@ package byui.cit260.piratesOfTheOpenSeas.control;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import byui.cit260.piratesOfTheOpenSeas.model.Scene;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -27,7 +28,19 @@ public class MapControl {
         return map;
     }
 
-    static void moveActorsToStartingLocation(Map map) {
-        System.out.println("** Move actors to starting location ***"); }
+    public static void moveActorsToLocation(Map map) {
+     System.out.println("Move actors to Location");
+    }
+        
+        /*Map map = PiratesOfTheOpenSeas.getCurrentGamei().getMap();
+        int newRow = coordinates.x-1;
+        int newColumn = coordinates.y-1;
+        
+        if (newRow < 0 || newRow >= map.getRowCount() ||
+                newColumn < 0 || new Column >= map.getColumnCount()) {
+            return -1;
+        }
+        return 0;
+    }*/
     
 }

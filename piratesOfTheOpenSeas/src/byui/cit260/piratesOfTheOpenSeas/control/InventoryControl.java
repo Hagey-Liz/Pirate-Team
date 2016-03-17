@@ -5,6 +5,7 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.control;
 
+import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,14 +16,14 @@ import java.util.Scanner;
 public class InventoryControl {
     
     public final static double DENSITY = 0.036;
-    public static double calcBarrelVolume(double height, double diameter) {
+    public static double calcBarrelVolume(double height, double diameter) throws InventoryControlException {
         
         if (height < 12 || height > 48) { // height is out of range?
-            return -1;
+            throw new InventoryControlException("Height is out of range");
         }
         
         if (diameter < 12 || diameter > 36) { // diameter is out of range?
-            return -1;
+            throw new InventoryControlException("Diameter is out of range");
         }
         
         double radius = diameter / 2;
@@ -36,18 +37,18 @@ public class InventoryControl {
     * author @ Liz
     */
     
-    public static int calcFoodWanted(int noOfPeople, int poundsPerDay, int noOfDays) {
+    public static int calcFoodWanted(int noOfPeople, int poundsPerDay, int noOfDays) throws InventoryControlException {
         
         if (noOfPeople < 3 || noOfPeople > 50) { //too many or too few people
-            return -1;
+            throw new InventoryControlException("Too many or too few people were chosen");
         }
             
         if (poundsPerDay < 1 || poundsPerDay > 10) {
-            return -1;
+           throw new InventoryControlException("Too many or too few pounds");
         }
         
         if (noOfDays <1 || noOfDays >50) {
-            return -1;
+            throw new InventoryControlException("Too many or too few days");
         }
             
         int food = noOfPeople * poundsPerDay * noOfDays;
@@ -56,19 +57,19 @@ public class InventoryControl {
             
     }
     
-    public static double calcBarrelWeight(double height, double diameter, double DENSITY) {
+    public static double calcBarrelWeight(double height, double diameter, double DENSITY) throws InventoryControlException {
         
         if (height < 12 || height > 48) { // height is out of range?
-            return -1;
+           throw new InventoryControlException("Height is out of range");
         }
         
         if (diameter < 12 || diameter > 36) { // diameter is out of range?
-            return -1;
+            throw new InventoryControlException("Diameter is out of range");
         }
         
         double radius = diameter / 2;
         double volume = (Math.PI * Math.pow(radius, 2) * height);
-        double weight = volume * DENSITY;
+        double weight = Math.round(volume * DENSITY * 100) / 100;
         
         return weight;
     }

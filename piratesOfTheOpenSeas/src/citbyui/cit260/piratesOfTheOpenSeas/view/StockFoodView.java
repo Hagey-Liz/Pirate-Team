@@ -6,7 +6,10 @@
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
+import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -59,15 +62,19 @@ public class StockFoodView {
                continue;
            }
                
-            value = InventoryControl.calcFoodWanted(iPeople, iPounds, iDays);
-            if (value == -1){
+            try {
+                value = InventoryControl.calcFoodWanted(iPeople, iPounds, iDays);
+            } catch (InventoryControlException me) {
+                System.out.println(me.getMessage());
+            }
+            /*if (value == -1){
                 System.out.println("Invalid entries, please try again");
             }
             else {
                 finished = true;
                 System.out.println("You will need " + value + " pounds of food.");
             }
-      
+      */
         }
         return value;//return the value entered
     }
