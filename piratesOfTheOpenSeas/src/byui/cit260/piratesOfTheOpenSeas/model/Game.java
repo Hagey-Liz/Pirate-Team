@@ -15,7 +15,7 @@ public class Game implements Serializable{
     private double numPeople;
     private Location currentLocation;
     private InventoryItem[] inventory;
-    private Ship[] ship;
+    private Ship ship;
     private Player player;
     private String[]actor;
     private Map map;
@@ -56,11 +56,11 @@ public void setInventory(InventoryItem[] inventory) {
      this.inventory = inventory;
 }
 
-public Ship[] getShip() {
+public Ship getShip() {
     return ship;
 }
 
-public void setShip(Ship[] ship) {
+public void setShip(Ship ship) {
     this.ship = ship;
 }
 

@@ -7,7 +7,10 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import static byui.cit260.piratesOfTheOpenSeas.control.InventoryControl.DENSITY;
+import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
+import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import java.util.Scanner;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -68,7 +71,23 @@ public class BarrelWeightView {
               }  
               else {
                   finished = true;
-                  System.out.println("The weight of the barrel is " + barrelWeight + " pounds.");
+                  System.out.println("The weight of the barrel is " + barrelWeight + " pounds. "
+                          + "Do you want to put this on your ship? (enter yes or no)");
+                   Scanner keyboard2 = new Scanner(System.in);
+                  String response = keyboard2.nextLine();
+                  if ("yes".equals(response.toLowerCase())){
+                      Barrel barrel = new Barrel();
+                      barrel.setWeight(barrelWeight);
+                      barrel.setDiameter(diameter);
+                      barrel.setHeight(height);
+                      barrel.setVolume(barrelVol);
+                      Game game = PiratesOfTheOpenSeas.getCurrentGame();
+                      if (game.getShip().addBarrel(barrel))
+                          System.out.println("You successfully added the barrel to your ship");
+                      else
+                          System.out.println("Could no add it because it is too heavy for this ship");
+                      }
+                  
               }
       
         }

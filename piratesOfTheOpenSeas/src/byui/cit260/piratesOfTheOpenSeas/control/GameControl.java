@@ -49,8 +49,8 @@ public class GameControl {
         InventoryItem[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
         
-        Ship[] shipList = GameControl.createShipList();//create ship list
-        game.setShip(shipList);//save ship in game
+        //Ship[] shipList = GameControl.createShipList();//create ship list
+        //game.setShip(shipList);//save ship in game
         
         Map map = MapControl.createMap();//create and initialize new map
         game.setMap(map);//save map in game
@@ -97,6 +97,22 @@ public class GameControl {
         startingScene.setBlocked(false);
         startingScene.setTravelTime(240);
         scenes[SceneType.start.ordinal()] = startingScene;
+        
+        Scene scene = new Scene();
+        scene.setDescription(
+                "\nBeach scene");
+        scene.setMapSymbol("BE");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.beach.ordinal()] = scene;
+        
+        scene = new Scene();
+        scene.setDescription(
+                "\nDeserted Island scene");
+        scene.setMapSymbol("DI");
+        scene.setBlocked(false);
+        scene.setTravelTime(240);
+        scenes[SceneType.desertedIsland.ordinal()] = scene;
         
         Scene finishScene = new Scene();
         finishScene.setDescription(

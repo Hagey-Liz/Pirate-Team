@@ -6,6 +6,7 @@
 package byui.cit260.piratesOfTheOpenSeas.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -20,11 +21,31 @@ public class Ship implements Serializable{
     private double cannons;
     private double speed;
     private double maxCapacity;
+    private ArrayList <Barrel> barrels;
 
     public Ship() {
+        barrels = new ArrayList<Barrel>();
     }
     
+    public boolean addBarrel(Barrel barrel) {
+        if (getCurrentCargoWeight() + barrel.getWeight() < maxCapacity){
+            barrels.add(barrel);   
+            return true;
+        }
+            return false;
+    } 
     
+    public double getCurrentCargoWeight(){
+        //(crew X average member weight) (cannons x cannon weight)
+        //+ (weight of current barrels)
+        //return number
+        double currentCargoWeight = (crew * 180) + (cannons * 100);
+        for (Barrel barrel : barrels) {
+            currentCargoWeight += barrel.getWeight();
+        }
+        
+        return currentCargoWeight;
+    }
 
     public String getDescription() {
         return description;

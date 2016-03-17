@@ -5,7 +5,10 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
+import byui.cit260.piratesOfTheOpenSeas.model.Game;
+import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import java.util.Scanner;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -44,15 +47,31 @@ public class ShipMenuView extends View{
     }
 
     private void smallShip() {
-        System.out.println("*** You have selected a Small ship for your voyage."
-        +"\nThe adventure is about to begin ***");
-   
+       // System.out.println("*** You have selected a Small ship for your voyage."
+        //+"\nThe adventure is about to begin ***");
+        Game game = PiratesOfTheOpenSeas.getCurrentGame();
+        
+        Ship ship = new Ship();
+        ship.setCannons(5);
+        ship.setCrew(8);
+        ship.setMaxCapacity(2000);
+        ship.setDescription("Small Ship");
+        ship.setSpeed(30);
+        game.setShip(ship);
     }
 
     private void largeShip() {
-        System.out.println("*** You have selected a Large ship for your voyage."
-        +"\nThe adventure is about to begin ***");
-
+        //System.out.println("*** You have selected a Large ship for your voyage."
+       // +"\nThe adventure is about to begin ***");
+       Game game = PiratesOfTheOpenSeas.getCurrentGame();
+        
+        Ship ship = new Ship();
+        ship.setCannons(10);
+        ship.setCrew(19);
+        ship.setMaxCapacity(3000);
+        ship.setDescription("Large Ship");
+        ship.setSpeed(20);
+        game.setShip(ship);
     }
 
     

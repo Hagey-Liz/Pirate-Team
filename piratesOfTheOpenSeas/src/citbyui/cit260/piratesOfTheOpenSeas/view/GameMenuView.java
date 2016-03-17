@@ -98,8 +98,41 @@ public class GameMenuView extends View{
        HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
+    
+    public static void displayMap(){
+         String leftIndicator;
+         String rightIndicator;
+         
+         Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
+         Map map = game.getMap(); // retreive the map from game
+         Location[][] locations = map.getLocations(); // retreive the locations from map
+         
+         System.out.print("   |");
+         for( int col = 0; col < locations[0].length; col++){
+             System.out.print("  " + col + " |"); // print col numbers to side of map
+         }
+         System.out.println();
+         for( int row = 0; row < locations.length; row++){
+             System.out.print(row + "  "); // print row numbers to side of map
+             for( int col = 0; col < locations[row].length; col++){
+                 leftIndicator = " ";
+                 rightIndicator = " ";
+                 if(locations[row][col].isVisited()){
+                     leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
+                     rightIndicator = "<"; // same as above
+                 }
+                 // TODO : use if else ladder to check to see if this location is current location and set proper indicators
+                 System.out.print("|"); // start map with a |
+                 if(locations[row][col].getScene() == null)
+                     System.out.print(leftIndicator + "??" + rightIndicator);
+                 else
+                     System.out.print(leftIndicator + locations[row][col].getScene().getMapSymbol() + rightIndicator);
+             }
+             System.out.println("|");
+         }
+    }
 
-    private void displayMap(Map map) {
+    /*private void displayMap(Map map) {
         
         String menu = ""
                 +"\n********************************************"
@@ -138,7 +171,7 @@ public class GameMenuView extends View{
             }
             System.out.println("");
     }
-    }
+    }*/
 
     private void displayInventory() {
      //InventoryItem[] inventory = GameControl.getSortedInventoryList();
@@ -182,6 +215,10 @@ public class GameMenuView extends View{
 
     private void packShip() {
     System.out.println("*** Pack Ship ***");
+    }
+
+    private void displayMap(Map map) {
+        System.out.println("Display Map");
     }
     
 }

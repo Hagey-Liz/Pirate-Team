@@ -17,7 +17,8 @@ public class Barrel implements Serializable{
     private double diameter;
     private double height;
     private double volume;
-    private double maxWeight;
+    private double weight;
+    
 
     public Barrel() {
     }
@@ -48,12 +49,12 @@ public class Barrel implements Serializable{
         this.volume = volume;
     }
 
-    public double getMaxWeight() {
-        return maxWeight;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setMaxWeight(double maxWeight) {
-        this.maxWeight = maxWeight;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     @Override
@@ -62,13 +63,13 @@ public class Barrel implements Serializable{
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.diameter) ^ (Double.doubleToLongBits(this.diameter) >>> 32));
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.height) ^ (Double.doubleToLongBits(this.height) >>> 32));
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.volume) ^ (Double.doubleToLongBits(this.volume) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.maxWeight) ^ (Double.doubleToLongBits(this.maxWeight) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Barrel{" + "diameter=" + diameter + ", height=" + height + ", volume=" + volume + ", maxWeight=" + maxWeight + '}';
+        return "Barrel{" + "diameter=" + diameter + ", height=" + height + ", volume=" + volume + ", weight=" + weight + '}';
     }
 
     
@@ -93,7 +94,7 @@ public class Barrel implements Serializable{
         if (Double.doubleToLongBits(this.volume) != Double.doubleToLongBits(other.volume)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.maxWeight) != Double.doubleToLongBits(other.maxWeight)) {
+        if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
             return false;
         }
         return true;

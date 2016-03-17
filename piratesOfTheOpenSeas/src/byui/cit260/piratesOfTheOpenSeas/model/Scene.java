@@ -92,6 +92,11 @@ public class Scene implements Serializable{
     public void setMapSymbol(String st) {
         System.out.println("Set Map symbol");}
 
+    public String getMapSymbol() {
+        System.out.println("Set Map symbol");
+                return null;
+    }
+
  
 }
 

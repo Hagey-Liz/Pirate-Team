@@ -5,6 +5,9 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.control;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  *
  * @author Roland
@@ -69,13 +72,13 @@ public class InventoryControl {
         
         return weight;
     }
-    
-      public void displayInventoryControl() {
-        System.out.println("** Display Inventory Control **");
-    }
+   
 
    
 
+     public void displayInventoryControl() {
+        System.out.println("** Display Inventory Control **");
+    }
     
 
     
