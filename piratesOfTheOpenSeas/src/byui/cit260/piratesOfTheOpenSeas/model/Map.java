@@ -1,7 +1,7 @@
 
 package byui.cit260.piratesOfTheOpenSeas.model;
 import java.io.Serializable;
-import java.util.Objects;
+
 /**
  *
  * @author RJ Phelps
