@@ -7,7 +7,10 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
+import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -114,14 +117,19 @@ public class StartProgramView {
        //     return false
        
        //call createPlayer() control function
-       Player player = GameControl.createPlayer(playersName);
-       
-       if (player == null) {//if unsuccessful
-         System.out.println("\nError creating the player");
-         return false;
+       Player player;
+        try {
+            player = GameControl.createPlayer(playersName);
+        } catch (GameControlException me) {
+            System.out.println(me.getMessage());
         }
        
-       this.displayNextView(player);
+       /*if (player == null) {//if unsuccessful
+         System.out.println("\nError creating the player");
+         return false;
+        }*/
+       
+       //this.displayNextView(player);
        
        return true;
     }

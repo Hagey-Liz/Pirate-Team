@@ -12,6 +12,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
 import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
+import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 
@@ -25,10 +26,10 @@ public class GameControl {
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
     private static int NUMBER_OF_WEAPONS = 3;
     
-    public static Player createPlayer(String name) {
+    public static Player createPlayer(String name) throws GameControlException {
         
         if (name == null) {
-            return null;
+            throw new GameControlException("Invalid name, Please enter your name");
         }
         
         Player player = new Player();
@@ -57,7 +58,7 @@ public class GameControl {
         
         
         //move actors to starting position in the map
-        MapControl.moveActorsToLocation(map);
+        MapControl.moveActorsToStartingLocation(map);
         
     }
 
@@ -258,16 +259,16 @@ public class GameControl {
         small.setDescription("Small");
         small.setCrew(9);
         small.setCannons(10);
-        small.setMaxCapacity(0);
-        small.setSpeed(0);
+        small.setMaxCapacity(2000);
+        small.setSpeed(30);
         ship[Ships.small.ordinal()] = small;
         
         Ship large = new Ship();
         large.setDescription("Large");
         large.setCrew(19);
         large.setCannons(20);
-        large.setMaxCapacity(0);
-        large.setSpeed(0);
+        large.setMaxCapacity(4000);
+        large.setSpeed(20);
         ship[Ships.large.ordinal()] = large;
         
         return ship;

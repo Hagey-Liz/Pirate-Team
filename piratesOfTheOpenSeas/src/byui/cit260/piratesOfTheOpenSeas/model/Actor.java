@@ -16,8 +16,8 @@ public enum Actor implements Serializable{
     
     CaptainHawkeye("He is the captain of the pirate ship"),
     CaptainPhillip("He is the captain of the Navy ship"),
-    SeamanOne("Enemy - He is good with weapons"),
-    SeamanTwo("Enemy - He is a good navigator");
+    SeamanOne("He is the first mate"),
+    SeamanTwo("He is the second mate");
   
     //class instance variables
     private final String description;
