@@ -132,7 +132,7 @@ public class GameMenuView extends View{
          }
     }
 
-    /*private void displayMap(Map map) {
+    private void displayMap(Map map) {
         
         String menu = ""
                 +"\n********************************************"
@@ -171,7 +171,7 @@ public class GameMenuView extends View{
             }
             System.out.println("");
     }
-    }*/
+    }
 
     private void displayInventory() {
      //InventoryItem[] inventory = GameControl.getSortedInventoryList();
@@ -217,8 +217,6 @@ public class GameMenuView extends View{
     System.out.println("*** Pack Ship ***");
     }
 
-    private void displayMap(Map map) {
-        System.out.println("Display Map");
-    }
+    
     
 }
