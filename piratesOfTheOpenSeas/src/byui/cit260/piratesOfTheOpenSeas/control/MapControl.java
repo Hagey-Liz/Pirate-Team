@@ -5,8 +5,11 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.control;
 
+import byui.cit260.piratesOfTheOpenSeas.model.Actor;
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import byui.cit260.piratesOfTheOpenSeas.model.Scene;
+import com.sun.rowset.internal.Row;
+import java.awt.Point;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
@@ -28,19 +31,33 @@ public class MapControl {
         return map;
     }
 
-    public static void moveActorsToLocation(Map map) {
+    public static void moveActorsToStartingLocation(Map map) {
      System.out.println("Move actors to Location");
+       /* Actor[] actors = new Actor.values();
+        
+        for (Actor actor : actors) {
+            Point coordinates = actor.getCoordinates();
+            int returnValue = MapControl.moveActorToLocation(actor, coordinates);
+            if (returnValue < 0) {
+                return returnValue;
+            }
+        }
+        return 0*/
     }
         
-        /*Map map = PiratesOfTheOpenSeas.getCurrentGamei().getMap();
+        
+     
+    public static int moveActorToLocation(Actor actor, Point coordinates) {
+        
+        Map map = PiratesOfTheOpenSeas.getCurrentGame().getMap();
         int newRow = coordinates.x-1;
         int newColumn = coordinates.y-1;
         
-        if (newRow < 0 || newRow >= map.getRowCount() ||
-                newColumn < 0 || new Column >= map.getColumnCount()) {
-            return -1;
-        }
+       // if (newRow < 0 || new Row >= map.getRowCount() ||
+       //     newColumn < 0 || newColumn >= map.getColumnCount()) {
+       //     return -1;
+       // }
         return 0;
-    }*/
+    }
     
 }

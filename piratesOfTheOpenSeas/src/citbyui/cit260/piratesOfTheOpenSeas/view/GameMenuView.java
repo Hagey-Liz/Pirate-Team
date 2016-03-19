@@ -99,7 +99,7 @@ public class GameMenuView extends View{
         helpMenu.display();
     }
     
-    public static void displayMap(){
+    public static void displayMap() {
          String leftIndicator;
          String rightIndicator;
          
