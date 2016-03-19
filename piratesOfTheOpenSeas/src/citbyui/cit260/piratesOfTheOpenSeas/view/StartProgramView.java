@@ -117,19 +117,15 @@ public class StartProgramView {
        //     return false
        
        //call createPlayer() control function
-       Player player;
-        try {
-            player = GameControl.createPlayer(playersName);
-        } catch (GameControlException me) {
-            System.out.println(me.getMessage());
-        }
-       
-       /*if (player == null) {//if unsuccessful
+       Player player = GameControl.createPlayer(playersName);
+       //Player player;
+              
+       if (player == null) {//if unsuccessful
          System.out.println("\nError creating the player");
          return false;
-        }*/
+        }
        
-       //this.displayNextView(player);
+       this.displayNextView(player);
        
        return true;
     }

@@ -26,11 +26,11 @@ public class GameControl {
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
     private static int NUMBER_OF_WEAPONS = 3;
     
-    public static Player createPlayer(String name) throws GameControlException {
+    public static Player createPlayer(String name) {
         
         if (name == null) {
-            throw new GameControlException("Invalid name, Please enter your name");
-        }
+            return null;
+                }
         
         Player player = new Player();
         player.setName(name);
