@@ -6,6 +6,7 @@
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
+import byui.cit260.piratesOfTheOpenSeas.model.Actor;
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Location;
@@ -47,8 +48,8 @@ public class GameMenuView extends View{
 
         switch (value){
             case "V": 
-                Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
-                this.displayMap(currentGame.getMap());
+                //Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
+                this.displayMap();
                 break;
             case "I": //display Inventory
                 this.displayInventory();
@@ -99,6 +100,7 @@ public class GameMenuView extends View{
         helpMenu.display();
     }
     
+    
     public static void displayMap() {
          String leftIndicator;
          String rightIndicator;
@@ -132,7 +134,7 @@ public class GameMenuView extends View{
          }
     }
 
-    private void displayMap(Map map) {
+    /*private void displayMap(Map map) {
         
         String menu = ""
                 +"\n********************************************"
@@ -170,8 +172,8 @@ public class GameMenuView extends View{
                 
             }
             System.out.println("");
-    }
-    }
+    }*/
+    //}
 
     private void displayInventory() {
      //InventoryItem[] inventory = GameControl.getSortedInventoryList();
@@ -188,7 +190,8 @@ public class GameMenuView extends View{
     }
 
     private void displayActor() {
-     System.out.println("*** Display Actor ***");   
+        Actor actor = Actor.CaptainHawkeye;
+        
     }
 
     private void displayContents() {

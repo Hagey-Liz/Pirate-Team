@@ -23,6 +23,7 @@ public class Scene implements Serializable{
     private String description;
     private double travelTime;
     private boolean blocked;
+    private String mapSymbol;
 
     public Scene() {
     }
@@ -90,11 +91,10 @@ public class Scene implements Serializable{
     }
 
     public void setMapSymbol(String st) {
-        System.out.println("Set Map symbol");}
+        this.mapSymbol = st;}
 
     public String getMapSymbol() {
-        System.out.println("Set Map symbol");
-                return null;
+        return this.mapSymbol;
     }
 
  

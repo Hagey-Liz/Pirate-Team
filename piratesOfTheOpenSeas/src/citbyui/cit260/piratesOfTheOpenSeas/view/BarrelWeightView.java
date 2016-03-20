@@ -77,7 +77,7 @@ public class BarrelWeightView {
             } catch (InventoryControlException me) {
                 System.out.println(me.getMessage());
             }
-              /*if (barrelWeight == -1){
+              if (barrelWeight == -1){
                   System.out.println("Ivalid entries, please try again");
               }  
               else {
@@ -97,9 +97,9 @@ public class BarrelWeightView {
                           System.out.println("You successfully added the barrel to your ship");
                       else
                           System.out.println("Could not add the barrel because it is too heavy for this ship");
-                      }*/
+                      }
                   
-             // }
+             }
       
         }
         return barrelVol;//return the value entered
