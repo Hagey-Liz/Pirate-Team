@@ -10,6 +10,8 @@ import static byui.cit260.piratesOfTheOpenSeas.control.InventoryControl.DENSITY;
 import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +27,9 @@ public class BarrelWeightView {
     private String promptMessageDiameter;
     private double barrelWeight;
     
+    protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
+    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
+    
     public BarrelWeightView() {
     }
     
@@ -37,13 +42,12 @@ public class BarrelWeightView {
                 + "smallest it can be is 12 inches and the largest it can be is 36 inches. "
              + " To cancel enter -1";
         
-          Scanner keyboard = new Scanner(System.in);// get infile for keyboard
        double barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
-       
+      try { 
        while(!finished){//loop while an invalid value is entered
            System.out.println("\n" + this.promptMessageHeight);
-           double height = keyboard.nextDouble();
+           double height = keyboard.read();
            if(height == -1) {
                finished = true;
                System.out.println("You canceled");
@@ -51,7 +55,7 @@ public class BarrelWeightView {
            }
                
            System.out.println("\n" + this.promptMessageDiameter);
-           double diameter = keyboard.nextDouble();
+           double diameter = keyboard.read();
            if(diameter == -1) {
                finished = true;
                System.out.println("You canceled");
@@ -84,8 +88,8 @@ public class BarrelWeightView {
                   finished = true;
                   System.out.println("The weight of the barrel is " + barrelWeight + " pounds. "
                           + "Do you want to put this on your ship? (enter yes or no)");
-                   Scanner keyboard2 = new Scanner(System.in);
-                  String response = keyboard2.nextLine();
+                   //Scanner keyboard2 = new Scanner(System.in);
+                  String response = this.keyboard.readLine();
                   if ("yes".equals(response.toLowerCase())){
                       Barrel barrel = new Barrel();
                       barrel.setWeight(barrelWeight);
@@ -102,6 +106,10 @@ public class BarrelWeightView {
              }
       
         }
+      }
+      catch (Exception e){
+          System.out.println("Error" + e.getMessage());
+      }
         return barrelVol;//return the value entered
     }
     

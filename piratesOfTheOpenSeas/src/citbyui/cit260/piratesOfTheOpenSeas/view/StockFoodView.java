@@ -7,9 +7,12 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -21,6 +24,9 @@ public class StockFoodView {
     private String promptMessagePeople;
     private String promptMessageDays;
     private String promptMessagePounds;
+    
+    protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
+    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
 
     public StockFoodView() {
     }
@@ -34,13 +40,14 @@ public class StockFoodView {
         this.promptMessagePounds="Enter the pounds per person per day of food you want, "
                 + "3 pounds per person per day is recomended. To cancel enter -1";
         
-          Scanner keyboard = new Scanner(System.in);// get infile for keyboard
+          // get infile for keyboard
        int value = 0;// value to be returned
        boolean finished = false;//initialize to not valid
-       
+       //Scanner keyboard = new Scanner(System.in);
+      try { 
        while(!finished){//loop while an invalid value is entered
            System.out.println("\n" + this.promptMessagePeople);
-           int iPeople = keyboard.nextInt();
+           int iPeople = keyboard.read();
            if(iPeople == -1) {
                finished = true;
                System.out.println("You canceled");
@@ -48,14 +55,14 @@ public class StockFoodView {
            }
                
            System.out.println("\n" + this.promptMessageDays);
-           int iDays = keyboard.nextInt();
+           int iDays = keyboard.read();
            if(iDays == -1) {
                finished = true;
                System.out.println("You canceled");
                continue;
            }
            System.out.println("\n" + this.promptMessagePounds);
-           int iPounds = keyboard.nextInt();
+           int iPounds = keyboard.read();
            if(iPounds == -1) {
                finished = true;
                System.out.println("You canceled");
@@ -76,6 +83,10 @@ public class StockFoodView {
             }
       */
         }
+      }
+      catch (Exception e) {
+          System.out.println("Error" + e.getMessage());
+      }
         return value;//return the value entered
     }
 }

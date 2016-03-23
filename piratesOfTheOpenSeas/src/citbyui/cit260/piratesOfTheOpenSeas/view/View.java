@@ -5,7 +5,10 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -15,7 +18,9 @@ public abstract class View implements ViewInterface {
     
     protected String displayMessage;
     
-    
+    protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
+    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
+       
     public View(){
     }
     
@@ -43,24 +48,27 @@ public abstract class View implements ViewInterface {
     @Override
         public String getInput() {
              
-       Scanner keyboard = new Scanner(System.in);// get infile for keyboard
-       String value = null;// value to be returned
+       //selection = keyboard.nextLine();// get infile for keyboard
+       String selection = null;// value to be returned
        boolean valid = false;//initialize to not valid
-       
+      try { 
        while(!valid){//loop while an invalid value is entered
             System.out.println("\n" + this.displayMessage);
            
            
-           value = keyboard.nextLine();//get next line typed on keyboard
-           value = value.trim();//trim off leading and trailing blanks
+           selection = this.keyboard.readLine();//get next line typed on keyboard
+           selection = selection.trim();//trim off leading and trailing blanks
            
-           if (value.length() < 1){//value is blank
+           if (selection.length() < 1){//value is blank
                System.out.println("\nInvalid value: value can not be blank");
                continue;
            }
            break; //end the loop
     }
-       return value;//return the value entered
+      }catch (Exception e) {
+          System.out.println("Error reading input: " + e.getMessage());
+      }
+       return selection;//return the value entered
     } 
        
 }

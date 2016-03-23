@@ -8,9 +8,13 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -19,6 +23,9 @@ import java.util.logging.Logger;
 public class StartProgramView {
     
     private String promptMessage;
+    
+    protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
+    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
     
     public StartProgramView(){
          
@@ -83,23 +90,28 @@ public class StartProgramView {
         RETURN name
         */
        
-       Scanner keyboard = new Scanner(System.in);// get infile for keyboard
-       String value = "";// value to be returned
+       // get infile for keyboard
+       String selection = "";// value to be returned
        boolean valid = false;//initialize to not valid
+        try {
+            selection = this.keyboard.readLine();//get next line typed on keyboard
+        } catch (IOException ex) {
+             System.out.println("\nInvalid value: value can not be blank");
+        }
+       selection = selection.trim();//trim off leading and trailing blanks
+           //selection = this.keyboard.readLine();
        
        while(!valid){//loop while an invalid value is entered
            System.out.println("\n" + this.promptMessage);
            
-           value = keyboard.nextLine();//get next line typed on keyboard
-           value = value.trim();//trim off leading and trailing blanks
            
-           if (value.length() < 1){//value is blank
+           if (selection.length() < 1){//value is blank
                System.out.println("\nInvalid value: value can not be blank");
                continue;
            }
            break; //end the loop
     }
-       return value;//return the value entered
+       return selection;//return the value entered
     }
 
     private boolean doAction(String playersName) {

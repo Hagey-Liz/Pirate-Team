@@ -7,9 +7,12 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
@@ -19,6 +22,9 @@ public class BarrelView {
     
     private String promptMessageHeight;
     private String promptMessageDiameter;
+    
+    protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
+    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
     
     public BarrelView() {
     }
@@ -30,13 +36,15 @@ public class BarrelView {
         this.promptMessageDiameter="Enter the diameter of the barrel you want. "
              + " To cancel enter -1";
         
-          Scanner keyboard = new Scanner(System.in);// get infile for keyboard
+          // get infile for keyboard
+       
        double barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
-       
+       //barrelVol = this.keyboard.read();
+      try {       
        while(!finished){//loop while an invalid value is entered
            System.out.println("\n" + this.promptMessageHeight);
-           double height = keyboard.nextDouble();
+           double height = keyboard.read();
            if(height == -1) {
                finished = true;
                System.out.println("You canceled");
@@ -44,12 +52,13 @@ public class BarrelView {
            }
                
            System.out.println("\n" + this.promptMessageDiameter);
-           double diameter = keyboard.nextDouble();
+           double diameter = keyboard.read();
            if(diameter == -1) {
                finished = true;
                System.out.println("You canceled");
                continue;
            }
+       
            
                
            try {
@@ -66,6 +75,10 @@ public class BarrelView {
             }*/
       
         }
+      }catch (Exception e) {
+          System.out.println("Error" + e.getMessage());
+      }
+       
         return barrelVol;//return the value entered
     }
 }
