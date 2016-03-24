@@ -14,7 +14,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
-
+import java.io.PrintWriter;
 
 /**
  *
@@ -25,6 +25,8 @@ public class GameControl {
     private static int NUMBER_OF_SHIPS = 2;
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
     private static int NUMBER_OF_WEAPONS = 3;
+    
+    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
     
     public static Player createPlayer(String name) {
         
@@ -284,44 +286,48 @@ public class GameControl {
 
     public static InventoryItem[] createInventoryList() {
         
+        try {
         //create array(list) of inventory items
         InventoryItem[] inventory = new InventoryItem[NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem food = new InventoryItem();
         food.setDescription("food\t");
         food.setQuantityInStock(0);
-        System.out.print("\t");
+        this.console.readLine("\t");
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
         InventoryItem water = new InventoryItem();
         water.setDescription("water\t");
         water.setQuantityInStock(0);
-        System.out.print("\t");
+        this.console.print("\t");
         water.setRequiredAmount(0);
         inventory[Item.water.ordinal()] = water;
         
         InventoryItem rum = new InventoryItem();
         rum.setDescription("rum\t");
         rum.setQuantityInStock(0);
-        System.out.print("\t");
+        this.console.print("\t");
         rum.setRequiredAmount(0);
         inventory[Item.rum.ordinal()] = rum;
         
         InventoryItem oil = new InventoryItem();
         oil.setDescription("oil\t");
         oil.setQuantityInStock(0);
-        System.out.print("\t");
+        this.console.print("\t");
         oil.setRequiredAmount(0);
         inventory[Item.oil.ordinal()] = oil;
         
         InventoryItem weapons = new InventoryItem();
         weapons.setDescription("weapons\t");
         weapons.setQuantityInStock(0);
-        System.out.print("\t");
+        this.console.print("\t");
         weapons.setRequiredAmount(0);
         inventory[Item.weapons.ordinal()] = weapons;
-        
+        }
+        catch (Exception e){
+            System.out.println("Error" + e.getMessage());
+        }
         return inventory;
     }
     

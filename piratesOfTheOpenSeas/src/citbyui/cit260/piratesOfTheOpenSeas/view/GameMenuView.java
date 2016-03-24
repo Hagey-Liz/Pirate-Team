@@ -12,6 +12,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Location;
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import citbyui.cit260.piratesOfTheOpenSeas.view.ShipMenuView;
+import java.io.PrintWriter;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 
@@ -21,6 +22,9 @@ import piratesoftheopenseas.PiratesOfTheOpenSeas;
  * @author Liz
  */
 public class GameMenuView extends View{
+    
+   private static final PrintWriter errorFile = PiratesOfTheOpenSeas.getOutFile();
+   private static final PrintWriter logFile = PiratesOfTheOpenSeas.getLogFile();
     
     public GameMenuView(){
             super("\n"
@@ -79,13 +83,12 @@ public class GameMenuView extends View{
                 this.displayHelpMenu();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid selection *** try again");
 }
         return false;
     }
     
-
-
     public void dislayMenu() {
         
         ShipMenuView shipMenuView = new ShipMenuView();

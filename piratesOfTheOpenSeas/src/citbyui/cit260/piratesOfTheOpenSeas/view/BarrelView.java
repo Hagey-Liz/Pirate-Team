@@ -43,19 +43,19 @@ public class BarrelView {
        //barrelVol = this.keyboard.read();
       try {       
        while(!finished){//loop while an invalid value is entered
-           System.out.println("\n" + this.promptMessageHeight);
+           this.console.println("\n" + this.promptMessageHeight);
            double height = keyboard.read();
            if(height == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
                
-           System.out.println("\n" + this.promptMessageDiameter);
+           this.console.println("\n" + this.promptMessageDiameter);
            double diameter = keyboard.read();
            if(diameter == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
        
@@ -64,19 +64,19 @@ public class BarrelView {
            try {
                 barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
             } catch (InventoryControlException me) {
-                System.out.println(me.getMessage());
+                this.console.println(me.getMessage());
             }
             /*if (barrelVol == -1){
-                System.out.println("Invalid entries, please try again");
+                this.console.println("Invalid entries, please try again");
             }
             else {
                 finished = true;
-                System.out.println("The volume of the barrel is " + barrelVol);
+                this.console.println("The volume of the barrel is " + barrelVol);
             }*/
       
         }
       }catch (Exception e) {
-          System.out.println("Error" + e.getMessage());
+          this.console.println("Error" + e.getMessage());
       }
        
         return barrelVol;//return the value entered

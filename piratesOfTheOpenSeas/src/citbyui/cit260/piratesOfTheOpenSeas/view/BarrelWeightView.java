@@ -46,11 +46,11 @@ public class BarrelWeightView {
        boolean finished = false;//initialize to not valid
       try { 
        while(!finished){//loop while an invalid value is entered
-           System.out.println("\n" + this.promptMessageHeight);
+           this.console.println("\n" + this.promptMessageHeight);
            double height = keyboard.read();
            if(height == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
                
@@ -58,7 +58,7 @@ public class BarrelWeightView {
            double diameter = keyboard.read();
            if(diameter == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
            
@@ -66,7 +66,7 @@ public class BarrelWeightView {
             try {
                 barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
             } catch (InventoryControlException me) {
-                System.out.println(me.getMessage());
+                this.console.println(me.getMessage());
             }
             /*if (barrelVol == -1){
                 System.out.println("Invalid entries, please try again");
@@ -79,14 +79,15 @@ public class BarrelWeightView {
             try {
                 barrelWeight = InventoryControl.calcBarrelWeight(height, diameter, DENSITY);
             } catch (InventoryControlException me) {
-                System.out.println(me.getMessage());
+                this.console.println(me.getMessage());
             }
               if (barrelWeight == -1){
-                  System.out.println("Ivalid entries, please try again");
+                  ErrorView.display(this.getClass().getName(), 
+                          "Invalid entries, please try again");
               }  
               else {
                   finished = true;
-                  System.out.println("The weight of the barrel is " + barrelWeight + " pounds. "
+                  this.console.println("The weight of the barrel is " + barrelWeight + " pounds. "
                           + "Do you want to put this on your ship? (enter yes or no)");
                    //Scanner keyboard2 = new Scanner(System.in);
                   String response = this.keyboard.readLine();
@@ -98,9 +99,9 @@ public class BarrelWeightView {
                       barrel.setVolume(barrelVol);
                       Game game = PiratesOfTheOpenSeas.getCurrentGame();
                       if (game.getShip().addBarrel(barrel))
-                          System.out.println("You successfully added the barrel to your ship");
+                          this.console.println("You successfully added the barrel to your ship");
                       else
-                          System.out.println("Could not add the barrel because it is too heavy for this ship");
+                          this.console.println("Could not add the barrel because it is too heavy for this ship");
                       }
                   
              }
@@ -108,7 +109,8 @@ public class BarrelWeightView {
         }
       }
       catch (Exception e){
-          System.out.println("Error" + e.getMessage());
+          ErrorView.display(this.getClass().getName(),
+                  "Error reading input:" + e.getMessage());
       }
         return barrelVol;//return the value entered
     }

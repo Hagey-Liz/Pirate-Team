@@ -53,20 +53,22 @@ public abstract class View implements ViewInterface {
        boolean valid = false;//initialize to not valid
       try { 
        while(!valid){//loop while an invalid value is entered
-            System.out.println("\n" + this.displayMessage);
+            this.console.println("\n" + this.displayMessage);
            
            
            selection = this.keyboard.readLine();//get next line typed on keyboard
            selection = selection.trim();//trim off leading and trailing blanks
            
            if (selection.length() < 1){//value is blank
-               System.out.println("\nInvalid value: value can not be blank");
+               ErrorView.display(this.getClass().getName(),
+                       "\nYou must enter a value.");
                continue;
            }
            break; //end the loop
     }
       }catch (Exception e) {
-          System.out.println("Error reading input: " + e.getMessage());
+          ErrorView.display(this.getClass().getName(),
+                  "Error reading input: " + e.getMessage());
       }
        return selection;//return the value entered
     } 
