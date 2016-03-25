@@ -46,33 +46,33 @@ public class StockFoodView {
        //Scanner keyboard = new Scanner(System.in);
       try { 
        while(!finished){//loop while an invalid value is entered
-           System.out.println("\n" + this.promptMessagePeople);
+           this.console.println("\n" + this.promptMessagePeople);
            int iPeople = keyboard.read();
            if(iPeople == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
                
-           System.out.println("\n" + this.promptMessageDays);
+           this.console.println("\n" + this.promptMessageDays);
            int iDays = keyboard.read();
            if(iDays == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
-           System.out.println("\n" + this.promptMessagePounds);
+           this.console.println("\n" + this.promptMessagePounds);
            int iPounds = keyboard.read();
            if(iPounds == -1) {
                finished = true;
-               System.out.println("You canceled");
+               this.console.println("You canceled");
                continue;
            }
                
             try {
                 value = InventoryControl.calcFoodWanted(iPeople, iPounds, iDays);
             } catch (InventoryControlException me) {
-                System.out.println(me.getMessage());
+                this.console.println(me.getMessage());
             }
             /*if (value == -1){
                 System.out.println("Invalid entries, please try again");
@@ -85,7 +85,8 @@ public class StockFoodView {
         }
       }
       catch (Exception e) {
-          System.out.println("Error" + e.getMessage());
+          ErrorView.display(this.getClass().getName(),
+                            "Error" + e.getMessage());
       }
         return value;//return the value entered
     }

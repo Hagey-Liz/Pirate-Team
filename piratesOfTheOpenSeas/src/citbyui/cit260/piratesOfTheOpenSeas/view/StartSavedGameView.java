@@ -25,7 +25,7 @@ public class StartSavedGameView extends View{
    @Override   
     public boolean doAction(String value){
        value = value.toUpperCase(); //convert choice to upper case
-
+       try {
         switch (value){
             
             case "C": //save the current game
@@ -33,14 +33,19 @@ public class StartSavedGameView extends View{
                 break;
         
             default:
-                System.out.println("\n*** Invalid selection *** try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid selection *** try again");
+    } 
+} catch (Exception e) {
+    ErrorView.display(this.getClass().getName(),
+            "Error" + e.getMessage());
 }
         return false;
     
 } 
 
     private void startExistingGame() {
-        System.out.println("\nWelcome back.");
+        this.console.println("\nWelcome back.");
     }
 
     

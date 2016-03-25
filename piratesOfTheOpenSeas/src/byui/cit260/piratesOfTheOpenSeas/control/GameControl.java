@@ -13,6 +13,10 @@ import byui.cit260.piratesOfTheOpenSeas.model.Player;
 import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 import java.io.PrintWriter;
 
@@ -25,6 +29,36 @@ public class GameControl {
     private static int NUMBER_OF_SHIPS = 2;
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
     private static int NUMBER_OF_WEAPONS = 3;
+
+    public static void saveGame(Game currentGame, String filePath) {
+        throw GameControlException {
+        
+        try (FileOutputStream fops = new FileOutputStream(filepath)){
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.write.Object(game);
+        }
+        catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+    }
+
+    public static void getSavedGame(String filePath) {
+                        throws GameControlException {
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filepath)) {
+            ObjectInputStream input  = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject();
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        PiratesOfTheOpenSeas.setCurrentGame(game);
+    }
+    }
     
     protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
     
@@ -286,7 +320,7 @@ public class GameControl {
 
     public static InventoryItem[] createInventoryList() {
         
-        try {
+       
         //create array(list) of inventory items
         InventoryItem[] inventory = new InventoryItem[NUMBER_OF_INVENTORY_ITEMS];
         
@@ -324,10 +358,7 @@ public class GameControl {
         this.console.print("\t");
         weapons.setRequiredAmount(0);
         inventory[Item.weapons.ordinal()] = weapons;
-        }
-        catch (Exception e){
-            System.out.println("Error" + e.getMessage());
-        }
+        
         return inventory;
     }
     

@@ -49,7 +49,7 @@ public class GameMenuView extends View{
     @Override   
     public boolean doAction(String value){
        value = value.toUpperCase(); //convert choice to upper case
-
+       try {
         switch (value){
             case "V": 
                 //Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
@@ -86,6 +86,10 @@ public class GameMenuView extends View{
                 ErrorView.display(this.getClass().getName(),
                         "\n*** Invalid selection *** try again");
 }
+       } catch (Exception e) {
+           ErrorView.display(this.getClass().getName(),
+                   "Error" + e.getMessage());
+       }
         return false;
     }
     
@@ -111,14 +115,14 @@ public class GameMenuView extends View{
          Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
          Map map = game.getMap(); // retreive the map from game
          Location[][] locations = map.getLocations(); // retreive the locations from map
-         
-         System.out.print("   |");
+       try {  
+         this.console.print("   |");
          for( int column = 0; column < locations[0].length; column++){
-             System.out.print("  " + column + " |"); // print col numbers to side of map
+             this.console.print("  " + column + " |"); // print col numbers to side of map
          }
-         System.out.println();
+         this.console.println();
          for( int row = 0; row < locations.length; row++){
-             System.out.print(row + "  "); // print row numbers to side of map
+             this.console.print(row + "  "); // print row numbers to side of map
              for( int column = 0; column < locations[row].length; column++){
                  leftIndicator = " ";
                  rightIndicator = " ";
@@ -127,14 +131,19 @@ public class GameMenuView extends View{
                      rightIndicator = "<"; // same as above
                  }
                  // TODO : use if else ladder to check to see if this location is current location and set proper indicators
-                 System.out.print("|"); // start map with a |
+                 this.console.print("|"); // start map with a |
                  if(locations[row][column].getScene() == null)
-                     System.out.print(leftIndicator + "??" + rightIndicator);
+                     this.console.print(leftIndicator + "??" + rightIndicator);
                  else
-                     System.out.print(leftIndicator + locations[row][column].getScene().getMapSymbol() + rightIndicator);
+                     this.console.print(leftIndicator + locations[row][column].getScene().getMapSymbol() + rightIndicator);
              }
-             System.out.println("|");
+             
+             this.console.println("|");
          }
+       }catch (Exception e) {
+           System.out.println("Error");
+       }
+       
     }
 
     /*private void displayMap(Map map) {
@@ -181,12 +190,12 @@ public class GameMenuView extends View{
     private void displayInventory() {
      //InventoryItem[] inventory = GameControl.getSortedInventoryList();
      InventoryItem[] inventory = PiratesOfTheOpenSeas.getCurrentGame().getInventory();
-     System.out.println("\nList of Inventory Items");
-     System.out.println("Description" + "\t" + "Required" + "\t" + "In Stock");
+     this.console.println("\nList of Inventory Items");
+     this.console.println("Description" + "\t" + "Required" + "\t" + "In Stock");
      
      for (InventoryItem inventoryItem : inventory) {
          
-         System.out.println(inventoryItem.getDescription() + "\t" + 
+         this.console.println(inventoryItem.getDescription() + "\t" + 
                             inventoryItem.getRequiredAmount() + "\t" +
                             inventoryItem.getQuantityInStock());
      }

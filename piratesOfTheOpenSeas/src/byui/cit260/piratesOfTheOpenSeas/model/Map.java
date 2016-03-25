@@ -1,5 +1,6 @@
 
 package byui.cit260.piratesOfTheOpenSeas.model;
+import citbyui.cit260.piratesOfTheOpenSeas.view.ErrorView;
 import java.io.Serializable;
 
 /**
@@ -18,9 +19,10 @@ public class Map implements Serializable{
 }
 
     public Map(int rowCount, int columnCount) {
-        
+      try {  
        if (rowCount < 1 || columnCount <1) {
-           System.out.println("The number of rows and columns must be > zero");
+           ErrorView.display(this.getClass().getName(),
+                   "The number of rows and columns must be > zero");
            return;
        }
        
@@ -43,6 +45,10 @@ public class Map implements Serializable{
                locations[row] [column] = location;
            }
        }
+      }catch (Exception e) {
+          ErrorView.display(this.getClass().getName(),
+                  "Error" + e.getMessage());
+      }
     }
 
   public Location[][] getLocations() {

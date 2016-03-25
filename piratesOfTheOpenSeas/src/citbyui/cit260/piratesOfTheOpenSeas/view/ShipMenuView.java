@@ -30,7 +30,7 @@ public class ShipMenuView extends View{
   @Override  
   public boolean doAction(String value) {
         value = value.toUpperCase(); //convert choice to upper case
-
+        try {
         switch (value){
             case "S": // Get Small Ship
                 this.smallShip();
@@ -41,13 +41,18 @@ public class ShipMenuView extends View{
                 return true;
               
             default:
-                System.out.println("\n*** Invalid selection *** try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid selection *** try again");
 }
+        }catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                    "Error" + e.getMessage());
+        }
         return false;
     }
 
     private void smallShip() {
-       // System.out.println("*** You have selected a Small ship for your voyage."
+       // this.console.println("*** You have selected a Small ship for your voyage."
         //+"\nThe adventure is about to begin ***");
         Game game = PiratesOfTheOpenSeas.getCurrentGame();
         
@@ -61,7 +66,7 @@ public class ShipMenuView extends View{
     }
 
     private void largeShip() {
-        //System.out.println("*** You have selected a Large ship for your voyage."
+        //this.console.println("*** You have selected a Large ship for your voyage."
        // +"\nThe adventure is about to begin ***");
        Game game = PiratesOfTheOpenSeas.getCurrentGame();
         

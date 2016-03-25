@@ -33,13 +33,13 @@ public class MainMenuView extends View {
     @Override   
     public boolean doAction(String value){
        value = value.toUpperCase(); //convert choice to upper case
-
+       try {
         switch (value){
             case "N": //create and start new game
                 this.startNewGame();
                 break;
             case "G": //get and start an existing game
-                this.startExistingGame();
+                this.startSavedGame();
                 break;
             case "V": //get and start an existing game
                 this.displayGameMenu();
@@ -51,8 +51,13 @@ public class MainMenuView extends View {
                 this.saveGame();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid selection *** try again");
 }
+       } catch (Exception e) {
+           ErrorView.display(this.getClass().getName(),
+                   "Error" + e.getMessage());
+       }
         return false;
     
 }
@@ -65,10 +70,22 @@ public class MainMenuView extends View {
         gameMenu.dislayMenu();
     }
 
-    private void startExistingGame() {
-        StartSavedGameView startExistingGame = new StartSavedGameView();
-        startExistingGame.display();
-     
+    private void startSavedGame() {
+        this.console.println("Enter the file path for file where"
+                + " the game is to be saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //start saved game
+            GameControl.getSavedGame(filePath);
+            
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+     //display the game menu
+     GameMenuView gameMenu = new GameMenuView();
+     gameMenu.dislayMenu();
       
     }
 
@@ -78,6 +95,18 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
+        
+        this.console.println("\nEnter the file path for file where"
+                + "the bame is to be saved");
+        String filePath = this.getInput();
+        
+        try{
+            //save teh game to the specified file
+            GameControl.saveGame(PiratesOfTheOpenSeas.getCurrentGame(),filePath);
+            
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView",ex.getMessage());
+        }
         SaveGameView saveGame = new SaveGameView();
         saveGame.display();
     }

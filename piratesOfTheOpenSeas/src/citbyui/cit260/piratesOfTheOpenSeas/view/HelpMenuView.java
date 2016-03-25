@@ -32,7 +32,7 @@ public class HelpMenuView extends View{
  @Override
     public boolean doAction(String value){
        value = value.toUpperCase(); //convert choice to upper case
-
+       try {
         switch (value){
             case "B": //create and start new game
                 this.displayGameObjective();
@@ -53,14 +53,19 @@ public class HelpMenuView extends View{
                 this.displayMap();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid selection *** try again");
 }
+       } catch (Exception e) {
+           ErrorView.display(this.getClass().getName(),
+                   "Error" + e.getMessage());
+       }
         return false;
     
 }
 
     private void displayGameObjective() {
-         System.out.println("*** The objective of the game is to find the hidden"
+         this.console.println("*** The objective of the game is to find the hidden"
                  + "\ntreasure while avoiding capture, or worse, from your enemy. "
                  + "\nThe journey will be long and dangerous.  You will "
                  + "\nhave to risk life or death if you want to find the treasure "
@@ -68,19 +73,19 @@ public class HelpMenuView extends View{
     }
 
     private void howToNavigate() {
-        System.out.println("*** You will given a range of coordinates to choose from."
+        this.console.println("*** You will given a range of coordinates to choose from."
                 + "\neach coordinate will represent a different scene i.e. island,"
                 + "\nport, open sea etc...  ***");
     }
 
     private void selectCrew() {
-         System.out.println("*** If you chose a small ship you may have between "
+         this.console.println("*** If you chose a small ship you may have between "
                  + "\n2 - 9 crew members to choose from.  If you chose a large"
                  + "\nship you may have 8 - 19 crew members. ***");
     }
 
     private void displayEnemyTactics() {
-         System.out.println("*** You will be given the option to run, fight or "
+         this.console.println("*** You will be given the option to run, fight or "
                  + "\nnegotiate.  If you choose to fight you will be given a range "
                  + "\nof numbers to choose from that will determine whether they "
                  + "\nwill win or lose the fight. If you choose to negotiate you will "
@@ -92,12 +97,12 @@ public class HelpMenuView extends View{
     }
 
     private void displayMap() {
-         System.out.println("*** There will be clues in the map that will help"
+         this.console.println("*** There will be clues in the map that will help"
                  + "\nto navigate to where you need to go. ***");
     }
 
     private void stockShip() {
-        System.out.println("*** You will be prompted to enter the number of pounds"
+        this.console.println("*** You will be prompted to enter the number of pounds"
                 + "\nof food you would like to get per person per day.  You will "
                 + "\nbe able to choose your weapons and the size of barrels you want"
                 + "\nfor water and rum. Obviously you will not be able to have"

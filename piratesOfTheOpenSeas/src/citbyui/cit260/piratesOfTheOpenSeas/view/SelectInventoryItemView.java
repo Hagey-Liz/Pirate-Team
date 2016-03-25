@@ -32,7 +32,7 @@ public class SelectInventoryItemView  extends View {
    @Override 
   public boolean doAction(String value) {
         value = value.toUpperCase(); //convert choice to upper case
-
+        try {
         switch (value){
             case "D": 
                 this.drinkingWater();
@@ -53,8 +53,13 @@ public class SelectInventoryItemView  extends View {
                 this.stockBarrel();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid selection *** try again");
 }
+        }catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                    "Error" + e.getMessage());
+        }
         return false;
     }
 

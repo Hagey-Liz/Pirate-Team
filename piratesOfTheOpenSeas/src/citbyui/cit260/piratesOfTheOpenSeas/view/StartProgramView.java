@@ -36,7 +36,7 @@ public class StartProgramView {
     }
 
     public void displayBanner() {
-     System.out.println(
+     this.console.println(
          "\n***************************************************************"
         +"\n*                                                             *"
         +"\n This is a game of Pirates of the Open Seas.  In this game you *"
@@ -96,17 +96,19 @@ public class StartProgramView {
         try {
             selection = this.keyboard.readLine();//get next line typed on keyboard
         } catch (IOException ex) {
-             System.out.println("\nInvalid value: value can not be blank");
+             ErrorView.display(this.getClass().getName(),
+                "\nInvalid value: value can not be blank");
         }
        selection = selection.trim();//trim off leading and trailing blanks
            //selection = this.keyboard.readLine();
        
        while(!valid){//loop while an invalid value is entered
-           System.out.println("\n" + this.promptMessage);
+           this.console.println("\n" + this.promptMessage);
            
            
            if (selection.length() < 1){//value is blank
-               System.out.println("\nInvalid value: value can not be blank");
+               ErrorView.display(this.getClass().getName(),
+                       "\nInvalid value: value can not be blank");
                continue;
            }
            break; //end the loop
@@ -119,7 +121,8 @@ public class StartProgramView {
        //display "Invalid name: The name must be > 1 character"
        //return false
        if(playersName.length() < 2){
-          System.out.println("\nInvalid players name:"
+         ErrorView.display(this.getClass().getName(),
+                 "\nInvalid players name:"
                + "The name must be greater than one character in length");
          return false; 
        }
@@ -133,7 +136,8 @@ public class StartProgramView {
        //Player player;
               
        if (player == null) {//if unsuccessful
-         System.out.println("\nError creating the player");
+          ErrorView.display(this.getClass().getName(),
+                  "\nError creating the player");
          return false;
         }
        
@@ -143,7 +147,7 @@ public class StartProgramView {
     }
    
     private void displayNextView(Player player) {
-      System.out.println("\n================================"
+      this.console.println("\n================================"
       + "\n Welcome to the game " + player.getName()
       + "\n We hope you have a lot of fun!"
       + "\n================================================="
