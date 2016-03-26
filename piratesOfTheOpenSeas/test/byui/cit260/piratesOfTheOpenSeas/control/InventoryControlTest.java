@@ -5,6 +5,7 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.control;
 
+import citbyui.cit260.piratesOfTheOpenSeas.view.ErrorView;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,8 @@ public class InventoryControlTest {
      */
     @Test
     public void testCalcBarrelVolume() {
-        
+     
+        try {
         System.out.println("calcBarrelVolume");
         
         /************************
@@ -159,14 +161,21 @@ public class InventoryControlTest {
         result = instance.calcBarrelVolume(height, diameter);
         
         assertEquals(expResult, result, 0.01);
-    }
+    } catch (Exception e) {
+        ErrorView.display(this.getClass().getName(),
+                "Error");
+               
+    } 
+        
+}
 
     /**
      * Test of calcFoodWanted method, of class InventoryControl.
      */
     @Test
     public void testCalcFoodWanted() {
-        
+    
+        try {
         /****************
          * Test case #1
          ****************/
@@ -313,12 +322,19 @@ public class InventoryControlTest {
         //compare expected return value with actual value returned
         assertEquals(expResult, result, 0);
     } 
+        catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                    "Error");
+    } 
+    
+}
     
     //Test of weight of barrel
     
      @Test
     public void testCalcBarrelWeight() {
-        
+       
+        try {
         System.out.println("calcBarrelWeight");
         
         /************************
@@ -449,4 +465,9 @@ public class InventoryControlTest {
         assertEquals(expResult, result, 0.01);
         
     } 
+        catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                    "Error");
+        }
+    }
 }

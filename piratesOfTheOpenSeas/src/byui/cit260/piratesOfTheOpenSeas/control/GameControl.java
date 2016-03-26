@@ -30,25 +30,25 @@ public class GameControl {
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
     private static int NUMBER_OF_WEAPONS = 3;
 
-    public static void saveGame(Game currentGame, String filePath) {
-        throw GameControlException {
+    public static void saveGame(Game game, String filePath)
+        throws GameControlException {
         
-        try (FileOutputStream fops = new FileOutputStream(filepath)){
+        try (FileOutputStream fops = new FileOutputStream(filePath)){
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
-            output.write.Object(game);
+            output.writeObject(game);
         }
         catch (Exception e) {
-            throw new GameControlException(e.getMessage());
+            throw  new GameControlException(e.getMessage());
         }
     }
-    }
+    
 
-    public static void getSavedGame(String filePath) {
+    public static void getSavedGame(String filePath) 
                         throws GameControlException {
         Game game = null;
         
-        try(FileInputStream fips = new FileInputStream(filepath)) {
+        try(FileInputStream fips = new FileInputStream(filePath)) {
             ObjectInputStream input  = new ObjectInputStream(fips);
             
             game = (Game) input.readObject();
@@ -58,7 +58,7 @@ public class GameControl {
         }
         PiratesOfTheOpenSeas.setCurrentGame(game);
     }
-    }
+    
     
     protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
     
@@ -83,7 +83,7 @@ public class GameControl {
         
         game.setPlayer(player);//save player in game
         
-        InventoryItem[] inventoryList = GameControl.createInventoryList();
+        InventoryItem[] inventoryList = createInventoryList();
         game.setInventory(inventoryList);
         
         //Ship[] shipList = GameControl.createShipList();//create ship list
@@ -327,35 +327,35 @@ public class GameControl {
         InventoryItem food = new InventoryItem();
         food.setDescription("food\t");
         food.setQuantityInStock(0);
-        this.console.readLine("\t");
+        System.out.println("\t");
         food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
         InventoryItem water = new InventoryItem();
         water.setDescription("water\t");
         water.setQuantityInStock(0);
-        this.console.print("\t");
+        System.out.println("\t");
         water.setRequiredAmount(0);
         inventory[Item.water.ordinal()] = water;
         
         InventoryItem rum = new InventoryItem();
         rum.setDescription("rum\t");
         rum.setQuantityInStock(0);
-        this.console.print("\t");
+        System.out.println("\t");
         rum.setRequiredAmount(0);
         inventory[Item.rum.ordinal()] = rum;
         
         InventoryItem oil = new InventoryItem();
         oil.setDescription("oil\t");
         oil.setQuantityInStock(0);
-        this.console.print("\t");
+        System.out.println("\t");
         oil.setRequiredAmount(0);
         inventory[Item.oil.ordinal()] = oil;
         
         InventoryItem weapons = new InventoryItem();
         weapons.setDescription("weapons\t");
         weapons.setQuantityInStock(0);
-        this.console.print("\t");
+        System.out.println("\t");
         weapons.setRequiredAmount(0);
         inventory[Item.weapons.ordinal()] = weapons;
         

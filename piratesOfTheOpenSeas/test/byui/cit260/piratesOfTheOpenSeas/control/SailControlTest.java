@@ -5,6 +5,7 @@
  */
 package byui.cit260.piratesOfTheOpenSeas.control;
 
+import citbyui.cit260.piratesOfTheOpenSeas.view.ErrorView;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +33,9 @@ public class SailControlTest {
      */
     @Test
     public void testBoardShip() {
+        
+    try {
+        
         System.out.println("boardShip");
         
         /***************************
@@ -153,5 +157,9 @@ public class SailControlTest {
         
         assertEquals(expResult, result, 0.1);
     }
-    
+    catch (Exception e) {
+        ErrorView.display(this.getClass().getName(),
+                "Error");
+    }
+    }
 }

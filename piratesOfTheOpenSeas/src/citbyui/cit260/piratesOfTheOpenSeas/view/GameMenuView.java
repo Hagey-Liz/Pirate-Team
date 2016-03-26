@@ -108,7 +108,7 @@ public class GameMenuView extends View{
     }
     
     
-    public static void displayMap() {
+    public  void displayMap() {
          String leftIndicator;
          String rightIndicator;
          
