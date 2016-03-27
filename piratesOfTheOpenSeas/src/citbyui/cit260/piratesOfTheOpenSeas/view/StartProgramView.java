@@ -7,37 +7,19 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
-import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
  * @author Liz
  */
-public class StartProgramView {
-    
-    private String promptMessage;
-    
-    protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
-    protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
+public class StartProgramView extends View{
+   
     
     public StartProgramView(){
-         
-        this.promptMessage="\nPlease enter your name:";
-        //display the banner when view is created
-        this.displayBanner();
-        
-    }
-
-    public void displayBanner() {
-     this.console.println(
-         "\n***************************************************************"
+         super(  "\n***************************************************************"
         +"\n*                                                             *"
         +"\n This is a game of Pirates of the Open Seas.  In this game you *"
         +"\n will choose to be either a pirate or Navy Captain.           *"
@@ -54,69 +36,13 @@ public class StartProgramView {
         +"\n                                                              *"
         +"\n Good Luck and have fun in this adventure!                    *"
         +"\n***************************************************************"
+                 +"\nPlease enter your name:"
      );
+      
     }
 
-
-    public void displayStartProgramView() {
-        
-        boolean done = false;//set flag to not done
-        do{
-            //prompt for and get players name
-            String playersName = this.getPlayersName();
-            if(playersName.toUpperCase().equals("Q"))//user wants to quit
-                return;//exit the game
-            
-            //do the requested action display the next view
-            done = this.doAction(playersName);
-        } while (!done);
-    
-    }
-
-    private String getPlayersName() {
-       /*
-        WHILE valid value has not been entered
-            DISPLAY promptMessage
-            GET the value entered from keyboard
-            Trim front and trailing blanks off of the name
-        
-            IF the length of the value is blank THEN
-                DISPLAY "Invalid value: The value can not be blank"
-                CONTINUE
-            ENDIF
-        
-            BREAK
-        ENDWHILE
-        RETURN name
-        */
-       
-       // get infile for keyboard
-       String selection = "";// value to be returned
-       boolean valid = false;//initialize to not valid
-        try {
-            selection = this.keyboard.readLine();//get next line typed on keyboard
-        } catch (IOException ex) {
-             ErrorView.display(this.getClass().getName(),
-                "\nInvalid value: value can not be blank");
-        }
-       selection = selection.trim();//trim off leading and trailing blanks
-           //selection = this.keyboard.readLine();
-       
-       while(!valid){//loop while an invalid value is entered
-           this.console.println("\n" + this.promptMessage);
-           
-           
-           if (selection.length() < 1){//value is blank
-               ErrorView.display(this.getClass().getName(),
-                       "\nInvalid value: value can not be blank");
-               continue;
-           }
-           break; //end the loop
-    }
-       return selection;//return the value entered
-    }
-
-    private boolean doAction(String playersName) {
+    @Override
+    public boolean doAction(String playersName) {
        //if the length of the playersName < 2 then
        //display "Invalid name: The name must be > 1 character"
        //return false

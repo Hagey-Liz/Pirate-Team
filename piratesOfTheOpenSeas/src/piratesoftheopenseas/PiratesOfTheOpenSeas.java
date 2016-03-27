@@ -50,8 +50,7 @@ public class PiratesOfTheOpenSeas {
     
     public static void main(String[] args){
     
-        
-     StartProgramView startProgramView = new StartProgramView();
+     
      try {
          PiratesOfTheOpenSeas.inFile=
                  new BufferedReader(new InputStreamReader(System.in));
@@ -61,8 +60,8 @@ public class PiratesOfTheOpenSeas {
          //open log file
          String filePath = "log.txt";
          PiratesOfTheOpenSeas.logFile = new PrintWriter(filePath);
-         
-        startProgramView.displayStartProgramView();
+         StartProgramView startProgramView = new StartProgramView();
+         startProgramView.display();
         
     } catch(Throwable e) {
         System.out.println("Exception: " + e.toString() +

@@ -146,47 +146,6 @@ public class GameMenuView extends View{
        
     }
 
-    /*private void displayMap(Map map) {
-        
-        String menu = ""
-                +"\n********************************************"
-                +"\nCurrent Location = |*@@@*|   Visit = |*###*|"
-                +"\n********************************************";
-                
-                System.out.println(menu);
-                
-        for(int row = 0; row < map.getLocations().length; row++) {
-            
-            for (Location location : map.getLocations()[row]) {
-            System.out.print("|*****|");
-        }
-        System.out.println("");// go to next line of row
-        
-        for(int column = 0; column< map.getLocations()[row].length; column++){
-            System.out.print("|" + row + " , " + column +"|");
-        }
-        System.out.println("");// go to next line of row
-        
-       //for (Location location : map.getLocations()[row]) {
-           //System.out.print("\t|");
-        //} 
-      Game currentGame = PiratesOfTheOpenSeas.getCurrentGame();
-       //System.out.println("");
-            for (Location location : map.getLocations()[row]) {
-                
-                if(location == currentGame.getCurrentLocation()) {
-                    System.out.print("|*@@@*|");
-                } else if (location.isVisited() == true) {
-                    System.out.print("|*###*|");
-                } else {
-                    System.out.print("|*****|");
-                }
-                
-            }
-            System.out.println("");
-    }*/
-    //}
-
     private void displayInventory() {
      //InventoryItem[] inventory = GameControl.getSortedInventoryList();
      InventoryItem[] inventory = PiratesOfTheOpenSeas.getCurrentGame().getInventory();
