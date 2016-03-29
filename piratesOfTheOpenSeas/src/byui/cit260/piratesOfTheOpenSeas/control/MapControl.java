@@ -31,8 +31,8 @@ public class MapControl {
         return map;
     }
 
-    public static void moveActorsToStartingLocation(Map map) {
-     System.out.println("Move actors to Location");
+    public static void movePlayerToStartingLocation() {
+        movePlayerToLocation(0,0);
        /* Actor[] actors = new Actor.values();
         
         for (Actor actor : actors) {
@@ -47,16 +47,17 @@ public class MapControl {
         
         
      
-    public static int moveActorToLocation(Actor actor, Point coordinates) {
+    public static int movePlayerToLocation(int newRow, int newColumn) {
         
         Map map = PiratesOfTheOpenSeas.getCurrentGame().getMap();
-        int newRow = coordinates.x-1;
-        int newColumn = coordinates.y-1;
+       
         
-       // if (newRow < 0 || new Row >= map.getRowCount() ||
-       //     newColumn < 0 || newColumn >= map.getColumnCount()) {
-       //     return -1;
-       // }
+        if (newRow < 0 || newRow >= map.getRowCount() ||
+            newColumn < 0 || newColumn >= map.getColumnCount()) {
+            return -1;
+       }
+        
+        map.setCurrentLocation( map.getLocations()[newRow][newColumn]);
         return 0;
     }
     

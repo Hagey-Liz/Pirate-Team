@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class Map implements Serializable{
     
     //Class instatnce variable
+    private Location currentLocation;
     private double rowCount;
     private double columnCount;
     private Location[] [] locations;
@@ -75,6 +76,16 @@ public double getColumnCount(){
 public void setColumnCount(double columnCount){
     this.columnCount = columnCount;
 }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+        currentLocation.setVisited(true);
+    }
+
 
     @Override
     public int hashCode() {

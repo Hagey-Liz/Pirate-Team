@@ -126,7 +126,11 @@ public class GameMenuView extends View{
              for( int column = 0; column < locations[row].length; column++){
                  leftIndicator = " ";
                  rightIndicator = " ";
-                 if(locations[row][column].isVisited()){
+                 if(locations[row][column] == map.getCurrentLocation()){
+                     leftIndicator = "*"; // can be stars or whatever these are indicators showing visited
+                     rightIndicator = "*"; // same as above
+                 } 
+                 else if(locations[row][column].isVisited()){
                      leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
                      rightIndicator = "<"; // same as above
                  }
@@ -170,7 +174,20 @@ public class GameMenuView extends View{
     }
 
     private void moveLocation() {
-     System.out.println("*** Move Location ***");    
+        int row;
+        int column;  
+        this.console.println("Enter the location row:");
+        row = this.getInteger();
+        
+        this.console.println("Enter the location column:");
+        column = this.getInteger();
+        
+        Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
+        Map map = game.getMap(); // retreive the map from game
+        
+        Location currentLocation = map.getLocations()[row][column];
+        map.setCurrentLocation(currentLocation);
+        
     }
 
     private void selectResources() {

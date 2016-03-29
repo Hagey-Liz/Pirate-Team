@@ -12,7 +12,6 @@ import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
@@ -47,7 +46,7 @@ public class BarrelWeightView {
       try { 
        while(!finished){//loop while an invalid value is entered
            this.console.println("\n" + this.promptMessageHeight);
-           double height = keyboard.read();
+           double height = this.keyboard.read();
            if(height == -1) {
                finished = true;
                this.console.println("You canceled");

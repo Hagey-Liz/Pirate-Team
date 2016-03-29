@@ -72,5 +72,38 @@ public abstract class View implements ViewInterface {
       }
        return selection;//return the value entered
     } 
+        public int getInteger() {
+            int returnValue = -999;
+            String selection = null;// value to be returned
+            boolean valid = false;//initialize to not valid
+            
+            while(!valid){//loop while an invalid value is entered
+                try { 
+                    selection = this.keyboard.readLine();//get next line typed on keyboard
+                    selection = selection.trim();//trim off leading and trailing blanks
+
+                    if (selection.length() < 1){//value is blank
+                        ErrorView.display(this.getClass().getName(),
+                                "\nYou must enter a number.");
+                        continue;
+                    }
+                   
+               
+                }catch (Exception e) {
+                    ErrorView.display(this.getClass().getName(),
+                         "Error reading input: " + e.getMessage());
+                }
+                try {
+                    returnValue = Integer.parseInt(selection);
+                    valid = true;
+                }
+                catch (Exception e) {
+                    ErrorView.display(this.getClass().getName(),
+                         "Error reading input, not an integer: " + e.getMessage());
+                    //continue;
+                }
+            }
+                return returnValue;
+        }
        
 }
