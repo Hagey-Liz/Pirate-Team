@@ -66,7 +66,7 @@ public class SelectInventoryItemView  extends View {
     private void drinkingWater() {
         BarrelWeightView barrelWeight = new BarrelWeightView();
         barrelWeight.getBarrelWeight();
-    }
+    } 
 
     private void stockRum() {
         BarrelWeightView barrelWeight = new BarrelWeightView();

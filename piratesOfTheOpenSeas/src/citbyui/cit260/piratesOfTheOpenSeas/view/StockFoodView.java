@@ -71,9 +71,9 @@ public class StockFoodView {
                
             try {
                 value = InventoryControl.calcFoodWanted(iPeople, iPounds, iDays);
-            } catch (InventoryControlException me) {
+            }catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
-            }
+             }
             /*if (value == -1){
                 System.out.println("Invalid entries, please try again");
             }

@@ -34,7 +34,6 @@ public class GameMenuView extends View{
                 +"\nV - View map"
                 +"\nI - View list of items in inventory"
                 +"\nA - View list of actors"
-                +"\nL - View contents of locaton"
                 +"\nM - Move to new locaton"
                 +"\nS - Select resources needed"
                 +"\nB - Decide size of Barrel"
@@ -61,17 +60,11 @@ public class GameMenuView extends View{
             case "A": //display the actor list
                 this.displayActor();
                 break;
-            case "L":
-                this.displayContents();
-                break;
             case "M": //travel to new locaton
                 this.moveLocation();
                 break;
             case "S": 
                 this.selectResources();
-                break;
-            case "B": 
-                this.barrelSize();
                 break;
             case "F":
                 this.displayFight();
@@ -169,19 +162,26 @@ public class GameMenuView extends View{
         
     }
 
-    private void displayContents() {
-     System.out.println("*** Display Content ***");    
-    }
-
     private void moveLocation() {
         int row;
         int column;  
-        this.console.println("Enter the location row:");
-        row = this.getInteger();
-        
-        this.console.println("Enter the location column:");
-        column = this.getInteger();
-        
+       
+            this.console.println("Enter the row locaton - a number between 0-4 inclusive:");
+            row = this.getInteger();
+            //if (row < 0 || > 4){
+            //    ErrorView.display(this.getClass().getName(), 
+            //              "Invalid entries, please try again");
+            //} else
+            //    return row;
+                       
+            this.console.println("Enter the column location - a number between 0-4 inclusive:");
+            column = this.getInteger();
+            //if (column < 0 || > 4){
+            //    ErrorView.display(this.getClass().getName(), 
+            //              "Invalid entries, please try again");
+            //} else
+            //    return column;
+       
         Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
         Map map = game.getMap(); // retreive the map from game
         
@@ -194,10 +194,6 @@ public class GameMenuView extends View{
         SelectInventoryItemView selectInventoryItemView = new SelectInventoryItemView();
         selectInventoryItemView.display();
      //System.out.println("*** Estimate Resources ***");    
-    }
-
-    private void barrelSize() {
-         System.out.println("*** Barrel Size ***");
     }
 
     private void displayFight() {

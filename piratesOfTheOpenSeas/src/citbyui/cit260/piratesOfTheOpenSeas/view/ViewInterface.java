@@ -13,6 +13,7 @@ public interface ViewInterface {
     
     public void display();
     public String getInput();
+    public int getInteger();
     public boolean doAction(String value);
     
 }

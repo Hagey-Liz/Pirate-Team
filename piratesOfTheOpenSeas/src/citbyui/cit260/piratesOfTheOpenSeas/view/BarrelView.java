@@ -18,7 +18,7 @@ import piratesoftheopenseas.PiratesOfTheOpenSeas;
  *
  * @author Roderick
  */
-public class BarrelView {
+public class BarrelView extends View{
     
     private String promptMessageHeight;
     private String promptMessageDiameter;
@@ -29,7 +29,7 @@ public class BarrelView {
     public BarrelView() {
     }
     
-    public double getBarrelVolume(){
+    public int getBarrelVolume(){
         
         this.promptMessageHeight="Enter the height of the barrel you want. "
             + " To cancel enter -1";
@@ -38,13 +38,13 @@ public class BarrelView {
         
           // get infile for keyboard
        
-       double barrelVol = 0;// value to be returned
+       int barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
        //barrelVol = this.keyboard.read();
       try {       
        while(!finished){//loop while an invalid value is entered
            this.console.println("\n" + this.promptMessageHeight);
-           double height = keyboard.read();
+           int height = this.getInteger();
            if(height == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -52,7 +52,7 @@ public class BarrelView {
            }
                
            this.console.println("\n" + this.promptMessageDiameter);
-           double diameter = keyboard.read();
+           int diameter = this.getInteger();
            if(diameter == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -62,7 +62,7 @@ public class BarrelView {
            
                
            try {
-                barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
+                barrelVol = (int) InventoryControl.calcBarrelVolume(height, diameter);
             } catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
             }
@@ -80,5 +80,10 @@ public class BarrelView {
       }
        
         return barrelVol;//return the value entered
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

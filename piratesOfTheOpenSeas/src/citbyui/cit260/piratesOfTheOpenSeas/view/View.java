@@ -55,7 +55,6 @@ public abstract class View implements ViewInterface {
        while(!valid){//loop while an invalid value is entered
             this.console.println("\n" + this.displayMessage);
            
-           
            selection = this.keyboard.readLine();//get next line typed on keyboard
            selection = selection.trim();//trim off leading and trailing blanks
            
@@ -72,6 +71,7 @@ public abstract class View implements ViewInterface {
       }
        return selection;//return the value entered
     } 
+        @Override
         public int getInteger() {
             int returnValue = -999;
             String selection = null;// value to be returned

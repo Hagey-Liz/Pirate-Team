@@ -20,11 +20,11 @@ import piratesoftheopenseas.PiratesOfTheOpenSeas;
  *
  * @author Liz
  */
-public class BarrelWeightView {
+public class BarrelWeightView extends View {
     
     private String promptMessageHeight;
     private String promptMessageDiameter;
-    private double barrelWeight;
+    private int barrelWeight;
     
     protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
     protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
@@ -32,7 +32,7 @@ public class BarrelWeightView {
     public BarrelWeightView() {
     }
     
-    public double getBarrelWeight(){
+    public int getBarrelWeight(){
         
         this.promptMessageHeight="Enter the height of the barrel you want. It"
                 + "should be at least 12 inches tall but not taller than 48 inches. "
@@ -41,12 +41,12 @@ public class BarrelWeightView {
                 + "smallest it can be is 12 inches and the largest it can be is 36 inches. "
              + " To cancel enter -1";
         
-       double barrelVol = 0;// value to be returned
+       int barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
       try { 
        while(!finished){//loop while an invalid value is entered
            this.console.println("\n" + this.promptMessageHeight);
-           double height = this.keyboard.read();
+           int height = this.getInteger();
            if(height == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -54,7 +54,7 @@ public class BarrelWeightView {
            }
                
            this.console.println("\n" + this.promptMessageDiameter);
-           double diameter = keyboard.read();
+           int diameter = this.getInteger();
            if(diameter == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -63,7 +63,7 @@ public class BarrelWeightView {
            
                
             try {
-                barrelVol = InventoryControl.calcBarrelVolume(height, diameter);
+                barrelVol = (int) InventoryControl.calcBarrelVolume(height, diameter);
             } catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
             }
@@ -76,7 +76,7 @@ public class BarrelWeightView {
             }*/
            
             try {
-                barrelWeight = InventoryControl.calcBarrelWeight(height, diameter, DENSITY);
+                barrelWeight = (int) InventoryControl.calcBarrelWeight(height, diameter, DENSITY);
             } catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
             }
@@ -112,6 +112,11 @@ public class BarrelWeightView {
                   "Error reading input:" + e.getMessage());
       }
         return barrelVol;//return the value entered
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
