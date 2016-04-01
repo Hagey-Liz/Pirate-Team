@@ -162,31 +162,34 @@ public class GameMenuView extends View{
         
     }
 
-    private void moveLocation() {
+    private boolean moveLocation() {
         int row;
         int column;  
        
             this.console.println("Enter the row locaton - a number between 0-4 inclusive:");
             row = this.getInteger();
-            //if (row < 0 || > 4){
-            //    ErrorView.display(this.getClass().getName(), 
-            //              "Invalid entries, please try again");
-            //} else
-            //    return row;
+            if (row < 0 || row > 4){
+                ErrorView.display(this.getClass().getName(), 
+                          "Invalid entries, please try again");
+                return false;
+            } 
+                
                        
             this.console.println("Enter the column location - a number between 0-4 inclusive:");
             column = this.getInteger();
-            //if (column < 0 || > 4){
-            //    ErrorView.display(this.getClass().getName(), 
-            //              "Invalid entries, please try again");
-            //} else
-            //    return column;
+             if (column < 0 || column > 4){
+                ErrorView.display(this.getClass().getName(), 
+                          "Invalid entries, please try again");
+                return false;
+            } 
+             
        
         Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
         Map map = game.getMap(); // retreive the map from game
         
         Location currentLocation = map.getLocations()[row][column];
         map.setCurrentLocation(currentLocation);
+        return true;
         
     }
 

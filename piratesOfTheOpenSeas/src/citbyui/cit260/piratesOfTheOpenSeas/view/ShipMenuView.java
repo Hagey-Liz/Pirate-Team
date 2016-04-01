@@ -59,7 +59,7 @@ public class ShipMenuView extends View{
         Ship ship = new Ship();
         ship.setCannons(5);
         ship.setCrew(8);
-        ship.setMaxCapacity(2000);
+        ship.setMaxCapacity(6000);
         ship.setDescription("Small Ship");
         ship.setSpeed(30);
         game.setShip(ship);
@@ -73,7 +73,7 @@ public class ShipMenuView extends View{
         Ship ship = new Ship();
         ship.setCannons(10);
         ship.setCrew(19);
-        ship.setMaxCapacity(3000);
+        ship.setMaxCapacity(8000);
         ship.setDescription("Large Ship");
         ship.setSpeed(20);
         game.setShip(ship);

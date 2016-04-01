@@ -9,8 +9,10 @@ import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import static byui.cit260.piratesOfTheOpenSeas.control.InventoryControl.DENSITY;
 import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
+import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +28,12 @@ public class BarrelWeightView extends View {
     private String promptMessageDiameter;
     private int barrelWeight;
     
+    Game game = PiratesOfTheOpenSeas.getCurrentGame();
+    Ship ship = game.getShip();
+    double shipMaxWeight = ship.getMaxCapacity();
+    double shipCurrentWeight = ship.getCurrentCargoWeight();
+    
+    
     protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
     protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
     
@@ -33,11 +41,14 @@ public class BarrelWeightView extends View {
     }
     
     public int getBarrelWeight(){
+        int height  = 0;
+        int diameter = 0;
+        String response = null;
         
-        this.promptMessageHeight="Enter the height of the barrel you want. It"
+        this.promptMessageHeight="Enter the height of the barrel you want. It "
                 + "should be at least 12 inches tall but not taller than 48 inches. "
             + " To cancel enter -1";
-        this.promptMessageDiameter="Enter the diameter of the barrel you want. The"
+        this.promptMessageDiameter="Enter the diameter of the barrel you want. The "
                 + "smallest it can be is 12 inches and the largest it can be is 36 inches. "
              + " To cancel enter -1";
         
@@ -46,7 +57,7 @@ public class BarrelWeightView extends View {
       try { 
        while(!finished){//loop while an invalid value is entered
            this.console.println("\n" + this.promptMessageHeight);
-           int height = this.getInteger();
+           height = this.getInteger();
            if(height == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -54,14 +65,19 @@ public class BarrelWeightView extends View {
            }
                
            this.console.println("\n" + this.promptMessageDiameter);
-           int diameter = this.getInteger();
+           diameter = this.getInteger();
            if(diameter == -1) {
                finished = true;
                this.console.println("You canceled");
                continue;
            }
+           break;    
+       }
+           }catch (Exception e){
+          ErrorView.display(this.getClass().getName(),
+                  "Error reading input:" + e.getMessage());
            
-               
+                   }     
             try {
                 barrelVol = (int) InventoryControl.calcBarrelVolume(height, diameter);
             } catch (InventoryControlException me) {
@@ -89,34 +105,41 @@ public class BarrelWeightView extends View {
                   this.console.println("The weight of the barrel is " + barrelWeight + " pounds. "
                           + "Do you want to put this on your ship? (enter yes or no)");
                    //Scanner keyboard2 = new Scanner(System.in);
-                  String response = this.keyboard.readLine();
+              } 
+            try {
+                response = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(BarrelWeightView.class.getName()).log(Level.SEVERE, null, ex);
+            }
                   if ("yes".equals(response.toLowerCase())){
                       Barrel barrel = new Barrel();
                       barrel.setWeight(barrelWeight);
                       barrel.setDiameter(diameter);
                       barrel.setHeight(height);
                       barrel.setVolume(barrelVol);
-                      Game game = PiratesOfTheOpenSeas.getCurrentGame();
-                      if (game.getShip().addBarrel(barrel))
-                          this.console.println("You successfully added the barrel to your ship");
-                      else
-                          this.console.println("Could not add the barrel because it is too heavy for this ship");
+                      double addedWeight = shipCurrentWeight + barrelWeight;
+                      
+                      if (shipCurrentWeight > shipMaxWeight) {
+                          this.console.println("Could not add the barrel because it is too heavy for this ship"); 
+                      }else {
+                         
+                            game.getShip().addBarrel(barrel);
+                            this.console.println("You successfully added the barrel to your ship");
                       }
                   
              }
-      
+                   return barrelVol;//return the value entered
         }
+      
+     public boolean doAction(String value) {
+         return true;
+     }
       }
-      catch (Exception e){
-          ErrorView.display(this.getClass().getName(),
-                  "Error reading input:" + e.getMessage());
-      }
-        return barrelVol;//return the value entered
-    }
-
-    @Override
-    public boolean doAction(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+      
+      
+        
     
-}
+
+    
+    
+

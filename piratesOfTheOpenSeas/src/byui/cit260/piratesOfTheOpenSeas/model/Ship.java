@@ -36,11 +36,9 @@ public class Ship implements Serializable{
     } 
     
     public double getCurrentCargoWeight(){
-        //(crew X average member weight) (cannons x cannon weight)
-        //+ (weight of current barrels)
-        //return number
+        
         double currentCargoWeight = (crew * 180) + (cannons * 100);
-        for (Barrel barrel : barrels) {
+            for (Barrel barrel : barrels) {
             currentCargoWeight += barrel.getWeight();
         }
         
