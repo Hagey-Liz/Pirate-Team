@@ -29,7 +29,7 @@ public class BarrelView extends View{
     public BarrelView() {
     }
     
-    public int getBarrelVolume(){
+    public double getBarrelVolume(){
         
         this.promptMessageHeight="Enter the height of the barrel you want. "
             + " To cancel enter -1";
@@ -38,13 +38,13 @@ public class BarrelView extends View{
         
           // get infile for keyboard
        
-       int barrelVol = 0;// value to be returned
+       double barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
        //barrelVol = this.keyboard.read();
       try {       
        while(!finished){//loop while an invalid value is entered
            this.console.println("\n" + this.promptMessageHeight);
-           int height = this.getInteger();
+           double height = this.getInteger();
            if(height == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -52,7 +52,7 @@ public class BarrelView extends View{
            }
                
            this.console.println("\n" + this.promptMessageDiameter);
-           int diameter = this.getInteger();
+           double diameter = this.getInteger();
            if(diameter == -1) {
                finished = true;
                this.console.println("You canceled");
@@ -62,7 +62,7 @@ public class BarrelView extends View{
            
                
            try {
-                barrelVol = (int) InventoryControl.calcBarrelVolume(height, diameter);
+                barrelVol = (double) InventoryControl.calcBarrelVolume(height, diameter);
             } catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
             }

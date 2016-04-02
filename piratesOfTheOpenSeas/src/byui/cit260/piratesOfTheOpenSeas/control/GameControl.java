@@ -12,7 +12,11 @@ import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import byui.cit260.piratesOfTheOpenSeas.model.Player;
 import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
+import byui.cit260.piratesOfTheOpenSeas.model.Weapons;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.GameControlException;
+import citbyui.cit260.piratesOfTheOpenSeas.view.GameMenuView;
+import citbyui.cit260.piratesOfTheOpenSeas.view.MainMenuView;
+import citbyui.cit260.piratesOfTheOpenSeas.view.View;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -24,11 +28,11 @@ import java.io.PrintWriter;
  *
  * @author Liz
  */
-public class GameControl {
+public class GameControl extends View {
    
     private static int NUMBER_OF_SHIPS = 2;
     private static int NUMBER_OF_INVENTORY_ITEMS = 5;
-    private static int NUMBER_OF_WEAPONS = 3;
+    private static int NUMBER_OF_WEAPONS = 4;
 
     public static void saveGame(Game game, String filePath)
         throws GameControlException {
@@ -102,6 +106,11 @@ public class GameControl {
     System.out.println("*** get sorted inventory list ***");
     return null;
     }
+
+    @Override
+    public boolean doAction(String value) {
+        return true;
+    }
     
     public enum SceneType {
         start,
@@ -144,7 +153,7 @@ public class GameControl {
         scenes[SceneType.beach.ordinal()] = scene;
         
         scene.setDescription(
-                "\nEnemy Port");
+                "\nThis is an enemy port, you need to leave quickly or you will die");
         scene.setMapSymbol("EP");
         scene.setBlocked(false);
         scene.setTravelTime(240);
@@ -152,7 +161,8 @@ public class GameControl {
         
         scene = new Scene();
         scene.setDescription(
-                "\nDeserted Island scene");
+                "\nYou have landed on a deserted Island.  Now is a good time to let your men"
+                        + "rest for a little while and restock your water supply.");
         scene.setMapSymbol("DI");
         scene.setBlocked(false);
         scene.setTravelTime(240);
@@ -173,14 +183,15 @@ public class GameControl {
         scenes[SceneType.fight.ordinal()] = scene;
         
         scene.setDescription(
-                "\nFriendly Island");
+                "\nYou have landed on an island with friendly natives.  You can "
+                        + "re-stock your ship if you need.");
         scene.setMapSymbol("FI");
         scene.setBlocked(false);
         scene.setTravelTime(240);
         scenes[SceneType.friendlyIsland.ordinal()] = scene;
         
         scene.setDescription(
-                "\nFriendly Port");
+                "\nThis is a friendly port and good place to restock your ship.");
         scene.setMapSymbol("FP");
         scene.setBlocked(false);
         scene.setTravelTime(240);
@@ -194,7 +205,8 @@ public class GameControl {
         scenes[SceneType.openSea.ordinal()] = scene;
         
         scene.setDescription(
-                "\nTerrible storm");
+                "\nYou are in a terrible storm, you must put your anchor down and "
+                        + "wait it out.");
         scene.setMapSymbol("SM");
         scene.setBlocked(false);
         scene.setTravelTime(240);
@@ -208,7 +220,7 @@ public class GameControl {
         scenes[SceneType.supplyStation.ordinal()] = scene;
         
         scene.setDescription(
-                "\nYou found the Treasure");
+                "\nYou found the Treasure! This means you won the game!");
         scene.setMapSymbol("TR");
         scene.setBlocked(false);
         scene.setTravelTime(240);
@@ -295,7 +307,8 @@ public class GameControl {
         small.setDescription("Small");
         small.setCrew(9);
         small.setCannons(10);
-        small.setMaxCapacity(2000);
+        small.setCannonBalls(25);
+        small.setMaxCapacity(6000);
         small.setSpeed(30);
         ship[Ships.small.ordinal()] = small;
         
@@ -303,12 +316,15 @@ public class GameControl {
         large.setDescription("Large");
         large.setCrew(19);
         large.setCannons(20);
-        large.setMaxCapacity(4000);
+        large.setCannonBalls(40);
+        large.setMaxCapacity(8000);
         large.setSpeed(20);
         ship[Ships.large.ordinal()] = large;
         
         return ship;
     }
+    
+   
     
     public enum Item {
         food,
@@ -327,42 +343,52 @@ public class GameControl {
         InventoryItem food = new InventoryItem();
         food.setDescription("food\t");
         food.setQuantityInStock(0);
+        food.setRequiredAmount(200);
         System.out.println("\t");
-        food.setRequiredAmount(0);
         inventory[Item.food.ordinal()] = food;
         
         InventoryItem water = new InventoryItem();
         water.setDescription("water\t");
         water.setQuantityInStock(0);
+        water.setRequiredAmount(400);
         System.out.println("\t");
-        water.setRequiredAmount(0);
         inventory[Item.water.ordinal()] = water;
         
         InventoryItem rum = new InventoryItem();
         rum.setDescription("rum\t");
         rum.setQuantityInStock(0);
-        System.out.println("\t");
         rum.setRequiredAmount(0);
+        System.out.println("\t");
         inventory[Item.rum.ordinal()] = rum;
         
         InventoryItem oil = new InventoryItem();
         oil.setDescription("oil\t");
         oil.setQuantityInStock(0);
+        oil.setRequiredAmount(300);
         System.out.println("\t");
-        oil.setRequiredAmount(0);
         inventory[Item.oil.ordinal()] = oil;
-        
-        InventoryItem weapons = new InventoryItem();
-        weapons.setDescription("weapons\t");
-        weapons.setQuantityInStock(0);
-        System.out.println("\t");
-        weapons.setRequiredAmount(0);
-        inventory[Item.weapons.ordinal()] = weapons;
         
         return inventory;
     }
-    
-    
+    public  void fight() {
+       int cannons = 0;
+      
+        this.console.println("Enter the number of cannons ");
+          cannons  = this.getInteger();
+          if (cannons < 5) {
+              this.console.println("You lost");
+               MainMenuView mainMenuView = new MainMenuView();
+               mainMenuView.display();
+          }
+          else { 
+              this.console.println("You defeated your enemies, you can move to a new location");
+        
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.moveLocation();
+        }
+        
+    }
+   
     private static Map createMap() {
         //create the map
         Map map = new Map(5, 5);

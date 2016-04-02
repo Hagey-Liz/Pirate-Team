@@ -5,13 +5,19 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
+import byui.cit260.piratesOfTheOpenSeas.model.Game;
+import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import java.util.Scanner;
+import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
  *
  * @author Liz
  */
 public class SelectInventoryItemView  extends View {
+    Game game = PiratesOfTheOpenSeas.getCurrentGame();
+    InventoryItem [] inventory = game.getInventory();
+    String barrelItem = null;
     
   public SelectInventoryItemView() {
             super("\n"
@@ -22,7 +28,6 @@ public class SelectInventoryItemView  extends View {
                 +"\nR - Rum"
                 +"\nO - Oil"
                 +"\nF - Food"
-                +"\nW - Weapons"
                 +"\nB - Barrel"
                 +"\nQ - Quit"
                 +"\n-------------------------------------------");
@@ -46,9 +51,6 @@ public class SelectInventoryItemView  extends View {
             case "F": //Get food by the pound
                 this.stockFood();
                 break;
-            case "W": //Get Weapons
-                this.stockWeapons();
-                break;
             case "B": // Get Barrel
                 this.stockBarrel();
                 break;
@@ -64,28 +66,28 @@ public class SelectInventoryItemView  extends View {
     }
 
     private void drinkingWater() {
+        barrelItem = "water";
         BarrelWeightView barrelWeight = new BarrelWeightView();
-        barrelWeight.getBarrelWeight();
+        barrelWeight.getBarrelWeight(barrelItem);
+        
     } 
 
     private void stockRum() {
+        barrelItem = "rum";
         BarrelWeightView barrelWeight = new BarrelWeightView();
-        barrelWeight.getBarrelWeight();
+        barrelWeight.getBarrelWeight(barrelItem);
     }
 
     private void stockOil() {
+        barrelItem = "oil";
         BarrelWeightView barrelWeight = new BarrelWeightView();
-        barrelWeight.getBarrelWeight();
+        barrelWeight.getBarrelWeight(barrelItem);
     }
 
   
-    private void stockWeapons() {
-        System.out.println("*** stockWeapons function called ***");
-    }
-
     private void stockFood() {
-       StockFoodView stockFood = new StockFoodView();
-       stockFood.getFoodNeeded();
+        BarrelWeightView barrelWeight = new BarrelWeightView();
+        barrelWeight.getBarrelWeight(barrelItem);
          
     }
 

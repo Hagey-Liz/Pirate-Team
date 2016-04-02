@@ -5,9 +5,15 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
+import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
+import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
+import byui.cit260.piratesOfTheOpenSeas.model.Game;
+import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
+import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -27,11 +33,18 @@ public class StockFoodView {
     
     protected final BufferedReader keyboard = PiratesOfTheOpenSeas.getInFile();
     protected final PrintWriter console = PiratesOfTheOpenSeas.getOutFile();
-
+    Game game = PiratesOfTheOpenSeas.getCurrentGame();
+    Ship ship = game.getShip();
+    InventoryItem [] inventory = game.getInventory();
+    double shipMaxWeight = ship.getMaxCapacity();
+    double shipCurrentWeight = ship.getCurrentCargoWeight();
+    
     public StockFoodView() {
+    
     }
     
-    public int getFoodNeeded(){
+    public double getFoodNeeded(){
+         double currentFood = inventory[GameControl.Item.food.ordinal()].getQuantityInStock();
         
         this.promptMessagePeople="Enter the number of people on your boat "
             + "including yourself. To cancel enter -1";
@@ -90,6 +103,8 @@ public class StockFoodView {
       }
         return value;//return the value entered
     }
+     
+       
 }
    
   

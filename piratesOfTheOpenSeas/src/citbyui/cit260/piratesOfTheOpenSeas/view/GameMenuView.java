@@ -11,6 +11,7 @@ import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Location;
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
+import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import citbyui.cit260.piratesOfTheOpenSeas.view.ShipMenuView;
 import java.io.PrintWriter;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
@@ -36,7 +37,6 @@ public class GameMenuView extends View{
                 +"\nA - View list of actors"
                 +"\nM - Move to new locaton"
                 +"\nS - Select resources needed"
-                +"\nB - Decide size of Barrel"
                 +"\nF - Fight"
                 +"\nP - Pack ship"
                 +"\nH - Help"
@@ -144,7 +144,7 @@ public class GameMenuView extends View{
     }
 
     private void displayInventory() {
-     //InventoryItem[] inventory = GameControl.getSortedInventoryList();
+     
      InventoryItem[] inventory = PiratesOfTheOpenSeas.getCurrentGame().getInventory();
      this.console.println("\nList of Inventory Items");
      this.console.println("Description" + "\t" + "Required" + "\t" + "In Stock");
@@ -152,7 +152,7 @@ public class GameMenuView extends View{
      for (InventoryItem inventoryItem : inventory) {
          
          this.console.println(inventoryItem.getDescription() + "\t" + 
-                            inventoryItem.getRequiredAmount() + "\t" +
+                            inventoryItem.getRequiredAmount() + "\t\t" +
                             inventoryItem.getQuantityInStock());
      }
     }
@@ -162,7 +162,7 @@ public class GameMenuView extends View{
         
     }
 
-    private boolean moveLocation() {
+    public boolean moveLocation() {
         int row;
         int column;  
        
@@ -187,8 +187,19 @@ public class GameMenuView extends View{
         Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
         Map map = game.getMap(); // retreive the map from game
         
+        Scene scenes = new Scene();
+        
+        
+        
         Location currentLocation = map.getLocations()[row][column];
         map.setCurrentLocation(currentLocation);
+        
+        String menu = currentLocation.getScene().getDescription();
+        this.console.println(menu);
+        
+        //GameControl gameControl = new GameControl();
+        //gameControl.Scene[].createScenes();
+        
         return true;
         
     }
@@ -200,7 +211,8 @@ public class GameMenuView extends View{
     }
 
     private void displayFight() {
-         System.out.println("*** Fight ***");
+         GameControl gameControl = new GameControl();
+        gameControl.fight();
     }
 
     private void packShip() {

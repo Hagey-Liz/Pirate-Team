@@ -5,10 +5,13 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
+import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
+import byui.cit260.piratesOfTheOpenSeas.control.GameControl.Item;
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import static byui.cit260.piratesOfTheOpenSeas.control.InventoryControl.DENSITY;
 import byui.cit260.piratesOfTheOpenSeas.model.Barrel;
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
+import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
 import byui.cit260.piratesOfTheOpenSeas.model.Ship;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.io.BufferedReader;
@@ -30,6 +33,7 @@ public class BarrelWeightView extends View {
     
     Game game = PiratesOfTheOpenSeas.getCurrentGame();
     Ship ship = game.getShip();
+    InventoryItem [] inventory = game.getInventory();
     double shipMaxWeight = ship.getMaxCapacity();
     double shipCurrentWeight = ship.getCurrentCargoWeight();
     
@@ -40,10 +44,20 @@ public class BarrelWeightView extends View {
     public BarrelWeightView() {
     }
     
-    public int getBarrelWeight(){
-        int height  = 0;
-        int diameter = 0;
+    public double getBarrelWeight(String barrelItem){
+        
+        double height  = 0;
+        double diameter = 0;
         String response = null;
+        double currentFood = inventory[Item.food.ordinal()].getQuantityInStock();
+        double currentWater = inventory[Item.water.ordinal()].getQuantityInStock();
+        double currentRum = inventory[Item.rum.ordinal()].getQuantityInStock();
+        double currentOil = inventory[Item.oil.ordinal()].getQuantityInStock();
+        double addItemWater = 0;
+        double addItemRum = 0;
+        double addItemOil = 0;
+        double addItemFood = 0;
+        
         
         this.promptMessageHeight="Enter the height of the barrel you want. It "
                 + "should be at least 12 inches tall but not taller than 48 inches. "
@@ -52,7 +66,7 @@ public class BarrelWeightView extends View {
                 + "smallest it can be is 12 inches and the largest it can be is 36 inches. "
              + " To cancel enter -1";
         
-       int barrelVol = 0;// value to be returned
+       double barrelVol = 0;// value to be returned
        boolean finished = false;//initialize to not valid
       try { 
        while(!finished){//loop while an invalid value is entered
@@ -83,14 +97,7 @@ public class BarrelWeightView extends View {
             } catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
             }
-            /*if (barrelVol == -1){
-              this.console.println("Invalid entries, please try again");
-            }
-            else {
-                finished = true;
-                this.console.println("The volume of the barrel is " + barrelVol);
-            }*/
-           
+          
             try {
                 barrelWeight = (int) InventoryControl.calcBarrelWeight(height, diameter, DENSITY);
             } catch (InventoryControlException me) {
@@ -126,6 +133,19 @@ public class BarrelWeightView extends View {
                             game.getShip().addBarrel(barrel);
                             this.console.println("You successfully added the barrel to your ship");
                       }
+                      addItemFood = currentFood + barrelWeight;
+                      addItemWater = currentWater + barrelWeight;
+                      addItemRum = currentRum + barrelWeight;
+                      addItemOil = currentOil + barrelWeight;
+                  if (barrelItem.equals("food")) {
+                     inventory[Item.food.ordinal()].setQuantityInStock(addItemFood); 
+                  }else if (barrelItem.equals("water")) {
+                     inventory[Item.water.ordinal()].setQuantityInStock(addItemWater); 
+                  }else if (barrelItem.equals("rum")){
+                      inventory[Item.rum.ordinal()].setQuantityInStock(addItemRum); 
+                  }else{
+                     inventory[Item.oil.ordinal()].setQuantityInStock(addItemOil); 
+                  }
                   
              }
                    return barrelVol;//return the value entered

@@ -19,6 +19,7 @@ public class Ship implements Serializable{
     private String description;
     private double crew;
     private double cannons;
+    private double cannonBalls;
     private double speed;
     private double maxCapacity;
     private ArrayList <Barrel> barrels;
@@ -85,6 +86,15 @@ public class Ship implements Serializable{
         this.maxCapacity = maxCapacity;
     }
 
+    public double getCannonBalls() {
+        return cannonBalls;
+    }
+
+    public void setCannonBalls(double cannonBalls) {
+        this.cannonBalls = cannonBalls;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 3;
