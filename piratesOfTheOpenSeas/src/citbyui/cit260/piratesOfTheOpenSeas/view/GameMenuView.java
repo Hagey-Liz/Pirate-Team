@@ -34,7 +34,6 @@ public class GameMenuView extends View{
                 +"\n--------------------------------------------"
                 +"\nV - View map"
                 +"\nI - View list of items in inventory"
-                +"\nA - View list of actors"
                 +"\nM - Move to new locaton"
                 +"\nS - Select resources needed"
                 +"\nF - Fight"
@@ -55,9 +54,6 @@ public class GameMenuView extends View{
                 break;
             case "I": //display Inventory
                 this.displayInventory();
-                break;
-            case "A": //display the actor list
-                this.displayActor();
                 break;
             case "M": //travel to new locaton
                 this.moveLocation();
@@ -151,11 +147,6 @@ public class GameMenuView extends View{
                             inventoryItem.getRequiredAmount() + "\t\t" +
                             inventoryItem.getQuantityInStock());
      }
-    }
-
-    private void displayActor() {
-        Actor actor = Actor.CaptainHawkeye;
-        
     }
 
     public boolean moveLocation() {

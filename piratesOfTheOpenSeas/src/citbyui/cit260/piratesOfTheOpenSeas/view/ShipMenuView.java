@@ -57,7 +57,8 @@ public class ShipMenuView extends View{
         Game game = PiratesOfTheOpenSeas.getCurrentGame();
         
         Ship ship = new Ship();
-        ship.setCannons(5);
+        ship.setCannons(12);
+        ship.setCannonBalls(25);
         ship.setCrew(8);
         ship.setMaxCapacity(6000);
         ship.setDescription("Small Ship");
@@ -71,7 +72,8 @@ public class ShipMenuView extends View{
        Game game = PiratesOfTheOpenSeas.getCurrentGame();
         
         Ship ship = new Ship();
-        ship.setCannons(10);
+        ship.setCannons(20);
+        ship.setCannonBalls(40);
         ship.setCrew(19);
         ship.setMaxCapacity(8000);
         ship.setDescription("Large Ship");

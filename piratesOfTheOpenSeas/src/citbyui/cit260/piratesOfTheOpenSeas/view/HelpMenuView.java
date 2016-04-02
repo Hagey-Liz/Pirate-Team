@@ -75,15 +75,15 @@ public class HelpMenuView extends View{
     private void howToNavigate() {
         this.console.println("*** You will given a range of coordinates to choose from. "
                 + "\neach coordinate will represent a different scene i.e. island, "
-                + "\nport, open sea etc...  ***");
+                + "\nport, open sea etc... You should start at coordinates 0, 0 ***");
     }
 
     private void selectShip() {
          this.console.println("*** You will be prompted to choose either a small or large ship. "
-                 + "If you chose a small ship your weight limit will be 6000 lbs.,"
-                 + "\n you will gave a crew of 8 and have 5 cannons.  If you chose a large"
-                 + "\nship you will have a crew of 19, have 10 cannons and your weight"
-                 + "\n limit will be 8000 lbs. ***");
+                 + "\nIf you chose a small ship your weight limit will be 6000 lbs.,"
+                 + "\n you will gave a crew of 8 and have 12 cannons and 25 cannon balls."
+                 + "\n If you chose a large ship you will have a crew of 19, 10 cannons, "
+                 + "\n40 cannon balls and your weight limit will be 8000 lbs. ***");
     }
 
     private void displayEnemyTactics() {

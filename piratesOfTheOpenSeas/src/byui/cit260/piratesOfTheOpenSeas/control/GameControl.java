@@ -305,8 +305,8 @@ public class GameControl extends View {
         
         Ship small = new Ship();
         small.setDescription("Small");
-        small.setCrew(9);
-        small.setCannons(10);
+        small.setCrew(8);
+        small.setCannons(12);
         small.setCannonBalls(25);
         small.setMaxCapacity(6000);
         small.setSpeed(30);
