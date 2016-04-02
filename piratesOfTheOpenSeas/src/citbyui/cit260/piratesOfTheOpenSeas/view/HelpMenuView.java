@@ -20,9 +20,9 @@ public class HelpMenuView extends View{
                 +"\n--------------------------------------------"
                 +"\nB - What is the objective of the game?"
                 +"\nN - How to navigate"
-                +"\nC - How to select a crew"
-                +"\nL - How to stock your ship"
-                +"\nF - How a pirate can attack, negotiate or run from other pirates, navy or merchants"
+                +"\nC - How to select a ship"
+                +"\nL - How to stock resources on your ship"
+                +"\nF - How to fight the enemy"
                 +"\nM - How to use the map"
                 +"\nQ - Quit"
                 +"\n-------------------------------------------");
@@ -41,7 +41,7 @@ public class HelpMenuView extends View{
                 this.howToNavigate();
                 break;
             case "C": //display the help menu
-                this.selectCrew();
+                this.selectShip();
                 break;
             case "L": //how to stock the ship
                 this.stockShip();
@@ -65,7 +65,7 @@ public class HelpMenuView extends View{
 }
 
     private void displayGameObjective() {
-         this.console.println("*** The objective of the game is to find the hidden"
+         this.console.println("*** The objective of the game is to find the hidden "
                  + "\ntreasure while avoiding capture, or worse, from your enemy. "
                  + "\nThe journey will be long and dangerous.  You will "
                  + "\nhave to risk life or death if you want to find the treasure "
@@ -73,39 +73,40 @@ public class HelpMenuView extends View{
     }
 
     private void howToNavigate() {
-        this.console.println("*** You will given a range of coordinates to choose from."
-                + "\neach coordinate will represent a different scene i.e. island,"
+        this.console.println("*** You will given a range of coordinates to choose from. "
+                + "\neach coordinate will represent a different scene i.e. island, "
                 + "\nport, open sea etc...  ***");
     }
 
-    private void selectCrew() {
-         this.console.println("*** If you chose a small ship you may have between "
-                 + "\n2 - 9 crew members to choose from.  If you chose a large"
-                 + "\nship you may have 8 - 19 crew members. ***");
+    private void selectShip() {
+         this.console.println("*** You will be prompted to choose either a small or large ship. "
+                 + "If you chose a small ship your weight limit will be 6000 lbs.,"
+                 + "\n you will gave a crew of 8 and have 5 cannons.  If you chose a large"
+                 + "\nship you will have a crew of 19, have 10 cannons and your weight"
+                 + "\n limit will be 8000 lbs. ***");
     }
 
     private void displayEnemyTactics() {
-         this.console.println("*** You will be given the option to run, fight or "
-                 + "\nnegotiate.  If you choose to fight you will be given a range "
-                 + "\nof numbers to choose from that will determine whether they "
-                 + "\nwill win or lose the fight. If you choose to negotiate you will "
-                 + "\nchoose a number between 1 and 10, 1 = not willing to sacrifice "
-                 + "\nanything, and 10 = giving everything. If the enemy rejects the "
-                 + "\nnegotiated offer 3 times then you will have to choose whether "
-                 + "\nto run or fight.  If you choose to run "
-                 + "\nyou will be given the option to enter new coordinates.***");
+         this.console.println("*** You will be given the option to run or fight "
+                 + "\n If you choose to fight you will need to choose how many "
+                 + "\ncannon balls you want to use. If you do not choose enough you "
+                 + "\nloose the game.  If you choose enough then you will win the "
+                 + "\nbattle and be able to move to a new location.  If the new"
+                 + "\n location is a fight scene you may not have enough left to win,"
+                 + "\n but if you are able to re-stock you may still win.***");
     }
 
     private void displayMap() {
-         this.console.println("*** There will be clues in the map that will help"
-                 + "\nto navigate to where you need to go. ***");
+         this.console.println("*** You will be prompted to enter the coordinates of where you would"
+                 + "\n like to move next.  The map will have *  * to show your current locaton "
+                 + "\nand will have >  < to show that you have already visited that location. ***");
     }
 
     private void stockShip() {
-        this.console.println("*** You will be prompted to enter the number of pounds"
-                + "\nof food you would like to get per person per day.  You will "
-                + "\nbe able to choose your weapons and the size of barrels you want"
-                + "\nfor water and rum. Obviously you will not be able to have"
-                + "\nas much if you chose the smaller ship.***");
+        this.console.println("*** When you click select resources You will be prompted to enter "
+                + "\nthe size of the barrel you would like to use. You will then be "
+                + "\ntold the weight and able to choose if you want to add it to your ship. "
+                + "\nYou will need to make sure that you do not exceed the maximum "
+                + "\nweight allowed for the ship you chose.***");
     }
 }

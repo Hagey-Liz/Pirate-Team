@@ -7,7 +7,6 @@ package citbyui.cit260.piratesOfTheOpenSeas.view;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import byui.cit260.piratesOfTheOpenSeas.model.InventoryItem;
-import java.util.Scanner;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
@@ -19,7 +18,7 @@ public class SelectInventoryItemView  extends View {
     InventoryItem [] inventory = game.getInventory();
     String barrelItem = null;
     
-  public SelectInventoryItemView() {
+    public SelectInventoryItemView() {
             super("\n"
                 +"\n--------------------------------------------"
                 +"\n|Resources                                 |"
@@ -34,7 +33,7 @@ public class SelectInventoryItemView  extends View {
     }
     
 
-   @Override 
+  @Override 
   public boolean doAction(String value) {
         value = value.toUpperCase(); //convert choice to upper case
         try {
@@ -86,6 +85,7 @@ public class SelectInventoryItemView  extends View {
 
   
     private void stockFood() {
+        barrelItem = "food";
         BarrelWeightView barrelWeight = new BarrelWeightView();
         barrelWeight.getBarrelWeight(barrelItem);
          

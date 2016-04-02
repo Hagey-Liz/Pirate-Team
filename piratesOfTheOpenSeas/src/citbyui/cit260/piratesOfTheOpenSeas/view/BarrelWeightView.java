@@ -5,7 +5,6 @@
  */
 package citbyui.cit260.piratesOfTheOpenSeas.view;
 
-import byui.cit260.piratesOfTheOpenSeas.control.GameControl;
 import byui.cit260.piratesOfTheOpenSeas.control.GameControl.Item;
 import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import static byui.cit260.piratesOfTheOpenSeas.control.InventoryControl.DENSITY;

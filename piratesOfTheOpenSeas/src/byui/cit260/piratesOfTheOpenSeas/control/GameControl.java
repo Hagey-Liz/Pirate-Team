@@ -373,7 +373,8 @@ public class GameControl extends View {
     public  void fight() {
        int cannons = 0;
       
-        this.console.println("Enter the number of cannons ");
+        this.console.println("Enter the number of cannon balls you would like to "
+                + "use against the enemy. ");
           cannons  = this.getInteger();
           if (cannons < 5) {
               this.console.println("You lost");

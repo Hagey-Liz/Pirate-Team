@@ -9,9 +9,6 @@ import byui.cit260.piratesOfTheOpenSeas.control.InventoryControl;
 import citbyui.cit260.piratesOfTheOpenSeas.exceptions.InventoryControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piratesoftheopenseas.PiratesOfTheOpenSeas;
 
 /**
@@ -66,14 +63,7 @@ public class BarrelView extends View{
             } catch (InventoryControlException me) {
                 this.console.println(me.getMessage());
             }
-            /*if (barrelVol == -1){
-                this.console.println("Invalid entries, please try again");
-            }
-            else {
-                finished = true;
-                this.console.println("The volume of the barrel is " + barrelVol);
-            }*/
-      
+           
         }
       }catch (Exception e) {
           this.console.println("Error" + e.getMessage());
@@ -84,6 +74,6 @@ public class BarrelView extends View{
 
     @Override
     public boolean doAction(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 }

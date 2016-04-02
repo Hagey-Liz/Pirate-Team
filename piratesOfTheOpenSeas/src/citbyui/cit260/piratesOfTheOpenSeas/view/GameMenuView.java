@@ -38,7 +38,6 @@ public class GameMenuView extends View{
                 +"\nM - Move to new locaton"
                 +"\nS - Select resources needed"
                 +"\nF - Fight"
-                +"\nP - Pack ship"
                 +"\nH - Help"
                 +"\nQ - Quit"
                 +"\n-------------------------------------------");
@@ -68,9 +67,6 @@ public class GameMenuView extends View{
                 break;
             case "F":
                 this.displayFight();
-                break;
-            case "P":
-                this.packShip();
                 break;
             case "H":
                 this.displayHelpMenu();
@@ -173,8 +169,7 @@ public class GameMenuView extends View{
                           "Invalid entries, please try again");
                 return false;
             } 
-                
-                       
+                   
             this.console.println("Enter the column location - a number between 0-4 inclusive:");
             column = this.getInteger();
              if (column < 0 || column > 4){
@@ -182,14 +177,11 @@ public class GameMenuView extends View{
                           "Invalid entries, please try again");
                 return false;
             } 
-             
        
         Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
         Map map = game.getMap(); // retreive the map from game
         
         Scene scenes = new Scene();
-        
-        
         
         Location currentLocation = map.getLocations()[row][column];
         map.setCurrentLocation(currentLocation);
@@ -197,28 +189,17 @@ public class GameMenuView extends View{
         String menu = currentLocation.getScene().getDescription();
         this.console.println(menu);
         
-        //GameControl gameControl = new GameControl();
-        //gameControl.Scene[].createScenes();
-        
         return true;
-        
     }
 
     private void selectResources() {
         SelectInventoryItemView selectInventoryItemView = new SelectInventoryItemView();
         selectInventoryItemView.display();
-     //System.out.println("*** Estimate Resources ***");    
     }
 
     private void displayFight() {
-         GameControl gameControl = new GameControl();
+        GameControl gameControl = new GameControl();
         gameControl.fight();
     }
 
-    private void packShip() {
-    System.out.println("*** Pack Ship ***");
-    }
-
-    
-    
 }
