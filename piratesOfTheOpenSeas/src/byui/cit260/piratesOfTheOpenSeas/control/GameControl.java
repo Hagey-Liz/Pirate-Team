@@ -119,7 +119,7 @@ public class GameControl extends View {
         friendlyPort,
         enemyPort,
         openSea,
-        treasure,
+        mutiny,
         seaStorm,
         friendlyIsland,
         desertedIsland,
@@ -144,87 +144,97 @@ public class GameControl extends View {
         startingScene.setTravelTime(240);
         scenes[SceneType.start.ordinal()] = startingScene;
         
-        Scene scene = new Scene();
-        scene.setDescription(
+        Scene beach = new Scene();
+        beach.setDescription(
                 "\nBeach scene");
-        scene.setMapSymbol("BE");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.beach.ordinal()] = scene;
+        beach.setMapSymbol("BE");
+        beach.setBlocked(false);
+        beach.setTravelTime(240);
+        scenes[SceneType.beach.ordinal()] = beach;
         
-        scene.setDescription(
+        Scene enemyPort = new Scene();
+        enemyPort.setDescription(
                 "\nThis is an enemy port, you need to leave quickly or you will die");
-        scene.setMapSymbol("EP");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.enemyPort.ordinal()] = scene;
+        enemyPort.setMapSymbol("EP");
+        enemyPort.setBlocked(false);
+        enemyPort.setTravelTime(240);
+        scenes[SceneType.enemyPort.ordinal()] = enemyPort;
         
-        scene = new Scene();
-        scene.setDescription(
+        Scene desertedIsland = new Scene();
+        desertedIsland.setDescription(
                 "\nYou have landed on a deserted Island.  Now is a good time to let your men"
                         + "rest for a little while and restock your water supply.");
-        scene.setMapSymbol("DI");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.desertedIsland.ordinal()] = scene;
+        desertedIsland.setMapSymbol("DI");
+        desertedIsland.setBlocked(false);
+        desertedIsland.setTravelTime(240);
+        scenes[SceneType.desertedIsland.ordinal()] = desertedIsland;
         
-        scene.setDescription(
+        
+        Scene tavern = new Scene();
+        tavern.setDescription(
                 "\nYou found a local tavern where your crew can relax and rest");
-        scene.setMapSymbol("TV");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.tavern.ordinal()] = scene;
+        tavern.setMapSymbol("TV");
+        tavern.setBlocked(false);
+        tavern.setTravelTime(240);
+        scenes[SceneType.tavern.ordinal()] = tavern;
         
-        scene.setDescription(
+        Scene fight = new Scene();
+        fight.setDescription(
                 "\nFight Scene");
-        scene.setMapSymbol("FT");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.fight.ordinal()] = scene;
+        fight.setMapSymbol("FT");
+        fight.setBlocked(false);
+        fight.setTravelTime(240);
+        scenes[SceneType.fight.ordinal()] = fight;
         
-        scene.setDescription(
+        Scene friendlyIsland = new Scene();
+        friendlyIsland.setDescription(
                 "\nYou have landed on an island with friendly natives.  You can "
                         + "re-stock your ship if you need.");
-        scene.setMapSymbol("FI");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.friendlyIsland.ordinal()] = scene;
+        friendlyIsland.setMapSymbol("FI");
+        friendlyIsland.setBlocked(false);
+        friendlyIsland.setTravelTime(240);
+        scenes[SceneType.friendlyIsland.ordinal()] = friendlyIsland;
         
-        scene.setDescription(
+        Scene friendlyPort = new Scene();
+        friendlyPort.setDescription(
                 "\nThis is a friendly port and good place to restock your ship.");
-        scene.setMapSymbol("FP");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.friendlyPort.ordinal()] = scene;
+        friendlyPort.setMapSymbol("FP");
+        friendlyPort.setBlocked(false);
+        friendlyPort.setTravelTime(240);
+        scenes[SceneType.friendlyPort.ordinal()] = friendlyPort;
         
-        scene.setDescription(
+        Scene openSea = new Scene();
+        openSea.setDescription(
                 "\nOpen Sea");
-        scene.setMapSymbol("OS");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.openSea.ordinal()] = scene;
+        openSea.setMapSymbol("OS");
+        openSea.setBlocked(false);
+        openSea.setTravelTime(240);
+        scenes[SceneType.openSea.ordinal()] = openSea;
         
-        scene.setDescription(
+        Scene seaStorm = new Scene();
+        seaStorm.setDescription(
                 "\nYou are in a terrible storm, you must put your anchor down and "
                         + "wait it out.");
-        scene.setMapSymbol("SM");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.seaStorm.ordinal()] = scene;
+        seaStorm.setMapSymbol("SM");
+        seaStorm.setBlocked(false);
+        seaStorm.setTravelTime(240);
+        scenes[SceneType.seaStorm.ordinal()] = seaStorm;
         
-        scene.setDescription(
+        Scene supplyStation = new Scene();
+        supplyStation.setDescription(
                 "\nSupply Station");
-        scene.setMapSymbol("SS");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.supplyStation.ordinal()] = scene;
+        supplyStation.setMapSymbol("SS");
+        supplyStation.setBlocked(false);
+        supplyStation.setTravelTime(240);
+        scenes[SceneType.supplyStation.ordinal()] = supplyStation;
         
-        scene.setDescription(
-                "\nYou found the Treasure! This means you won the game!");
-        scene.setMapSymbol("TR");
-        scene.setBlocked(false);
-        scene.setTravelTime(240);
-        scenes[SceneType.treasure.ordinal()] = scene;
+        Scene mutiny = new Scene();
+        mutiny.setDescription(
+                "\nYour men have begun a mutiny and you have been thrown overboard! Game over");
+        mutiny.setMapSymbol("MU");
+        mutiny.setBlocked(false);
+        mutiny.setTravelTime(240);
+        scenes[SceneType.mutiny.ordinal()] = mutiny;
         
         Scene finishScene = new Scene();
         finishScene.setDescription(
@@ -277,7 +287,7 @@ public class GameControl extends View {
        locations[3][1].setVisited(false);
        locations[3][2].setScene(scenes[SceneType.friendlyIsland.ordinal()]);
        locations[3][2].setVisited(false);
-       locations[3][3].setScene(scenes[SceneType.treasure.ordinal()]);
+       locations[3][3].setScene(scenes[SceneType.mutiny.ordinal()]);
        locations[3][3].setVisited(false);
        locations[3][4].setScene(scenes[SceneType.finish.ordinal()]);
        locations[3][4].setVisited(false);
@@ -371,6 +381,9 @@ public class GameControl extends View {
         return inventory;
     }
     public  void fight() {
+        Game game = PiratesOfTheOpenSeas.getCurrentGame();
+        Ship ship = game.getShip();
+        
        int cannons = 0;
       
         this.console.println("Enter the number of cannon balls you would like to "
@@ -382,7 +395,12 @@ public class GameControl extends View {
                mainMenuView.display();
           }
           else { 
-              this.console.println("You defeated your enemies, you can move to a new location");
+              double currentCannonBalls = ship.getCannonBalls();
+              double depleteCannonBalls = currentCannonBalls - cannons;
+              ship.setCannonBalls(depleteCannonBalls);
+              this.console.println("\nYou have fired " + cannons + " cannon balls. You have "
+                                 + "\n" + depleteCannonBalls + " cannon balls remaining.");
+              this.console.println("\nYou defeated your enemies, you can move to a new location\n");
         
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.moveLocation();

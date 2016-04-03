@@ -171,14 +171,19 @@ public class GameMenuView extends View{
        
         Game game = PiratesOfTheOpenSeas.getCurrentGame(); // retreive the game
         Map map = game.getMap(); // retreive the map from game
-        
-        Scene scenes = new Scene();
+        GameControl gameControl = new GameControl();
         
         Location currentLocation = map.getLocations()[row][column];
         map.setCurrentLocation(currentLocation);
         
-        String menu = currentLocation.getScene().getDescription();
+        Location [][] locations = map.getLocations();
+        
+        String menu = locations[row][column].getScene().getDescription();
+        String mapSymbol = locations[row][column].getScene().getMapSymbol();
         this.console.println(menu);
+        if (mapSymbol == "FT"){
+            gameControl.fight();
+        }
         
         return true;
     }

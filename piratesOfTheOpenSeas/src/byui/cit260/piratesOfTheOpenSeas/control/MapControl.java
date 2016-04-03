@@ -6,6 +6,7 @@
 package byui.cit260.piratesOfTheOpenSeas.control;
 
 import byui.cit260.piratesOfTheOpenSeas.model.Actor;
+import byui.cit260.piratesOfTheOpenSeas.model.Game;
 import byui.cit260.piratesOfTheOpenSeas.model.Map;
 import byui.cit260.piratesOfTheOpenSeas.model.Scene;
 import com.sun.rowset.internal.Row;
@@ -17,6 +18,8 @@ import piratesoftheopenseas.PiratesOfTheOpenSeas;
  * @author Liz
  */
 public class MapControl {
+    
+    Game game = PiratesOfTheOpenSeas.getCurrentGame();
 
     public static Map createMap() {
         //create the map
@@ -24,6 +27,7 @@ public class MapControl {
         
         //create a list of the different scenes in the game
         Scene[] scenes = GameControl.createScenes();
+       
         
         //assign the different scenes to locations in the map
        GameControl.assignScenesToLocations(map, scenes);
